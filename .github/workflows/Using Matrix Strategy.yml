@@ -1,0 +1,64 @@
+name: Using Matrix Strategy
+on: 
+  workflow_dispatch:
+    inputs:
+      TestEnv:
+        type: choice
+        description: Please select environment
+        options: 
+        - AutomationOrg
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+   
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest    
+    env: 
+     PROVAR_HOME: ${{ github.workspace }}/ProvarHome
+    strategy:
+      fail-fast: false
+      matrix:
+        Plan: ["Mayur-1-WorkOrder","Mayur-2-ShopFloor","Mayur-3-RMA","Mayur-4-InventoryTransactions","Mayur-5-CPQ"]
+    
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+    - name: Set up JDK 8
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: 8
+        
+    - name: Run build
+      run: |
+        mkdir $GITHUB_WORKSPACE/ProvarHome
+        curl -O https://download.provartesting.com/latest/Provar_ANT_latest.zip
+        unzip -o Provar_ANT_latest.zip -d ProvarHome
+        rm Provar_ANT_latest.zip
+        sudo apt-get update && sudo apt-get upgrade       
+        wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -        
+        sudo echo "deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" >>sudo tee -a /etc/apt/sources.list.d/google-chrome.list
+        sudo apt-get -y install google-chrome-stable
+
+        echo "Provar Home Path=" $PROVAR_HOME
+        cd $GITHUB_WORKSPACE/ANT
+        echo "Selected Plan Name="${{matrix.Plan}}
+        echo "Selected Environment is="${{ github.event.inputs.TestEnv }}
+        xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=${{matrix.Plan}}" runtests
+
+    
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Execution Report for ${{matrix.Plan}}- ${{ steps.date.outputs.date }}
+        path: ${{ github.workspace }}/ANT/Results/*
+    - uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: Execution Report for ${{matrix.Plan}}- ${{ steps.date.outputs.date }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+        path: ${{ github.workspace }}/ANT/Results/*

@@ -861,7 +861,7 @@
                       <clauses>
                         <clause name="substeps" testItemId="131">
                           <steps>
-                            <caseCall testCaseId="e03c0f78-086e-428e-9fe0-0880d702b101" testCasePath="tests/SYDATA-Work Order/Callable/API-Add Derived Compnent.testcase" testItemId="882">
+                            <caseCall testCaseId="53d6cbf3-5a1c-498c-af1f-07cce55391ff" testCasePath="tests/SYDATA-Work Order/Callable/API-Add Derived Compnent.testcase" testItemId="882">
                               <arguments>
                                 <argument id="reuseConnectionName">
                                   <value class="value" valueClass="string">SFConnection</value>

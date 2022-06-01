@@ -1,0 +1,66 @@
+name: Plan as parameter
+
+on: 
+  workflow_dispatch:
+    inputs:
+      plan:
+        type: choice
+        description: Please select Test Plan For the execution
+        options: 
+        - API-Inventory
+        - API-Work Order
+        - Engg to WO Close
+        - Inventory Transactions
+        - RMA
+        - Recurring Billing
+        - Shop Floor
+        - Work Order
+      TestEnv:
+        type: choice
+        description: Please select environment
+        options: 
+        - AutomationOrg 
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    env: 
+       PROVAR_HOME: ${{ github.workspace }}/ProvarHome
+    
+    steps:
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+    - uses: actions/checkout@v2
+    - name: Set up JDK 8
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: 8
+      
+    - name: Build with Ant
+      run: |
+        mkdir $GITHUB_WORKSPACE/ProvarHome
+        curl -O https://download.provartesting.com/latest/Provar_ANT_latest.zip
+        unzip -o Provar_ANT_latest.zip -d ProvarHome
+        rm Provar_ANT_latest.zip
+        sudo apt-get update && sudo apt-get upgrade       
+        wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -        
+        sudo echo "deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" >>sudo tee -a /etc/apt/sources.list.d/google-chrome.list
+        sudo apt-get -y install google-chrome-stable
+        echo $PROVAR_HOME
+        cd $GITHUB_WORKSPACE/ANT
+        echo "Selected Plan Name="${{ github.event.inputs.plan }}
+        echo "Selected Environment is="${{ github.event.inputs.TestEnv }}
+        xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=${{ github.event.inputs.plan }}" runtests
+    
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Execution Report for ${{ github.event.inputs.plan }}- ${{ steps.date.outputs.date }}
+        path: ${{ github.workspace }}/ANT/Results/*
+    - uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: Execution Report for ${{ github.event.inputs.plan }}- ${{ steps.date.outputs.date }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+        path: ${{ github.workspace }}/ANT/Results/*
