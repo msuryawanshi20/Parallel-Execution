@@ -1,0 +1,47 @@
+<project default="runtests">
+	<property environment="env"/>
+	<property name="provar.home" value="C:/Program Files/Provar_2.6.3/"/>
+	<property name="testproject.home" value=".."/>
+	<property name="testproject.results" value="../ANT/Results"/>
+	<property name="secrets.password" value="${env.ProvarSecretsPassword}"/>
+	<property name="testenvironment.secretspassword" value="${env.ProvarSecretsPassword_EnvName}"/>
+	
+	<property name="testcycle.path" value="../TestCycle"/>
+	
+	<taskdef name="Provar-Compile" classname="com.provar.testrunner.ant.CompileTask" classpath="${provar.home}/ant/ant-provar.jar"/>
+	<taskdef name="Run-Test-Case" classname="com.provar.testrunner.ant.RunnerTask" classpath="${provar.home}/ant/ant-provar.jar;${provar.home}/ant/ant-provar-bundled.jar;${provar.home}/ant/ant-provar-sf.jar"/>
+	<taskdef name="Test-Cycle-Report" classname="com.provar.testrunner.ant.TestCycleReportTask" classpath="${provar.home}/ant/ant-provar.jar;${provar.home}/ant/ant-provar-bundled.jar;${provar.home}/ant/ant-provar-sf.jar"/>
+	
+	<target name="runtests">
+	
+		<Provar-Compile provarHome="${provar.home}" projectPath="${testproject.home}"/>
+	
+		<Run-Test-Case provarHome="${provar.home}" 
+				projectPath="${testproject.home}" 
+				resultsPath="${testproject.results}" 
+				resultsPathDisposition="Increment" 
+				testEnvironment="AutomationOrg" 
+				webBrowser="Chrome" 
+				webBrowserConfiguration="Full Screen"
+				webBrowserProviderName="Desktop"
+				webBrowserDeviceName="Full Screen" 
+				excludeCallableTestCases="true" 
+				salesforceMetadataCache="Reuse" 
+				projectCachePath="../.provarCaches"
+				testOutputlevel="BASIC" 
+				pluginOutputlevel="WARNING"
+				stopTestRunOnError="false"
+				secretsPassword="${secrets.password}"
+				testEnvironmentSecretsPassword="${testenvironment.secretspassword}"
+	        	testCyclePath="${testcycle.path}"
+    	    	testCycleRunType="FAILURES_AND_SKIPPED"
+				invokeTestRunMonitor="true"
+				>
+		
+			<fileset dir="../tests/Work Order"><include name="Create Engg Item to Close WO.testcase"/>
+			</fileset><fileset dir="../tests/Work Order"><include name="RSTK-9517-Work Order Complete Flow.testcase"/></fileset><fileset dir="../tests/Work Order"><include name="RSTK-9518-Rework Work Order.testcase"/></fileset><fileset dir="../tests/Work Order"><include name="RSTK-9519-Disassembly Work Order.testcase"/></fileset><fileset dir="../tests/Work Order"><include name="RSTK-9520-Refurb Work Order.testcase"/></fileset><fileset dir="../tests/Work Order"><include name="RSTK-9521-Consigned Work Order.testcase"/></fileset><fileset dir="../tests/Work Order"><include name="RSTK-9522-Labor WO.testcase"/></fileset><fileset dir="../tests/Work Order"><include name="RSTK-9686-Verify Component Costs after WO Issue.testcase"/></fileset><fileset dir="../tests/Work Order"><include name="RSTK-9717-WO To Inspection order To WO Receipt flow.testcase"/></fileset>
+
+		</Run-Test-Case>
+
+	</target>
+</project>

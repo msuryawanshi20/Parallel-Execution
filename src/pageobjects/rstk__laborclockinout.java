@@ -42,11 +42,13 @@ public class rstk__laborclockinout {
 	@FindBy(xpath = "//label[normalize-space(.)='Show Only Operations with Qty Available']/parent::span/parent::th/following-sibling::td//input")
 	public WebElement showOnlyOperationswithQtyAvailable;
 
-	@PageWaitAfter.Field(field = "list", timeoutSeconds = 10)
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 10)
+	@PageWait.Field(timeoutSeconds = 10)
 	@TextType()
 	@FindBy(xpath = "//label[normalize-space(.)='Search Work Orders']/parent::span/parent::th/following-sibling::td//input")
 	public WebElement searchWorkOrders;
 
+	@PageWait.Field(timeoutSeconds = 10)
 	@TextType()
 	@FindBy(xpath = "//li[@id='li-0']")
 	public WebElement list;

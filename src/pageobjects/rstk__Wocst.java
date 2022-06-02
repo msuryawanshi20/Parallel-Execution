@@ -85,6 +85,8 @@ public class rstk__Wocst {
 		}
 	}
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
+	@PageWait.BackgroundActivity(timeoutSeconds = 60)
 	@TextType()
 	@FindBy(xpath = "//label[normalize-space(.)='Qty Required']/ancestor::span/ancestor::th/following-sibling::td[1]//input")
 	public WebElement qtyRequired;
