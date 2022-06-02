@@ -7,6 +7,8 @@ import com.provar.core.testapi.annotations.BooleanType;
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.ChoiceListType;
 import com.provar.core.testapi.annotations.FindByLabel;
+import com.provar.core.testapi.annotations.PageWait;
+import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
@@ -19,6 +21,8 @@ import com.provar.core.testapi.annotations.TextType;
      )             
 public class rstk__Woordop {
 
+	@PageWaitAfter.Field(field = "description", timeoutSeconds = 10)
+	@PageWait.Field(timeoutSeconds = 10)
 	@TextType()
 	@FindBy(xpath = "//label[normalize-space(.)='Operation Number']/parent::span/parent::th/following-sibling::td[1]//input")
 	public WebElement operationNumber;
@@ -47,10 +51,13 @@ public class rstk__Woordop {
 	@FindBy(xpath = "//*[contains(@id,'tab_Labor_Stds_lbl')]")
 	public WebElement labor_Stds_tab;
 
+	@PageWait.Field(timeoutSeconds = 10)
 	@ChoiceListType()
 	@FindBy(xpath = "//label[normalize-space(.)='Setup Type']/parent::span/parent::th/following-sibling::td[1]//select")
 	public WebElement setupType;
 
+	@PageWaitAfter.Field(field = "setupStandardHours", timeoutSeconds = 10)
+	@PageWait.Field(timeoutSeconds = 10)
 	@ChoiceListType()
 	@FindBy(xpath = "//label[normalize-space(.)='Setup Labor Grade']/parent::span/parent::th/following-sibling::td[1]//select")
 	public WebElement setupLaborGrade;
@@ -63,10 +70,12 @@ public class rstk__Woordop {
 	@FindBy(xpath = "//label[normalize-space(.)='Run Type']/parent::span/parent::th/following-sibling::td//select")
 	public WebElement runType;
 
+	@PageWait.Field(timeoutSeconds = 10)
 	@ChoiceListType()
 	@FindBy(xpath = "//label[normalize-space(.)='Run Labor Grade']/parent::span/parent::th/following-sibling::td//select")
 	public WebElement runLaborGrade;
 
+	@PageWait.Field(timeoutSeconds = 10)
 	@TextType()
 	@FindBy(xpath = "//label[normalize-space(.)='Run Standard Hours']/parent::span/parent::th/following-sibling::td//input")
 	public WebElement runStandardHours;
@@ -87,6 +96,8 @@ public class rstk__Woordop {
 	@FindBy(xpath = "//label[normalize-space(.)='Standard Machine Hours']/parent::span/parent::th/following-sibling::td//input")
 	public WebElement standardMachineHours;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
+	@PageWait.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Save")
 	public WebElement save;

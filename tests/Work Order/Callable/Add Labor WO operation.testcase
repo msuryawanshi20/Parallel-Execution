@@ -889,7 +889,9 @@
                         <argument id="interactionDescription">
                           <value class="value" valueClass="string">Set the Setup Type select to {ip_setupType}</value>
                         </argument>
-                        <argument id="autoRetry"/>
+                        <argument id="autoRetry">
+                          <value class="uiWait" uri="ui:wait:autoRetry:timeout=10"/>
+                        </argument>
                       </arguments>
                       <generatedParameters>
                         <apiParam group="value" name="value" seq="10000" title="Value">
