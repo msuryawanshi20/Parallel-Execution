@@ -138,6 +138,8 @@ public class rstk__Wocst {
 	@FindBy(xpath = "//*[contains(@value,'Deallocate')]")
 	public WebElement deallocate;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
+	@PageWait.Field(timeoutSeconds = 10)
 	@ButtonType()
 	@FindBy(xpath = "//input[@id='generatePickListRecords']")
 	public WebElement generatePickList;
@@ -146,6 +148,8 @@ public class rstk__Wocst {
 	@FindBy(xpath = "//input[@id='incBackflush2']")
 	public WebElement includeBackflushComponentsinPicklist;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
+	@PageWait.Field(timeoutSeconds = 10)
 	@ButtonType()
 	@FindBy(xpath = "//div[@id='generatePicklist']/p[2]/input[1]")
 	public WebElement generatePicklist;
@@ -181,6 +185,8 @@ public class rstk__Wocst {
 	@FindBy(xpath = "//input[@id='deleteComponents']")
 	public WebElement deleteComponents;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
+	@PageWait.Field(timeoutSeconds = 10)
 	@TextType()
 	@FindBy(xpath = "//img[@name='Related Lists']")
 	public WebElement relatedLists;
@@ -189,14 +195,21 @@ public class rstk__Wocst {
 	@FindBy(xpath = "//input[@value='Add Component']")
 	public WebElement addComponent;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
+	@PageWait.Field(timeoutSeconds = 10)
 	@ButtonType()
 	@FindByLabel(label = "Generate Serials")
 	public WebElement generateSerials;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
+	@PageWait.Field(timeoutSeconds = 10)
 	@TextType()
 	@FindBy(xpath = "//*[contains(@id,'tab_SerialNumbers_lbl')]")
 	public WebElement tab_SerialNumbers_lbl;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
+	@PageWait.Field(timeoutSeconds = 10)
+	@TextType()
 	@FindBy(xpath = "//img[@name='Serial Number Fast Entry']")
 	public WebElement pbs_SNFastEntry;
 

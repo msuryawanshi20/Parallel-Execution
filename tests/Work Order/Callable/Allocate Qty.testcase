@@ -428,7 +428,7 @@
                           <value class="uiWait" uri="default"/>
                         </argument>
                         <argument id="afterWait">
-                          <value class="uiWait" uri="default"/>
+                          <value class="uiWait" uri="ui:wait:alert:timeout=60"/>
                         </argument>
                         <argument id="interactionDescription">
                           <value class="value" valueClass="string">Click the Allocate button</value>
