@@ -51,7 +51,6 @@ public class rstk__Woreceipt {
 	@FindBy(xpath = "//label[normalize-space(.)='WO Receipt Traveler']/ancestor::span/ancestor::th/following-sibling::td//select")
 	public WebElement wOReceipt_Traveler;
 
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//label[normalize-space(.)='WO Receipt Traveler']/ancestor::span/ancestor::th/following-sibling::td//input[@type='submit']")
 	public WebElement save;
@@ -102,7 +101,6 @@ public class rstk__Woreceipt {
 	@FindBy(xpath = "//label[normalize-space(.)='Location Comments']/ancestor::span/ancestor::th/following-sibling::td//textarea")
 	public WebElement locationComments;
 
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Perform Work Order Receipt")
 	public WebElement performWorkOrderReceipt;

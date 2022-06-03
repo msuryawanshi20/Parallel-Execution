@@ -28,7 +28,6 @@ public class rstk__Woissue {
 		this.driver = driver;
 	}
 
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//*[@value='Issue Selected Components']")
 	public WebElement issueSelectedComponents;
