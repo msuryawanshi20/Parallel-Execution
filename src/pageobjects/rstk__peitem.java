@@ -7,6 +7,7 @@ import com.provar.core.testapi.annotations.BooleanType;
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.ChoiceListType;
 import com.provar.core.testapi.annotations.FindByLabel;
+import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
@@ -101,6 +102,7 @@ public class rstk__peitem {
 	@FindBy(xpath = "//label[normalize-space(.)='Disassembly Item']/ancestor::th/following-sibling::td//input")
 	public WebElement disassemblyItem;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Save")
 	public WebElement save;

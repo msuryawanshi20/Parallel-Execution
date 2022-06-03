@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.ChoiceListType;
 import com.provar.core.testapi.annotations.FindByLabel;
+import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
@@ -49,6 +50,7 @@ public class rstk__Rtrouthdr {
 		}
 	}
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Save")
 	public WebElement save;
@@ -75,10 +77,12 @@ public class rstk__Rtrouthdr {
 	@FindByLabel(label = "Edit")
 	public WebElement edit;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Delete")
 	public WebElement delete;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Clone")
 	public WebElement clone;
@@ -91,14 +95,17 @@ public class rstk__Rtrouthdr {
 	@FindBy(xpath = "//label[normalize-space(.)='Target Add Revision']/parent::span/parent::th/following-sibling::td//select")
 	public WebElement targetRevision;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//a[contains(text(),'Add Standard Operation')]")
 	public WebElement addStandardOperation;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//a[contains(text(),'Add Subcontract Operation')]")
 	public WebElement addSubcontractOperation;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//a[contains(text(),'Add Concurrent Operation')]")
 	public WebElement addConcurrentOperation;

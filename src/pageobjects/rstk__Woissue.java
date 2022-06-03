@@ -15,6 +15,7 @@ import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.ChoiceListType;
 import com.provar.core.testapi.annotations.FindByLabel;
 import com.provar.core.testapi.annotations.LinkType;
+import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 
 @SalesforcePage(title = "Rstk__ Woissue", summary = "", page = "Woissue", namespacePrefix = "rstk", object = "rstk__woiss__c", connection = "QARSF_Admin")
@@ -27,10 +28,12 @@ public class rstk__Woissue {
 		this.driver = driver;
 	}
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//*[@value='Issue Selected Components']")
 	public WebElement issueSelectedComponents;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ChoiceListType()
 	@FindBy(name = "pg:fm:pb_search:pbs_search:j_id88:j_id106:j_id107:woiss_hdrordno__c:j_id109:j_id115")
 	public WebElement Work_Order;
@@ -62,6 +65,7 @@ public class rstk__Woissue {
 
 	}
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Display Components")
 	public WebElement displayComponents;

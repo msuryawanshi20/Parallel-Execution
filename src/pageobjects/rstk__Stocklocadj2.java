@@ -203,10 +203,12 @@ public class rstk__Stocklocadj2 {
 	@FindBy(xpath = "//input[@name='locadd_proj__c_autocomplete']")
 	public WebElement Project;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Display Inventory Locations")
 	public WebElement displayInventoryLocations;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Process Selected Inventory Locations")
 	public WebElement processSelectedInventoryLocations;

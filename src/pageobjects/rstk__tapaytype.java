@@ -5,6 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.FindByLabel;
+import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
@@ -33,6 +34,7 @@ public class rstk__tapaytype {
 	@FindBy(xpath = "//label[normalize-space(.)='Rate Factor']/ancestor::span/parent::th/following-sibling::td//input")
 	public WebElement rateFactor;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Save")
 	public WebElement save;

@@ -32,10 +32,12 @@ public class rstk__Stocklocmove {
 		this.driver = driver;
 	}
 
+	@PageWaitAfter.Field(field = "Search_Item1", timeoutSeconds = 10)
 	@TextType()
 	@FindBy(xpath = "//input[contains(@id,'locmove_icitem__c_autocomplete')]")
 	public WebElement Search_Item;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@TextType()
 	@FindBy(id = "li-0")
 	public WebElement Search_Item1;
@@ -100,6 +102,7 @@ public class rstk__Stocklocmove {
 	@FindBy(xpath = "//label[normalize-space(.)='Move Option']/ancestor::th/following-sibling::td//select")
 	public WebElement MoveOption;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Display Loc Move Entries")
 	public WebElement displayLocMoveEntries;
@@ -147,6 +150,7 @@ public class rstk__Stocklocmove {
 	@FindByLabel(label = "Move Selected Items")
 	public WebElement moveSelectedItems;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@BooleanType()
 	@FindBy(xpath = "//label[normalize-space(.)='Move Serial Items']/parent::span/parent::th/following-sibling::td//input")
 	public WebElement moveSerialItems;

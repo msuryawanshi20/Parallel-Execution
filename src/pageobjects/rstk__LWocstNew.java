@@ -14,6 +14,7 @@ import com.provar.core.testapi.annotations.BooleanType;
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.ChoiceListType;
 import com.provar.core.testapi.annotations.FindByLabel;
+import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
@@ -30,6 +31,7 @@ public class rstk__LWocstNew {
 	@FindBy(xpath = "//label[normalize-space(.)='Order Number']/ancestor::span/ancestor::th/following-sibling::td[1]//input")
 	public WebElement orderNumber;
 
+	@PageWaitAfter.Field(field = "list", timeoutSeconds = 10)
 	@TextType()
 	@FindBy(xpath = "//input[@id='lwocst_item__c_autocomplete']")
 	public WebElement itemNumber;
@@ -108,6 +110,7 @@ public class rstk__LWocstNew {
 	@FindBy(xpath = "//label[normalize-space(.)='Extract Routing']/ancestor::span/ancestor::th/following-sibling::td[1]//input")
 	public WebElement extractRouting;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Save")
 	public WebElement save;
@@ -116,46 +119,57 @@ public class rstk__LWocstNew {
 	@FindBy(xpath = "//label[normalize-space(.)='Order Number']/ancestor::span/ancestor::th/following-sibling::td[1]//span")
 	public WebElement orderNumber1;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@TextType()
 	@FindBy(xpath = "//span[contains(@id,'lwocst_ordsts')]")
 	public WebElement status;
 
+	@PageWaitAfter.Field(field = "addOperation", timeoutSeconds = 10)
 	@TextType()
 	@FindBy(xpath = "//*[contains(@id,'tab_Operations_lbl')]")
 	public WebElement tab_Operations_lbl;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Add Operation")
 	public WebElement addOperation;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Add Concurrent Operation")
 	public WebElement addConcurrentOperation;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Release")
 	public WebElement release;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Complete")
 	public WebElement complete;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Close Work Order")
 	public WebElement closeWorkOrder;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Reverse WO Close")
 	public WebElement reverseWOClose;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Reverse Complete")
 	public WebElement reverseComplete;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Recall")
 	public WebElement recall;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Delete Routing")
 	public WebElement deleteRouting;

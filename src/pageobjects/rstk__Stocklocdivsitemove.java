@@ -38,6 +38,7 @@ public class rstk__Stocklocdivsitemove {
 	@FindBy(xpath = "//label[normalize-space(.)='From Site']/parent::span/parent::th/following-sibling::td//select")
 	public WebElement FromSite;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@BooleanType()
 	@FindBy(xpath = "//label[normalize-space(.)='Move Serial Items']/parent::span/parent::th/following-sibling::td//input")
 	public WebElement moveSerialItems;
@@ -161,14 +162,17 @@ public class rstk__Stocklocdivsitemove {
 	@FindBy(xpath = "//label[normalize-space(.)='Move Option']/ancestor::th/following-sibling::td[1]//select")
 	public WebElement locmove_moveoption__c;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Display Div Move Entries")
 	public WebElement displayDivMoveEntries;
 	
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Display Site Move Entries")
 	public WebElement displaySiteMoveEntries;
 	
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Move Selected Items")
 	public WebElement moveSelectedItems;

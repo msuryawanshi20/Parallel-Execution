@@ -22,6 +22,7 @@ public class rstk__Sormh {
 	@TextType()
 	@FindBy(xpath = "//input[@id='sormh_custno__c_autocomplete']")
 	public WebElement Customer;
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@TextType()
 	@FindBy(xpath = "//li[@id='li-0']")
 	public WebElement list;
@@ -37,6 +38,7 @@ public class rstk__Sormh {
 	@BooleanType()
 	@FindBy(xpath = "//label[normalize-space(.)='Advance Replacement']/parent::span/parent::th/following-sibling::td//input")
 	public WebElement advanceReplacement;
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Save")
 	public WebElement save;

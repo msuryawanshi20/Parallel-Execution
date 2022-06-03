@@ -19,9 +19,11 @@ public class rstk__SormhView {
 	@TextType()
 	@FindBy(xpath = "//label[normalize-space(.)='RMA Number']/parent::span/parent::th/following-sibling::td[1]//span")
 	public WebElement rMANumber;
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "RMA Detail Maintenance Grid")
 	public WebElement rMADetailMaintenanceGrid;
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Release RMA")
 	public WebElement releaseRMA;

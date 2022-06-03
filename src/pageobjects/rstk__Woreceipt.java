@@ -37,10 +37,12 @@ public class rstk__Woreceipt {
 	@FindBy(xpath = "//label[normalize-space(.)='Sort by Item Number']/ancestor::th/following-sibling::td//input")
 	public WebElement sortByItemNumber;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ChoiceListType()
 	@FindBy(xpath = "//label[normalize-space(.)='Work Order']/ancestor::span/ancestor::th/following-sibling::td//select")
 	public WebElement workOrder;
 
+	@PageWaitAfter.Field(field = "wOReceipt_Traveler", timeoutSeconds = 10)
 	@BooleanType()
 	@FindBy(xpath = "//label[normalize-space(.)='Override Receipt Template']/ancestor::span/ancestor::th/following-sibling::td//input")
 	public WebElement overrideReceiptTemplate;
@@ -49,6 +51,7 @@ public class rstk__Woreceipt {
 	@FindBy(xpath = "//label[normalize-space(.)='WO Receipt Traveler']/ancestor::span/ancestor::th/following-sibling::td//select")
 	public WebElement wOReceipt_Traveler;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//label[normalize-space(.)='WO Receipt Traveler']/ancestor::span/ancestor::th/following-sibling::td//input[@type='submit']")
 	public WebElement save;
@@ -61,10 +64,12 @@ public class rstk__Woreceipt {
 	@FindBy(xpath = "//label[normalize-space(.)='Transaction Date']/ancestor::span/ancestor::th/following-sibling::td//a")
 	public WebElement transactionDateTodayLink;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//table[@id='bodyTable']//div/input")
 	public WebElement reloadWorkOrderS;
 
+	@PageWait.Field(timeoutSeconds = 10)
 	@ChoiceListType()
 	@FindBy(xpath = "//label[normalize-space(.)='Operation']/ancestor::span/ancestor::th/following-sibling::td//select")
 	public WebElement operation;
@@ -97,6 +102,7 @@ public class rstk__Woreceipt {
 	@FindBy(xpath = "//label[normalize-space(.)='Location Comments']/ancestor::span/ancestor::th/following-sibling::td//textarea")
 	public WebElement locationComments;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Perform Work Order Receipt")
 	public WebElement performWorkOrderReceipt;

@@ -38,16 +38,18 @@ public class rstk__laborclockinout {
 	public WebElement oK;
 	
 	
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@BooleanType()
 	@FindBy(xpath = "//label[normalize-space(.)='Show Only Operations with Qty Available']/parent::span/parent::th/following-sibling::td//input")
 	public WebElement showOnlyOperationswithQtyAvailable;
 
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 10)
+	@PageWaitAfter.Field(field = "list", timeoutSeconds = 10)
 	@PageWait.Field(timeoutSeconds = 10)
 	@TextType()
 	@FindBy(xpath = "//label[normalize-space(.)='Search Work Orders']/parent::span/parent::th/following-sibling::td//input")
 	public WebElement searchWorkOrders;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@PageWait.Field(timeoutSeconds = 10)
 	@TextType()
 	@FindBy(xpath = "//li[@id='li-0']")
@@ -135,6 +137,7 @@ public class rstk__laborclockinout {
 	@PageTable(firstRowContainsHeaders = false, row = TimeAndQtyBookingDetailsTable.class)
 	public List<TimeAndQtyBookingDetailsTable> timeAndQtyBookingDetailsTable;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Submit Bookings")
 	public WebElement submitBookings;

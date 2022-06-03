@@ -16,6 +16,7 @@ import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.FindByLabel;
 import com.provar.core.testapi.annotations.PageRow;
 import com.provar.core.testapi.annotations.PageTable;
+import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 
 @SalesforcePage( title="Rstk__ Rmaserialdetails"                                
@@ -45,6 +46,7 @@ public class rstk__Rmaserialdetails {
 	@PageTable(firstRowContainsHeaders = false, row = AuthorizeSerials.class)
 	public List<AuthorizeSerials> authorizeSerials;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Authorize Selected Serials")
 	public WebElement authorizeSelectedSerials;

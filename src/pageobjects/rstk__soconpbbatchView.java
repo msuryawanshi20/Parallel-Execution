@@ -92,6 +92,7 @@ public class rstk__soconpbbatchView {
 	@FindByLabel(label = "Change Invoice Date")
 	public WebElement changeInvoiceDate;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//div[@id='changeInvoiceDatePopup']//input[@name='popupCancelButton']")
 	public WebElement close;

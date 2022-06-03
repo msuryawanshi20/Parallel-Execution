@@ -15,6 +15,8 @@ import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.FindByLabel;
 import com.provar.core.testapi.annotations.PageRow;
 import com.provar.core.testapi.annotations.PageTable;
+import com.provar.core.testapi.annotations.PageWait;
+import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TestLogger;
 import com.provar.core.testapi.annotations.TextType;
@@ -27,10 +29,12 @@ public class rstk__Woreceiptr {
 		this.driver = driver;
 	}
 
+	@PageWaitAfter.Field(field = "list", timeoutSeconds = 10)
 	@TextType()
 	@FindBy(xpath = "//input[@id='worcpt_hdrordno__c_autocomplete']")
 	public WebElement workOrder;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@TextType()
 	@FindBy(xpath = "//li[@id='li-0']")
 	public WebElement list;
@@ -43,6 +47,8 @@ public class rstk__Woreceiptr {
 	@FindBy(xpath = "//label[normalize-space(.)='Transaction Date']/parent::span/parent::th/following-sibling::td//a")
 	public WebElement transactionDateTodayLink;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
+	@PageWait.Field(timeoutSeconds = 10)
 	@ButtonType()
 	@FindByLabel(label = "Display Receipt Locations")
 	public WebElement displayReceiptLocations;
@@ -67,6 +73,7 @@ public class rstk__Woreceiptr {
 	@PageTable(firstRowContainsHeaders = false, row = WoReceiptDetailsTable.class)
 	public List<WoReceiptDetailsTable> woReceiptDetailsTable;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Reverse Receive Selected Locs")
 	public WebElement reverseReceiveSelectedLocs;

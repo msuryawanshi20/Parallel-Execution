@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.ChoiceListType;
 import com.provar.core.testapi.annotations.FindByLabel;
+import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
@@ -50,6 +51,7 @@ public class rstk__Rtmach {
 	@FindBy(xpath = "//label[normalize-space(.)='Sales Price per Hour']/ancestor::span/parent::th/following-sibling::td//input")
 	public WebElement salesPricePerHour;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Save")
 	public WebElement save;
@@ -58,10 +60,12 @@ public class rstk__Rtmach {
 	@FindBy(xpath = "//label[normalize-space(.)='Name']/parent::th/following-sibling::td[1]//span")
 	public WebElement name;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Edit")
 	public WebElement edit;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Delete")
 	public WebElement delete;

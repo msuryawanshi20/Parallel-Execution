@@ -19,6 +19,7 @@ public class rstk__sorma {
 	@BooleanType()
 	@FindBy(xpath = "//label[normalize-space(.)='Credit Authorized']/ancestor::th/following-sibling::td//input")
 	public WebElement creditAuthorized;
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Save")
 	public WebElement save;

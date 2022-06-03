@@ -20,10 +20,12 @@ public class rstk__Stocklocprojmove {
 
 	public static String locID, locNum, Lot;
 
+	@PageWaitAfter.Field(field = "list", timeoutSeconds = 10)
 	@TextType()
 	@FindBy(xpath = "//input[@id='locmove_icitem__c_autocomplete']")
 	public WebElement SearchItem;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@TextType()
 	@FindBy(id = "li-0")
 	public WebElement list;
@@ -187,6 +189,7 @@ public class rstk__Stocklocprojmove {
 
 	}
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Move Selected Items")
 	public WebElement moveSelectedItems;

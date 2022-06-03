@@ -47,6 +47,7 @@ public class rstk__laborqtybookingreversal {
 		}
 	}
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//input[@value='Reverse Selected Entries']")
 	public WebElement reverseSelectedEntries;

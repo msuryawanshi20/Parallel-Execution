@@ -15,6 +15,7 @@ import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.FindByLabel;
 import com.provar.core.testapi.annotations.PageRow;
 import com.provar.core.testapi.annotations.PageTable;
+import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
@@ -105,6 +106,7 @@ public class rstk__Rmaprocesses {
 
 	}
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Process Receipt")
 	public WebElement processReceipt;

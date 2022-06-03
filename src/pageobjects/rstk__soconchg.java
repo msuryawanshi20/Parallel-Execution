@@ -14,6 +14,7 @@ import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.ChoiceListType;
 import com.provar.core.testapi.annotations.DateType;
 import com.provar.core.testapi.annotations.FindByLabel;
+import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
@@ -30,6 +31,7 @@ public class rstk__soconchg {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		WebElement ele = driver.findElement(By.xpath("//input[@id='soconchg_soprod__c_autocomplete']"));
 		ele.sendKeys(MiscellaneousChargeProduct);
+		Thread.sleep(1000);
 
 		Actions actions = new Actions(driver);
 		String elementLocator = "//div[@class='ac_results'][1]/ul[@id='IDREF']/li";
@@ -55,6 +57,7 @@ public class rstk__soconchg {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		WebElement ele = driver.findElement(By.xpath("//input[@id='soconchg_socondev__c_autocomplete']"));
 		ele.sendKeys(CoveredSerializedDevice);
+		Thread.sleep(500);
 
 		Actions actions = new Actions(driver);
 		String elementLocatorList = "//div[@class='ac_results'][2]/ul[@id='IDREF']/li";
@@ -95,6 +98,7 @@ public class rstk__soconchg {
 	@FindBy(xpath = "//label[normalize-space(.)='Tax Rate']/ancestor::th/following-sibling::td//input")
 	public WebElement taxRate;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Save")
 	public WebElement save;

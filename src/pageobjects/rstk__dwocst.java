@@ -9,7 +9,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.provar.core.testapi.annotations.BooleanType;
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.ChoiceListType;
@@ -39,6 +38,7 @@ public class rstk__dwocst {
 	@FindBy(xpath = "//input[@id='wocst_item__c_autocomplete']")
 	public WebElement DisassemblyItemText;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@TextType()
 	@FindBy(id = "li-0")
 	public WebElement DisassemblyItemLookup;
@@ -86,6 +86,7 @@ public class rstk__dwocst {
 		}
 	}
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Save")
 	public WebElement save;
@@ -98,6 +99,8 @@ public class rstk__dwocst {
 	@FindBy(xpath = "//input[@value='Add Component']")
 	public WebElement addComponent;
 
+	@PageWait.BackgroundActivity(timeoutSeconds = 60)
+	@TextType()
 	@FindBy(xpath = "//*[contains(text(),' Status')]//following::td//span[contains(@id,'wocst_ordsts_pl__c')]")
 	public WebElement status;
 
@@ -105,18 +108,22 @@ public class rstk__dwocst {
 	@FindBy(xpath = "//*[contains(@id,'wocst_ordno__c')]//span//span")
 	public WebElement opOrderNumber;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Issue Disassembly Item")
 	public WebElement issueDisassemblyItem;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//*[@value='Generate Picklist']")
 	public WebElement generatePicklist;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//*[@value='Allocate']")
 	public WebElement allocate;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//*[contains(@value,'Deallocate')]")
 	public WebElement deallocate;
@@ -168,14 +175,17 @@ public class rstk__dwocst {
 
 	}
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//input[@value='Accept Updated Values']")
 	public WebElement acceptUpdatedValues;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//input[@value='Receive Derived Components']")
 	public WebElement receiveDerivedComponents;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Close Work Order")
 	public WebElement closeWorkOrder;
@@ -184,18 +194,22 @@ public class rstk__dwocst {
 	@FindBy(xpath = "//input[@value='Add Derived Component']")
 	public WebElement addDerivedComponent;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//input[@value='Component Issue']")
 	public WebElement componentIssue;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//input[@value='Complete Disassembly Order']")
 	public WebElement completeDisassemblyOrder;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//input[@value='Reverse Derived Components']")
 	public WebElement reverseDerivedComponents;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Reverse WO Close")
 	public WebElement reverseWOClose;

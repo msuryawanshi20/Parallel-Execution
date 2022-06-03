@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.ChoiceListType;
 import com.provar.core.testapi.annotations.FindByLabel;
+import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
@@ -43,7 +44,6 @@ public class rstk__Soconpp {
 		String listLocator="//div[@class='ac_results'][1]/ul[@id='IDREF']/li";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(listLocator)));
 		
-
 		List<WebElement> autoCompleteList = driver
 				.findElements(By.xpath(listLocator));
 		for (int i = 0; i < autoCompleteList.size(); i++) {
@@ -84,6 +84,7 @@ public class rstk__Soconpp {
 	@FindBy(xpath = "//label[normalize-space(.)='Warranty Type']/ancestor::th/following-sibling::td//select")
 	public WebElement soconpp_sowarrtype__c;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Save")
 	public WebElement save;

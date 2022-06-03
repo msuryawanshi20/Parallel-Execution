@@ -5,6 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import com.provar.core.testapi.annotations.BooleanType;
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.FindByLabel;
+import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
@@ -17,6 +18,7 @@ import com.provar.core.testapi.annotations.TextType;
      )             
 public class rstk__Woorddmd {
 
+	@PageWaitAfter.Field(field = "Component_ItemLookup", timeoutSeconds = 10)
 	@TextType()
 	@FindBy(xpath = "//input[@id='woorddmd_compitem__c_autocomplete']")
 	public WebElement Component_Item;
@@ -29,6 +31,7 @@ public class rstk__Woorddmd {
 	@FindBy(xpath = "//label[normalize-space(.)='Qty Per']/parent::span/parent::th/following-sibling::td[1]//input")
 	public WebElement qtyPer;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Save")
 	public WebElement save;

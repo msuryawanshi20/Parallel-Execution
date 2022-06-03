@@ -8,6 +8,7 @@ import com.provar.core.testapi.annotations.ChoiceListType;
 import com.provar.core.testapi.annotations.FindByLabel;
 import com.provar.core.testapi.annotations.PageRow;
 import com.provar.core.testapi.annotations.PageTable;
+import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 import java.util.List;
@@ -33,6 +34,7 @@ public class rstk__rtwcgroup {
 	@FindBy(xpath = "//label[normalize-space(.)='Comments']/parent::span/parent::th/following-sibling::td//textarea")
 	public WebElement comments;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Save")
 	public WebElement save;
@@ -53,6 +55,7 @@ public class rstk__rtwcgroup {
 	@FindByLabel(label = "Group Detail Maintenance")
 	public WebElement groupDetailMaintenance;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Add")
 	public WebElement add;

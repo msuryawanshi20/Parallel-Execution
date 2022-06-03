@@ -7,6 +7,7 @@ import com.provar.core.testapi.annotations.BooleanType;
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.ChoiceListType;
 import com.provar.core.testapi.annotations.FindByLabel;
+import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 import com.provar.core.testapi.annotations.VisualforceBy;
@@ -36,6 +37,7 @@ public class rstk__somsa {
 	@FindBy(xpath = "//label[normalize-space(.)='MSA is Active']/ancestor::th/following-sibling::td//input")
 	public WebElement mSAIsActive;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Save")
 	public WebElement save;

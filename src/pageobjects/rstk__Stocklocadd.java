@@ -22,14 +22,17 @@ public class rstk__Stocklocadd {
 	@FindBy(xpath = "//input[@id='locmove_icitem__c_autocomplete']")
 	public WebElement search_item;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@TextType()
 	@FindBy(id = "li-0")
 	public WebElement itemList;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Display Loc Add Entries")
 	public WebElement displayLocAddEntries;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindBy(xpath = "//input[@value='Add Items to Inventory']")
 	public WebElement addItemsToInventory;
