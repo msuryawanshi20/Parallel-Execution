@@ -17,13 +17,7 @@ import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
-@SalesforcePage( title="Rstk__ Soconpp"                                
-               , summary=""
-               , page="Soconpp"
-               , namespacePrefix="rstk"
-               , object="rstk__soconpp__c"
-               , connection="QARSF_Admin"
-     )             
+@SalesforcePage(title = "Rstk__ Soconpp", summary = "", page = "Soconpp", namespacePrefix = "rstk", object = "rstk__soconpp__c", connection = "QARSF_Admin")
 public class rstk__Soconpp {
 	public WebDriver driver;
 
@@ -32,26 +26,20 @@ public class rstk__Soconpp {
 	}
 
 	public void selectProduct(String Product) throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(driver, 30);
-		String eleLocator="//input[@name='soconpp_soprod__c_autocomplete']";
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(eleLocator)));
-
-		WebElement ele = driver.findElement(By.xpath(eleLocator));
+		Thread.sleep(1000);
+		WebElement ele = driver.findElement(By.xpath("//input[@name='soconpp_soprod__c_autocomplete']"));
 		ele.sendKeys(Product);
+		Thread.sleep(2000);
 
 		Actions actions = new Actions(driver);
-		Thread.sleep(1000);
-
-		String listLocator="//div[@class='ac_results'][1]/ul[@id='IDREF']/li";
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(listLocator)));
-		
+		Thread.sleep(500);
 		List<WebElement> autoCompleteList = driver
-				.findElements(By.xpath(listLocator));
+				.findElements(By.xpath("//div[@class='ac_results'][1]/ul[@id='IDREF']/li"));
 		for (int i = 0; i < autoCompleteList.size(); i++) {
+			Thread.sleep(1000);
 			actions.moveToElement(autoCompleteList.get(i)).build().perform();
 			if (autoCompleteList.get(i).getText().startsWith(Product)) {
 				actions.moveToElement(autoCompleteList.get(i)).click().build().perform();
-				Thread.sleep(1000);
 				break;
 			}
 		}
