@@ -236,7 +236,7 @@
                   <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
+                  <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
                 </argument>
                 <argument argId="f9933fa6-d996-44f4-ad12-8a966ab9e98d" id="interactionDescription">
                   <value class="value" valueClass="string">Call the selectProduct method</value>
@@ -253,9 +253,7 @@
                   </value>
                 </argument>
                 <argument id="value"/>
-                <argument id="blur">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
+                <argument id="blur"/>
               </arguments>
               <generatedParameters>
                 <apiParam group="value" name="param_Product" title="Product">

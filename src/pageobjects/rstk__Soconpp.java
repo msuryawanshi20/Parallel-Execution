@@ -58,7 +58,6 @@ public class rstk__Soconpp {
 		}
 	}
 
-	@PageWait.Field(timeoutSeconds = 10)
 	@TextType()
 	@FindBy(xpath = "//label[normalize-space(.)='Commitment Quantity']/ancestor::th/following-sibling::td[1]//input")
 	public WebElement commitmentQuantity;
