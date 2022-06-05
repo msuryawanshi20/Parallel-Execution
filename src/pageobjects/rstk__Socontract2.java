@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.ChoiceListType;
 import com.provar.core.testapi.annotations.FindByLabel;
+import com.provar.core.testapi.annotations.PageWait;
 import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
@@ -51,6 +52,8 @@ public class rstk__Socontract2 {
 			actions.moveToElement(autoCompleteList.get(i)).build().perform();
 			if (autoCompleteList.get(i).getText().startsWith(CustomerName)) {
 				actions.moveToElement(autoCompleteList.get(i)).click().build().perform();
+				Thread.sleep(1000);
+				
 				break;
 			}
 		}
@@ -89,6 +92,8 @@ public class rstk__Socontract2 {
 	@FindByLabel(label = "Save")
 	public WebElement save;
 
+	@PageWaitAfter.Field(field = "description", timeoutSeconds = 10)
+	@PageWait.Field(timeoutSeconds = 10)
 	@TextType()
 	@FindBy(xpath = "//label[normalize-space(.)='Contract ID']/ancestor::th/following-sibling::td[1]//input")
 	public WebElement contractID;

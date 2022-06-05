@@ -16,6 +16,7 @@ import com.provar.core.testapi.annotations.*;
      )             
 public class rstk__Sormamassentry {
 
+	@PageWaitAfter.Field(timeoutSeconds = 10)
 	@ButtonType()
 	@FindBy(xpath = "//span[2]/input[@id='newRmaDetail_add']")
 	public WebElement add;
