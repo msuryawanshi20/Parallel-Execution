@@ -1,7 +1,7 @@
-<project name="Rootstock ERP">
+<project default="runtests">
 	<property name="version" value="2.240.2.0"/>
 	<property environment="env"/>
-	<property name="provar.home" value="${env.PROVAR_HOME}"/>
+	<property name="provar.home" value="C:/Program Files/Provar/"/>
 	<property name="testproject.home" value=".."/>
 	<property name="testproject.results" value="../ANT/Results"/>
 
@@ -12,24 +12,24 @@
 	<target name="runtests">
 		<Provar-Compile provarHome="${provar.home}" projectPath="${testproject.home}"/>
 		<Run-Test-Case provarHome="${provar.home}" 
+					
 				
-			
-						projectPath="${testproject.home}" 
-						resultsPath="${testproject.results}" 
-						resultsPathDisposition="Increment" 
-						testEnvironment="${TestEnv}" 
-						webBrowser="Chrome" 
-						webBrowserConfiguration="Full Screen"
-						webBrowserProviderName="Desktop"
-						webBrowserDeviceName="Full Screen" 
-						excludeCallableTestCases="true" 
-						salesforceMetadataCache="Reuse" 
-						projectCachePath="../.provarCaches"
-						testOutputlevel="BASIC" 
-						pluginOutputlevel="WARNING"
-						stopTestRunOnError="false"
-						invokeTestRunMonitor="true"
-						>
+							projectPath="${testproject.home}" 
+							resultsPath="${testproject.results}" 
+							resultsPathDisposition="Increment" 
+							testEnvironment="${TestEnv}" 
+							webBrowser="Chrome" 
+							webBrowserConfiguration="Full Screen"
+							webBrowserProviderName="Desktop"
+							webBrowserDeviceName="Full Screen" 
+							excludeCallableTestCases="true" 
+							salesforceMetadataCache="Reuse" 
+							projectCachePath="../.provarCaches"
+							testOutputlevel="BASIC" 
+							pluginOutputlevel="WARNING"
+							stopTestRunOnError="false"
+							invokeTestRunMonitor="true"
+							>
 
 			<fileset id="testplan" dir="../plans/${TestPlan}">
 			</fileset>
