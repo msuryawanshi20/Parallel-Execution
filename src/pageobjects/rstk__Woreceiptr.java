@@ -73,7 +73,6 @@ public class rstk__Woreceiptr {
 	@PageTable(firstRowContainsHeaders = false, row = WoReceiptDetailsTable.class)
 	public List<WoReceiptDetailsTable> woReceiptDetailsTable;
 
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Reverse Receive Selected Locs")
 	public WebElement reverseReceiveSelectedLocs;

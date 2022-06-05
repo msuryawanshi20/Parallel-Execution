@@ -43,7 +43,7 @@ public class rstk__laborclockinout {
 	@FindBy(xpath = "//label[normalize-space(.)='Show Only Operations with Qty Available']/parent::span/parent::th/following-sibling::td//input")
 	public WebElement showOnlyOperationswithQtyAvailable;
 
-	@PageWaitAfter.Field(field = "list", timeoutSeconds = 10)
+	@PageWaitAfter.Field(field = "list", timeoutSeconds = 30)
 	@TextType()
 	@FindBy(xpath = "//label[normalize-space(.)='Search Work Orders']/parent::span/parent::th/following-sibling::td//input")
 	public WebElement searchWorkOrders;
@@ -54,7 +54,7 @@ public class rstk__laborclockinout {
 	@FindBy(xpath = "//li[@id='li-0']")
 	public WebElement list;
 
-	@PageWaitAfter.Field(field = "timeAndQtyBookingDetailsTable", timeoutSeconds = 10)
+	@PageWaitAfter.Field(field = "timeAndQtyBookingDetailsTable", timeoutSeconds = 30)
 	@ButtonType()
 	@FindByLabel(label = "Load Entry Grid")
 	public WebElement loadEntryGrid;

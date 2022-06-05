@@ -139,7 +139,6 @@ public class rstk__LWocstNew {
 	@FindByLabel(label = "Add Concurrent Operation")
 	public WebElement addConcurrentOperation;
 
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Release")
 	public WebElement release;
