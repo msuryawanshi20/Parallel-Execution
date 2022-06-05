@@ -13,7 +13,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.ChoiceListType;
 import com.provar.core.testapi.annotations.FindByLabel;
-import com.provar.core.testapi.annotations.PageWait;
 import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
@@ -41,6 +40,7 @@ public class rstk__Soconpp {
 		ele.sendKeys(Product);
 
 		Actions actions = new Actions(driver);
+		Thread.sleep(1000);
 
 		String listLocator="//div[@class='ac_results'][1]/ul[@id='IDREF']/li";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(listLocator)));
@@ -48,7 +48,6 @@ public class rstk__Soconpp {
 		List<WebElement> autoCompleteList = driver
 				.findElements(By.xpath(listLocator));
 		for (int i = 0; i < autoCompleteList.size(); i++) {
-			Thread.sleep(1000);
 			actions.moveToElement(autoCompleteList.get(i)).build().perform();
 			if (autoCompleteList.get(i).getText().startsWith(Product)) {
 				actions.moveToElement(autoCompleteList.get(i)).click().build().perform();
