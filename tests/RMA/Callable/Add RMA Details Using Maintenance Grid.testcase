@@ -445,7 +445,7 @@
                           <value class="value" valueClass="string">false</value>
                         </argument>
                         <argument id="beforeWait">
-                          <value class="uiWait" uri="default"/>
+                          <value class="uiWait" uri="ui:wait:timed?seconds=3"/>
                         </argument>
                         <argument id="afterWait">
                           <value class="uiWait" uri="default"/>
