@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.ChoiceListType;
 import com.provar.core.testapi.annotations.FindByLabel;
+import com.provar.core.testapi.annotations.PageWait;
 import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
@@ -25,26 +26,35 @@ public class rstk__Soconpp {
 		this.driver = driver;
 	}
 
-	public void selectProduct(String Product) throws InterruptedException {
-		Thread.sleep(1000);
-		WebElement ele = driver.findElement(By.xpath("//input[@name='soconpp_soprod__c_autocomplete']"));
-		ele.sendKeys(Product);
-		Thread.sleep(2000);
+	/*
+	 * public void selectProduct(String Product) throws InterruptedException {
+	 * Thread.sleep(1000); WebElement ele =
+	 * driver.findElement(By.xpath("//input[@name='soconpp_soprod__c_autocomplete']"
+	 * )); ele.sendKeys(Product); Thread.sleep(2000);
+	 * 
+	 * Actions actions = new Actions(driver); Thread.sleep(500); List<WebElement>
+	 * autoCompleteList = driver
+	 * .findElements(By.xpath("//div[@class='ac_results'][1]/ul[@id='IDREF']/li"));
+	 * for (int i = 0; i < autoCompleteList.size(); i++) { Thread.sleep(1000);
+	 * actions.moveToElement(autoCompleteList.get(i)).build().perform(); if
+	 * (autoCompleteList.get(i).getText().startsWith(Product)) {
+	 * actions.moveToElement(autoCompleteList.get(i)).click().build().perform();
+	 * break; } } }
+	 */
+	
+	
+	@PageWaitAfter.Field(field = "list", timeoutSeconds = 10)
+	@TextType()
+	@FindBy(xpath = "//input[@name='soconpp_soprod__c_autocomplete']")
+	public WebElement product;
+	
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
+	@TextType()
+	@FindBy(xpath = "//li[@id='li-0']")
+	public WebElement list;
+	
 
-		Actions actions = new Actions(driver);
-		Thread.sleep(500);
-		List<WebElement> autoCompleteList = driver
-				.findElements(By.xpath("//div[@class='ac_results'][1]/ul[@id='IDREF']/li"));
-		for (int i = 0; i < autoCompleteList.size(); i++) {
-			Thread.sleep(1000);
-			actions.moveToElement(autoCompleteList.get(i)).build().perform();
-			if (autoCompleteList.get(i).getText().startsWith(Product)) {
-				actions.moveToElement(autoCompleteList.get(i)).click().build().perform();
-				break;
-			}
-		}
-	}
-
+	@PageWait.BackgroundActivity(timeoutSeconds = 60)
 	@TextType()
 	@FindBy(xpath = "//label[normalize-space(.)='Commitment Quantity']/ancestor::th/following-sibling::td[1]//input")
 	public WebElement commitmentQuantity;
