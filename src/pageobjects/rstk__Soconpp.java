@@ -1,13 +1,15 @@
 package pageobjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.ChoiceListType;
 import com.provar.core.testapi.annotations.FindByLabel;
-import com.provar.core.testapi.annotations.PageWait;
 import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
@@ -47,10 +49,22 @@ public class rstk__Soconpp {
 	@FindBy(xpath = "//li[@id='li-0']")
 	public WebElement list;
 	
+	public void setCommitmentQty(int Qty) throws InterruptedException
+	{
+		Thread.sleep(1000);
+	
+		WebDriverWait wait=new WebDriverWait(driver, 30);
+		String xpath= "//input[contains(@id,'soconpp_commitqty__c')]";
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
+		driver.findElement(By.xpath(xpath)).sendKeys(""+Qty);
+		Thread.sleep(3000);
+	
+	}
 
-	@PageWait.BackgroundActivity(timeoutSeconds = 60)
+
+
 	@TextType()
-	@FindBy(xpath = "//label[normalize-space(.)='Commitment Quantity']/ancestor::th/following-sibling::td[1]//input")
+	@FindBy(xpath = "//input[contains(@id,'soconpp_commitqty__c')]")
 	public WebElement commitmentQuantity;
 
 	@TextType()

@@ -15,6 +15,7 @@ on:
         - Recurring Billing
         - Shop Floor
         - Work Order
+        - Temp
       TestEnv:
         type: choice
         description: Please select environment
