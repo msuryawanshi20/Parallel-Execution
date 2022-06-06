@@ -375,6 +375,13 @@
                 </apiParam>
               </generatedParameters>
             </apiCall>
+            <apiCall apiId="com.provar.plugins.bundled.apis.control.Sleep" name="Sleep" testItemId="49" title="Sleep for {3} seconds">
+              <arguments>
+                <argument id="sleepSecs">
+                  <value class="value" valueClass="decimal">3</value>
+                </argument>
+              </arguments>
+            </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="15" title="Set the Commitment Quantity field to {ip_commitmentQuantity}">
               <arguments>
                 <argument id="locator">
@@ -387,7 +394,7 @@
                   <value class="value" valueClass="string">false</value>
                 </argument>
                 <argument id="beforeWait">
-                  <value class="uiWait" uri="ui:wait:timed?seconds=3"/>
+                  <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="afterWait">
                   <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
