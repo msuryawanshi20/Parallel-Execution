@@ -39,12 +39,10 @@ public class rstk__Soconpp {
 	 */
 	
 	
-	@PageWaitAfter.Field(field = "list", timeoutSeconds = 10)
 	@TextType()
 	@FindBy(xpath = "//input[@name='soconpp_soprod__c_autocomplete']")
 	public WebElement product;
 	
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 100)
 	@TextType()
 	@FindBy(xpath = "//li[@id='li-0']")
 	public WebElement list;
@@ -63,7 +61,6 @@ public class rstk__Soconpp {
 
 
 
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@TextType()
 	@FindBy(xpath = "//input[contains(@id,'soconpp_commitqty__c')]")
 	public WebElement commitmentQuantity;
@@ -84,7 +81,6 @@ public class rstk__Soconpp {
 	@FindBy(xpath = "//label[normalize-space(.)='Activation Grace Period (Days)']/ancestor::th/following-sibling::td//input")
 	public WebElement activationGracePeriodDays;
 
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ChoiceListType()
 	@FindBy(xpath = "//label[normalize-space(.)='Associated Recurring Charge Product']/ancestor::th/following-sibling::td//select")
 	public WebElement soconpp_rcprod__c;

@@ -291,7 +291,7 @@
                   <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="afterWait">
-                  <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
+                  <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="interactionDescription">
                   <value class="value" valueClass="string">Lookup the List field</value>
@@ -430,10 +430,10 @@
                   <value class="value" valueClass="string">false</value>
                 </argument>
                 <argument id="beforeWait">
-                  <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
+                  <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="afterWait">
-                  <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
+                  <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="interactionDescription">
                   <value class="value" valueClass="string">Set the Commitment Quantity field to {ip_commitmentQuantity}</value>
@@ -451,7 +451,7 @@
                   </value>
                 </argument>
                 <argument id="blur">
-                  <value class="value" valueClass="boolean">true</value>
+                  <value class="value" valueClass="boolean">false</value>
                 </argument>
               </arguments>
               <generatedParameters>
@@ -940,7 +940,7 @@
                   <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
+                  <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
                 </argument>
                 <argument id="interactionDescription">
                   <value class="value" valueClass="string">Click the Save button</value>
