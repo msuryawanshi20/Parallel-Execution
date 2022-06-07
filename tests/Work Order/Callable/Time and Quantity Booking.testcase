@@ -1876,9 +1876,7 @@
     <argument id="ip_workOrderNumber">
       <value class="value" valueClass="string">PRO-REG_VWTLU</value>
     </argument>
-    <argument id="ip_trasactionDate">
-      <value class="value" valueClass="string">06/06/2022</value>
-    </argument>
+    <argument id="ip_trasactionDate"/>
     <argument id="op_operation">
       <value class="value" valueClass="string">10 (Op 10) (Qty Avail:5)</value>
     </argument>
