@@ -24,15 +24,8 @@ import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TestLogger;
 import com.provar.core.testapi.annotations.TextType;
 
+@SalesforcePage(title = "Rstk__laborclockinout", summary = "", page = "LaborClockInOut", namespacePrefix = "rstk", object = "rstk__icclocktxn__c", connection = "QARSF_Admin")
 
-@SalesforcePage( title="Rstk__laborclockinout"                                
-               , summary=""
-               , page="LaborClockInOut"
-               , namespacePrefix="rstk"
-               , object="rstk__icclocktxn__c"
-               , connection="QARSF_Admin"
-     )         
-     
 public class rstk__laborclockinout {
 
 	public WebDriver driver;
@@ -161,12 +154,11 @@ public class rstk__laborclockinout {
 
 		if (autoCompleteList.size() > 10) {
 			ele.sendKeys(Keys.BACK_SPACE);
+			Thread.sleep(2000);
 		}
-		
-		autoCompleteList = driver
-				.findElements(By.xpath("//div[@class='ac_results'][3]/ul[@id='IDREF']/li"));
 
-		
+		autoCompleteList = driver.findElements(By.xpath("//div[@class='ac_results'][3]/ul[@id='IDREF']/li"));
+
 		for (int i = 0; i < autoCompleteList.size(); i++) {
 			Thread.sleep(500);
 			actions.moveToElement(autoCompleteList.get(i)).build().perform();

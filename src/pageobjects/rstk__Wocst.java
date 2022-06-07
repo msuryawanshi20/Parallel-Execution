@@ -54,6 +54,8 @@ public class rstk__Wocst {
 				.findElements(By.xpath("//div[@class='ac_results'][1]/ul[@id='IDREF']/li"));
 		if (autoCompleteList.size() > 5) {
 			ele.sendKeys(Keys.BACK_SPACE);
+			Thread.sleep(2000);
+
 		}
 		autoCompleteList = driver.findElements(By.xpath("//div[@class='ac_results'][1]/ul[@id='IDREF']/li"));
 

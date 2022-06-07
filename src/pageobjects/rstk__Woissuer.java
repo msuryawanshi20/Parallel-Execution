@@ -9,13 +9,7 @@ import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
-@SalesforcePage( title="Rstk__ Woissuer"                                
-               , summary=""
-               , page="Woissuer"
-               , namespacePrefix="rstk"
-               , object="rstk__woiss__c"
-               , connection="QARSF_Admin"
-     )             
+@SalesforcePage(title = "Rstk__ Woissuer", summary = "", page = "Woissuer", namespacePrefix = "rstk", object = "rstk__woiss__c", connection = "QARSF_Admin")
 public class rstk__Woissuer {
 
 	@PageWaitAfter.Field(field = "list", timeoutSeconds = 10)

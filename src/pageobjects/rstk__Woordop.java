@@ -12,13 +12,7 @@ import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
-@SalesforcePage( title="Rstk__ Woordop"                                
-               , summary=""
-               , page="Woordop"
-               , namespacePrefix="rstk"
-               , object="rstk__woordop__c"
-               , connection="QARSF_Admin"
-     )             
+@SalesforcePage(title = "Rstk__ Woordop", summary = "", page = "Woordop", namespacePrefix = "rstk", object = "rstk__woordop__c", connection = "QARSF_Admin")
 public class rstk__Woordop {
 
 	@PageWaitAfter.Field(field = "description", timeoutSeconds = 10)

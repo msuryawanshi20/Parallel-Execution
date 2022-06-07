@@ -55,11 +55,11 @@ public class rstk__Woissue {
 
 		if (autoCompleteList.size() > 5) {
 			ele.sendKeys(Keys.BACK_SPACE);
+			Thread.sleep(2000);
+
 		}
-		autoCompleteList = driver
-				.findElements(By.xpath("//div[@class='ac_results'][1]/ul[@id='IDREF']/li"));
-		
-		
+		autoCompleteList = driver.findElements(By.xpath("//div[@class='ac_results'][1]/ul[@id='IDREF']/li"));
+
 		for (int i = 0; i < autoCompleteList.size(); i++) {
 			Thread.sleep(500);
 			actions.moveToElement(autoCompleteList.get(i)).build().perform();
