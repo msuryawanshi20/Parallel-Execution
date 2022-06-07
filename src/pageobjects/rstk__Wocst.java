@@ -3,6 +3,7 @@ package pageobjects;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -51,9 +52,13 @@ public class rstk__Wocst {
 
 		List<WebElement> autoCompleteList = driver
 				.findElements(By.xpath("//div[@class='ac_results'][1]/ul[@id='IDREF']/li"));
+		if (autoCompleteList.size() > 5) {
+			ele.sendKeys(Keys.BACK_SPACE);
+		}
+		autoCompleteList = driver.findElements(By.xpath("//div[@class='ac_results'][1]/ul[@id='IDREF']/li"));
 
 		for (int i = 0; i < autoCompleteList.size(); i++) {
-		Thread.sleep(500);
+			Thread.sleep(500);
 			actions.moveToElement(autoCompleteList.get(i)).build().perform();
 			if (autoCompleteList.get(i).getText().startsWith(InventoryItemName)) {
 				actions.moveToElement(autoCompleteList.get(i)).click().build().perform();

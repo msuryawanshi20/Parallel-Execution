@@ -143,7 +143,6 @@ public class rstk__LWocstNew {
 	@FindByLabel(label = "Release")
 	public WebElement release;
 
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Complete")
 	public WebElement complete;
