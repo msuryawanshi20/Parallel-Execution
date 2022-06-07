@@ -376,6 +376,9 @@
               </generatedParameters>
             </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="50" title="Call the setCommitmentQty method">
+              <tags>
+                <string>disabled</string>
+              </tags>
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:pageobject:method?operation=setCommitmentQty&amp;pageId=pageobjects.rstk__Soconpp"/>
@@ -415,9 +418,7 @@
               </generatedParameters>
             </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="15" title="Set the Commitment Quantity field to {ip_commitmentQuantity}">
-              <tags>
-                <string>disabled</string>
-              </tags>
+              <tags/>
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:locator?name=commitmentQuantity"/>

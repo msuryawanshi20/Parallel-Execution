@@ -44,7 +44,7 @@ public class rstk__Soconpp {
 	@FindBy(xpath = "//input[@name='soconpp_soprod__c_autocomplete']")
 	public WebElement product;
 	
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 100)
 	@TextType()
 	@FindBy(xpath = "//li[@id='li-0']")
 	public WebElement list;
@@ -63,6 +63,7 @@ public class rstk__Soconpp {
 
 
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@TextType()
 	@FindBy(xpath = "//input[contains(@id,'soconpp_commitqty__c')]")
 	public WebElement commitmentQuantity;
