@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testCase failureBehaviour="Continue" id="5" registryId="d778b8b1-6e3b-4c0c-87ab-d0be732fdb52" visibility="Internal">
+<testCase failureBehaviour="Continue" id="1391" registryId="d778b8b1-6e3b-4c0c-87ab-d0be732fdb52" visibility="Internal">
   <summary/>
   <steps>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: SFConnection (Test)">
@@ -351,7 +351,9 @@
               </clauses>
             </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="16" title="Set the Search Work Orders field to {ip_workOrderNumber}">
-              <tags/>
+              <tags>
+                <string>disabled</string>
+              </tags>
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:locator?name=searchWorkOrders"/>
@@ -413,7 +415,9 @@
               </generatedParameters>
             </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="128" title="Lookup the List field">
-              <tags/>
+              <tags>
+                <string>disabled</string>
+              </tags>
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:locator?name=list"/>
@@ -440,9 +444,7 @@
               </arguments>
             </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="138" title="Call the searchAndSelectWorkOrder method">
-              <tags>
-                <string>disabled</string>
-              </tags>
+              <tags/>
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:pageobject:method?pageId=pageobjects.rstk__laborclockinout&amp;operation=searchAndSelectWorkOrder"/>
