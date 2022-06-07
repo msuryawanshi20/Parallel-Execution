@@ -152,7 +152,7 @@ public WebDriver driver;
 		ele.sendKeys(workOrderNumber);
 		Actions actions = new Actions(driver);
 		wait.until(
-				ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ac_results'][1]/ul[@id='IDREF']/li")));
+				ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ac_results'][3]/ul[@id='IDREF']/li")));
 
 		List<WebElement> autoCompleteList = driver
 				.findElements(By.xpath("//div[@class='ac_results'][3]/ul[@id='IDREF']/li"));
