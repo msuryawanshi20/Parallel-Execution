@@ -1,0 +1,1139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testCase registryId="d868e5fb-15f2-4644-9a53-6eed6b12f3cf" visibility="Internal">
+  <summary/>
+  <steps>
+    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: SFConnection (Test)">
+      <arguments>
+        <argument id="connectionName">
+          <value class="value" valueClass="string">QARSF_Admin</value>
+        </argument>
+        <argument id="resultName">
+          <value class="value" valueClass="string">SFConnection</value>
+        </argument>
+        <argument id="resultScope">
+          <value class="value" valueClass="string">Test</value>
+        </argument>
+        <argument id="uiApplicationName">
+          <value class="value" valueClass="string">Force_com</value>
+        </argument>
+        <argument id="quickUiLogin">
+          <value class="value" valueClass="boolean">true</value>
+        </argument>
+        <argument id="closeAllPrimaryTabs">
+          <value class="value" valueClass="boolean">true</value>
+        </argument>
+        <argument argId="a25c8079-9837-414c-b3cd-c95122709d95" id="reuseConnectionName">
+          <value class="variable">
+            <path element="reuseConnectionName"/>
+          </value>
+        </argument>
+        <argument id="alreadyOpenBehaviour">
+          <value class="value" valueClass="string">Reuse</value>
+        </argument>
+        <argument id="privateBrowsingMode"/>
+        <argument id="enableObjectIdLogging">
+          <value class="value" valueClass="boolean">true</value>
+        </argument>
+        <argument id="autoCleanup"/>
+        <argument id="cleanupConnectionName"/>
+        <argument id="logFileLocation"/>
+        <argument id="username"/>
+        <argument id="password"/>
+        <argument id="securityToken"/>
+        <argument id="environment"/>
+        <argument id="lightningMode">
+          <value class="value" valueClass="string">default</value>
+        </argument>
+        <argument id="webBrowser"/>
+      </arguments>
+    </apiCall>
+    <apiCall apiId="com.provar.plugins.bundled.apis.control.ForEach" name="ForEach" testItemId="14" title="For Each: {SourceData_AR}=&gt;Row_AddLine">
+      <arguments>
+        <argument id="list">
+          <value class="variable">
+            <path element="SourceData_AR"/>
+          </value>
+        </argument>
+        <argument id="fromItem">
+          <value class="value" valueClass="decimal">1</value>
+        </argument>
+        <argument id="valueName">
+          <value class="value" valueClass="string">Row_AddLine</value>
+        </argument>
+        <argument id="continueOnFailure"/>
+      </arguments>
+      <clauses>
+        <clause name="substeps" testItemId="15">
+          <steps>
+            <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="430" title="Update AR Control">
+              <arguments>
+                <argument id="description">
+                  <value class="value" valueClass="string">Update AR Control</value>
+                </argument>
+              </arguments>
+              <clauses>
+                <clause name="hidden" testItemId="431">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexSoqlQuery" name="ApexSoqlQuery" testItemId="434" title="SOQL Query: SELECT Id,rstkf__arcntl_arbatchopt__c FROM rstkf__arcntl__c WHERE rstkf__arcntl_glcmp__c = '{Row_AddLine.CompanyID}'=&gt;rstkfRows_ARControl">
+                      <arguments>
+                        <argument id="soqlQuery">
+                          <value class="compound">
+                            <parts>
+                              <value valueClass="string">SELECT Id,rstkf__arcntl_arbatchopt__c FROM rstkf__arcntl__c WHERE rstkf__arcntl_glcmp__c = '</value>
+                              <variable>
+                                <path element="Row_AddLine"/>
+                                <path element="CompanyID"/>
+                              </variable>
+                              <value valueClass="string">'</value>
+                            </parts>
+                          </value>
+                        </argument>
+                        <argument id="apexConnectionName">
+                          <value class="value" valueClass="string">SFConnection</value>
+                        </argument>
+                        <argument id="resultListName">
+                          <value class="value" valueClass="string">rstkfRows_ARControl</value>
+                        </argument>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Test</value>
+                        </argument>
+                      </arguments>
+                    </apiCall>
+                    <apiCall apiId="com.provar.plugins.bundled.apis.If" name="If" testItemId="435" title="If: {rstkfRows_ARControl.rstkf__arcntl_arbatchopt__c = &quot;true&quot;}">
+                      <arguments>
+                        <argument id="condition">
+                          <value class="eq">
+                            <lhs class="variable">
+                              <path element="rstkfRows_ARControl"/>
+                              <path element="rstkf__arcntl_arbatchopt__c"/>
+                            </lhs>
+                            <rhs class="value" valueClass="string">true</rhs>
+                          </value>
+                        </argument>
+                      </arguments>
+                      <clauses>
+                        <clause name="then" testItemId="436">
+                          <steps>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexUpdateObject" name="ApexUpdateObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.UpdateCustomObjectTestStepCommand" testItemId="439" title="Update Object: rstkf__arcntl__c = {rstkfRows_ARControl.Id}">
+                              <arguments>
+                                <argument id="objectType">
+                                  <value class="value" valueClass="string">rstkf__arcntl__c</value>
+                                </argument>
+                                <argument id="objectId">
+                                  <value class="variable">
+                                    <path element="rstkfRows_ARControl"/>
+                                    <path element="Id"/>
+                                  </value>
+                                </argument>
+                                <argument id="resultName">
+                                  <value class="value" valueClass="string">rstkfUpdated</value>
+                                </argument>
+                                <argument id="apexConnectionName">
+                                  <value class="value" valueClass="string">SFConnection</value>
+                                </argument>
+                                <argument id="rstkf__arcntl_arbatchopt__c">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="assignmentRuleId"/>
+                                <argument id="resultScope">
+                                  <value class="value" valueClass="string">Test</value>
+                                </argument>
+                              </arguments>
+                              <parameterGeneratorProperties>
+                                <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.UpdateCustomObjectTestStepCommand.ConnectionName">QARSF_Admin</propertyValue>
+                                <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.UpdateCustomObjectTestStepCommand.CustomObjectName">rstkf__arcntl__c</propertyValue>
+                              </parameterGeneratorProperties>
+                              <generatedParameters>
+                                <apiParam group="fields" modelBinding="sf:ui:binding:object?object=rstkf__arcntl__c&amp;field=rstkf__arcntl_arbatchopt__c" name="rstkf__arcntl_arbatchopt__c" title="rstkf__arcntl_arbatchopt__c">
+                                  <summary>When checked, multiple Receivable Transactions can be contained within a session. When unchecked, each Receivable Transaction is its own session (one-for-one).</summary>
+                                </apiParam>
+                              </generatedParameters>
+                            </apiCall>
+                          </steps>
+                        </clause>
+                      </clauses>
+                    </apiCall>
+                  </steps>
+                </clause>
+              </clauses>
+            </apiCall>
+            <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="4" title="Verify if Invoice is Approved and Transferred">
+              <arguments>
+                <argument id="description">
+                  <value class="value" valueClass="string">Verify if Invoice is Approved and Transferred</value>
+                </argument>
+              </arguments>
+              <clauses>
+                <clause name="hidden" testItemId="5">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexReadObject" name="ApexReadObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand" testItemId="3" title="Read Object: rstk__soinv__c = {rstkRows_Invoice.Id}">
+                      <arguments>
+                        <argument id="objectType">
+                          <value class="value" valueClass="string">rstk__soinv__c</value>
+                        </argument>
+                        <argument id="resultName">
+                          <value class="value" valueClass="string">rstkRead</value>
+                        </argument>
+                        <argument id="objectId">
+                          <value class="variable">
+                            <path element="rstkRows_Invoice"/>
+                            <path element="Id"/>
+                          </value>
+                        </argument>
+                        <argument id="apexConnectionName">
+                          <value class="value" valueClass="string">SFConnection</value>
+                        </argument>
+                        <argument id="rstk__soinv_approved__c">
+                          <value class="value" valueClass="boolean">false</value>
+                        </argument>
+                        <argument id="rstk__soinv_transferred__c">
+                          <value class="value" valueClass="boolean">false</value>
+                        </argument>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Test</value>
+                        </argument>
+                      </arguments>
+                      <resultAssertions>
+                        <resultAssertion resultName="rstk__soinv_approved__c" title="Check rstk__soinv_approved__c">
+                          <expected class="value" valueClass="boolean">true</expected>
+                        </resultAssertion>
+                        <resultAssertion resultName="rstk__soinv_transferred__c" title="Check rstk__soinv_transferred__c">
+                          <expected class="value" valueClass="boolean">true</expected>
+                        </resultAssertion>
+                      </resultAssertions>
+                      <parameterGeneratorProperties>
+                        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand.ConnectionName">QARSF_Admin</propertyValue>
+                        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand.CustomObjectName">rstk__soinv__c</propertyValue>
+                      </parameterGeneratorProperties>
+                      <generatedParameters>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=rstk__soinv__c&amp;field=rstk__soinv_approved__c" name="rstk__soinv_approved__c" title="Approved">
+                          <summary>When checked, indicates that this Invoice or Credit Memo is approved and the 'De-Approve Invoice/Credit Memo' button enabled.</summary>
+                        </apiParam>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=rstk__soinv__c&amp;field=rstk__soinv_transferred__c" name="rstk__soinv_transferred__c" title="Transferred">
+                          <summary>When checked,  indicates that this Invoice or Credit Memo has been transferred to Accounts Payable.  The  'Reverse A/R Transfer' for this Sales Order Invoice/Credit Memo is also enabled.</summary>
+                        </apiParam>
+                      </generatedParameters>
+                    </apiCall>
+                  </steps>
+                </clause>
+              </clauses>
+            </apiCall>
+            <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="7" title="Verify if Receivable Transaction is created">
+              <arguments>
+                <argument id="description">
+                  <value class="value" valueClass="string">Verify if Receivable Transaction is created</value>
+                </argument>
+              </arguments>
+              <clauses>
+                <clause name="hidden" testItemId="8">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexSoqlQuery" name="ApexSoqlQuery" testItemId="13" title="SOQL Query: SELECT Id FROM rstkf__arinvtxn__c WHERE rstkf__arinvtxn_soinv__c = '{rstkRows_Invoice.Id}'=&gt;rstkfRows_ReceivableTxn">
+                      <tags>
+                        <string>disabled</string>
+                      </tags>
+                      <arguments>
+                        <argument id="soqlQuery">
+                          <value class="compound">
+                            <parts>
+                              <value valueClass="string">SELECT Id FROM rstkf__arinvtxn__c WHERE rstkf__arinvtxn_soinv__c = '</value>
+                              <variable>
+                                <path element="rstkRows_Invoice"/>
+                                <path element="Id"/>
+                              </variable>
+                              <value valueClass="string">'</value>
+                            </parts>
+                          </value>
+                        </argument>
+                        <argument id="apexConnectionName">
+                          <value class="value" valueClass="string">SFConnection</value>
+                        </argument>
+                        <argument id="resultListName">
+                          <value class="value" valueClass="string">rstkfRows_ReceivableTxn</value>
+                        </argument>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Test</value>
+                        </argument>
+                      </arguments>
+                    </apiCall>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexSoqlQuery" name="ApexSoqlQuery" testItemId="405" title="SOQL Query: select rstkf__arinvtxn_session_status__c,rstkf__arinvtxn_tranid__c,Id from rstkf__arinvtxn__c WHERE rstkf__arinvtxn_soinv__c = '{rstkRows_Invoice.Id}'=&gt;rstkfRows_ReceivableTxn">
+                      <arguments>
+                        <argument id="soqlQuery">
+                          <value class="compound">
+                            <parts>
+                              <value valueClass="string">select rstkf__arinvtxn_session_status__c,rstkf__arinvtxn_tranid__c,Id from rstkf__arinvtxn__c WHERE rstkf__arinvtxn_soinv__c = '</value>
+                              <variable>
+                                <path element="rstkRows_Invoice"/>
+                                <path element="Id"/>
+                              </variable>
+                              <value valueClass="string">'</value>
+                            </parts>
+                          </value>
+                        </argument>
+                        <argument id="apexConnectionName">
+                          <value class="value" valueClass="string">SFConnection</value>
+                        </argument>
+                        <argument id="resultListName">
+                          <value class="value" valueClass="string">rstkfRows_ReceivableTxn</value>
+                        </argument>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Folder</value>
+                        </argument>
+                      </arguments>
+                    </apiCall>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexSoqlQuery" name="ApexSoqlQuery" testItemId="10" title="SOQL Query: SELECT count() FROM rstkf__arinvtxn__c WHERE rstkf__arinvtxn_soinv__c = '{rstkRows_Invoice.Id}'=&gt;rstkfRows_ReceivableTxnCount">
+                      <arguments>
+                        <argument id="soqlQuery">
+                          <value class="compound">
+                            <parts>
+                              <value valueClass="string">SELECT count() FROM rstkf__arinvtxn__c WHERE rstkf__arinvtxn_soinv__c = '</value>
+                              <variable>
+                                <path element="rstkRows_Invoice"/>
+                                <path element="Id"/>
+                              </variable>
+                              <value valueClass="string">'</value>
+                            </parts>
+                          </value>
+                        </argument>
+                        <argument id="apexConnectionName">
+                          <value class="value" valueClass="string">SFConnection</value>
+                        </argument>
+                        <argument id="resultListName">
+                          <value class="value" valueClass="string">rstkfRows_ReceivableTxnCount</value>
+                        </argument>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Test</value>
+                        </argument>
+                      </arguments>
+                    </apiCall>
+                    <apiCall apiId="com.provar.plugins.bundled.apis.AssertValues" name="AssertValues" testItemId="11" title="Assert: {rstkfRows_ReceivableTxnCount} EqualTo 1">
+                      <arguments>
+                        <argument id="expectedValue">
+                          <value class="variable">
+                            <path element="rstkfRows_ReceivableTxnCount"/>
+                          </value>
+                        </argument>
+                        <argument id="comparisonType">
+                          <value class="value" valueClass="string">EqualTo</value>
+                        </argument>
+                        <argument id="actualValue">
+                          <value class="value" valueClass="string">1</value>
+                        </argument>
+                        <argument id="caseSensitive">
+                          <value class="value" valueClass="boolean">true</value>
+                        </argument>
+                        <argument id="numeric">
+                          <value class="value" valueClass="boolean">false</value>
+                        </argument>
+                        <argument id="retainDecimals">
+                          <value class="value" valueClass="boolean">false</value>
+                        </argument>
+                        <argument id="nullGreater">
+                          <value class="value" valueClass="boolean">false</value>
+                        </argument>
+                        <argument id="matchMultiLine">
+                          <value class="value" valueClass="boolean">false</value>
+                        </argument>
+                        <argument id="matchDotAll">
+                          <value class="value" valueClass="boolean">false</value>
+                        </argument>
+                        <argument id="failureMessage">
+                          <value class="value" valueClass="string">Receivable Transaction is NOT created</value>
+                        </argument>
+                      </arguments>
+                    </apiCall>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexSoqlQuery" name="ApexSoqlQuery" testItemId="407" title="SOQL Query: select Id,rstkf__arinvh_batchno__c,rstkf__arinvh_poststatus__c from rstkf__arinvh__c where rstkf__arinvh_batchno__c='{rstkfRows_ReceivableTxn.rstkf__arinvtxn_tranid__c}'=&gt;rstkfRows_ReceivableSession">
+                      <arguments>
+                        <argument id="soqlQuery">
+                          <value class="compound">
+                            <parts>
+                              <value valueClass="string">select Id,rstkf__arinvh_batchno__c,rstkf__arinvh_poststatus__c from rstkf__arinvh__c where rstkf__arinvh_batchno__c='</value>
+                              <variable>
+                                <path element="rstkfRows_ReceivableTxn"/>
+                                <path element="rstkf__arinvtxn_tranid__c"/>
+                              </variable>
+                              <value valueClass="string">'</value>
+                            </parts>
+                          </value>
+                        </argument>
+                        <argument id="apexConnectionName">
+                          <value class="value" valueClass="string">SFConnection</value>
+                        </argument>
+                        <argument id="resultListName">
+                          <value class="value" valueClass="string">rstkfRows_ReceivableSession</value>
+                        </argument>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Test</value>
+                        </argument>
+                      </arguments>
+                    </apiCall>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexUpdateObject" name="ApexUpdateObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.UpdateCustomObjectTestStepCommand" testItemId="410" title="Update Object: rstkf__arinvh__c = {rstkfRows_ReceivableSession.Id}">
+                      <arguments>
+                        <argument id="objectType">
+                          <value class="value" valueClass="string">rstkf__arinvh__c</value>
+                        </argument>
+                        <argument id="objectId">
+                          <value class="variable">
+                            <path element="rstkfRows_ReceivableSession"/>
+                            <path element="Id"/>
+                          </value>
+                        </argument>
+                        <argument id="resultName">
+                          <value class="value" valueClass="string">rstkfUpdated</value>
+                        </argument>
+                        <argument id="apexConnectionName">
+                          <value class="value" valueClass="string">SFConnection</value>
+                        </argument>
+                        <argument id="rstkf__arinvh_poststatus__c">
+                          <value class="value" valueClass="string">Posted</value>
+                        </argument>
+                        <argument id="assignmentRuleId"/>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Test</value>
+                        </argument>
+                      </arguments>
+                      <parameterGeneratorProperties>
+                        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.UpdateCustomObjectTestStepCommand.ConnectionName">QARSF_Admin</propertyValue>
+                        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.UpdateCustomObjectTestStepCommand.CustomObjectName">rstkf__arinvh__c</propertyValue>
+                      </parameterGeneratorProperties>
+                      <generatedParameters>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=rstkf__arinvh__c&amp;field=rstkf__arinvh_poststatus__c" name="rstkf__arinvh_poststatus__c" title="rstkf__arinvh_poststatus__c">
+                          <summary>The status of this session.  Note that manually entered sessions have this value set to 'Pending'.  Options are\n\nUnbatched Postings Pending\nPending\nClosed\nPosted</summary>
+                        </apiParam>
+                      </generatedParameters>
+                    </apiCall>
+                  </steps>
+                </clause>
+              </clauses>
+            </apiCall>
+            <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="24" title="Retrieve Home Currency from Company Master">
+              <arguments>
+                <argument id="description">
+                  <value class="value" valueClass="string">Retrieve Home Currency from Company Master</value>
+                </argument>
+              </arguments>
+              <clauses>
+                <clause name="hidden" testItemId="356">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexSoqlQuery" name="ApexSoqlQuery" testItemId="358" title="SOQL Query: SELECT rstk__sycmp_homecurr__c FROM rstk__sycmp__c WHERE rstk__sycmp_cmpno__c = '{Row_AddLine.CompanyNumber}'=&gt;rstkRows_HomeCurrCmpny">
+                      <arguments>
+                        <argument id="soqlQuery">
+                          <value class="compound">
+                            <parts>
+                              <value valueClass="string">SELECT rstk__sycmp_homecurr__c FROM rstk__sycmp__c WHERE rstk__sycmp_cmpno__c = '</value>
+                              <variable>
+                                <path element="Row_AddLine"/>
+                                <path element="CompanyNumber"/>
+                              </variable>
+                              <value valueClass="string">'</value>
+                            </parts>
+                          </value>
+                        </argument>
+                        <argument id="apexConnectionName">
+                          <value class="value" valueClass="string">SFConnection</value>
+                        </argument>
+                        <argument id="resultListName">
+                          <value class="value" valueClass="string">rstkRows_HomeCurrCmpny</value>
+                        </argument>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Test</value>
+                        </argument>
+                      </arguments>
+                    </apiCall>
+                    <apiCall apiId="com.provar.plugins.bundled.apis.control.SetValues" name="SetValues" testItemId="377" title="Set Values: rstkRows_HomeCurrCmpny">
+                      <arguments>
+                        <argument id="values">
+                          <value class="valueList" mutable="Mutable">
+                            <namedValues mutable="Mutable">
+                              <namedValue name="valuePath">
+                                <value class="value" valueClass="string">rstkRows_HomeCurrCmpny</value>
+                              </namedValue>
+                              <namedValue name="value">
+                                <value class="variable">
+                                  <path element="rstkRows_HomeCurrCmpny"/>
+                                  <path element="rstk__sycmp_homecurr__c"/>
+                                </value>
+                              </namedValue>
+                              <namedValue name="valueScope">
+                                <value class="value" valueClass="string">Folder</value>
+                              </namedValue>
+                            </namedValues>
+                          </value>
+                        </argument>
+                      </arguments>
+                    </apiCall>
+                  </steps>
+                </clause>
+              </clauses>
+            </apiCall>
+            <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="25" title="Retrieve Currency from Customer Master">
+              <arguments>
+                <argument id="description">
+                  <value class="value" valueClass="string">Retrieve Currency from Customer Master</value>
+                </argument>
+              </arguments>
+              <clauses>
+                <clause name="hidden" testItemId="360">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexSoqlQuery" name="ApexSoqlQuery" testItemId="362" title="SOQL Query: SELECT rstk__socust_custcurr__c FROM rstk__socust__c WHERE rstk__socust_sf_account_name__c = '{Row_AddLine.Customer}'=&gt;rstkRows_CustomerCurr">
+                      <arguments>
+                        <argument id="soqlQuery">
+                          <value class="compound">
+                            <parts>
+                              <value valueClass="string">SELECT rstk__socust_custcurr__c FROM rstk__socust__c WHERE rstk__socust_sf_account_name__c = '</value>
+                              <variable>
+                                <path element="Row_AddLine"/>
+                                <path element="Customer"/>
+                              </variable>
+                              <value valueClass="string">'</value>
+                            </parts>
+                          </value>
+                        </argument>
+                        <argument id="apexConnectionName">
+                          <value class="value" valueClass="string">SFConnection</value>
+                        </argument>
+                        <argument id="resultListName">
+                          <value class="value" valueClass="string">rstkRows_CustomerCurr</value>
+                        </argument>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Test</value>
+                        </argument>
+                      </arguments>
+                    </apiCall>
+                    <apiCall apiId="com.provar.plugins.bundled.apis.control.SetValues" name="SetValues" testItemId="379" title="Set Values: rstkRows_CustomerCurr">
+                      <arguments>
+                        <argument id="values">
+                          <value class="valueList" mutable="Mutable">
+                            <namedValues mutable="Mutable">
+                              <namedValue name="valuePath">
+                                <value class="value" valueClass="string">rstkRows_CustomerCurr</value>
+                              </namedValue>
+                              <namedValue name="value">
+                                <value class="variable">
+                                  <path element="rstkRows_CustomerCurr"/>
+                                  <path element="rstk__socust_custcurr__c"/>
+                                </value>
+                              </namedValue>
+                              <namedValue name="valueScope">
+                                <value class="value" valueClass="string">Folder</value>
+                              </namedValue>
+                            </namedValues>
+                          </value>
+                        </argument>
+                      </arguments>
+                    </apiCall>
+                  </steps>
+                </clause>
+              </clauses>
+            </apiCall>
+            <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="26" title="Retrieve Rate of Exchange,Foreign Curr, Home Curr from Receivable Txn">
+              <tags>
+                <string>disabled</string>
+              </tags>
+              <arguments>
+                <argument id="description">
+                  <value class="value" valueClass="string">Retrieve Rate of Exchange,Foreign Curr, Home Curr from Receivable Txn</value>
+                </argument>
+              </arguments>
+              <clauses>
+                <clause name="hidden" testItemId="350">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexSoqlQuery" name="ApexSoqlQuery" testItemId="348" title="SOQL Query: SELECT id,rstkf__arinvtxn_exchrate__c,rstkf__arinvtxn_homecurr__c,rstkf__arinvtxn_maintcurr__c,rstkf__arinvtxn_trandate__c FROM rstkf__arinvtxn__c WHERE rstkf__arinvtxn_soinv__c = '{rstkRows_Invoice.Id}'=&gt;rstkfRows_ReceivableTxn">
+                      <arguments>
+                        <argument id="soqlQuery">
+                          <value class="compound">
+                            <parts>
+                              <value valueClass="string">SELECT id,rstkf__arinvtxn_exchrate__c,rstkf__arinvtxn_homecurr__c,rstkf__arinvtxn_maintcurr__c,rstkf__arinvtxn_trandate__c FROM rstkf__arinvtxn__c WHERE rstkf__arinvtxn_soinv__c = '</value>
+                              <variable>
+                                <path element="rstkRows_Invoice"/>
+                                <path element="Id"/>
+                              </variable>
+                              <value valueClass="string">'</value>
+                            </parts>
+                          </value>
+                        </argument>
+                        <argument id="apexConnectionName">
+                          <value class="value" valueClass="string">SFConnection</value>
+                        </argument>
+                        <argument id="resultListName">
+                          <value class="value" valueClass="string">rstkfRows_ReceivableTxn</value>
+                        </argument>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Folder</value>
+                        </argument>
+                      </arguments>
+                    </apiCall>
+                    <apiCall apiId="com.provar.plugins.bundled.apis.control.SetValues" name="SetValues" testItemId="380" title="Set Values: rstkfRows_ReceivableTxn">
+                      <arguments>
+                        <argument id="values">
+                          <value class="valueList" mutable="Mutable">
+                            <namedValues mutable="Mutable">
+                              <namedValue name="valuePath">
+                                <value class="value" valueClass="string">rstkfRows_ReceivableTxn</value>
+                              </namedValue>
+                              <namedValue name="value">
+                                <value class="variable">
+                                  <path element="rstkfRows_ReceivableTxn"/>
+                                </value>
+                              </namedValue>
+                              <namedValue name="valueScope">
+                                <value class="value" valueClass="string">Test</value>
+                              </namedValue>
+                            </namedValues>
+                          </value>
+                        </argument>
+                      </arguments>
+                    </apiCall>
+                  </steps>
+                </clause>
+              </clauses>
+            </apiCall>
+            <apiCall apiId="com.provar.plugins.bundled.apis.If" name="If" testItemId="27" title="If: {rstkRows_HomeCurrCmpny != rstkRows_CustomerCurr}">
+              <arguments>
+                <argument id="condition">
+                  <value class="ne">
+                    <lhs class="variable">
+                      <path element="rstkRows_HomeCurrCmpny"/>
+                    </lhs>
+                    <rhs class="variable">
+                      <path element="rstkRows_CustomerCurr"/>
+                    </rhs>
+                  </value>
+                </argument>
+              </arguments>
+              <clauses>
+                <clause name="then" testItemId="396">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="415" title="Retrieve Rate of Exchange,Foreign Curr, Home Curr from Receivable Txn">
+                      <arguments>
+                        <argument id="description">
+                          <value class="value" valueClass="string">Retrieve Rate of Exchange,Foreign Curr, Home Curr from Receivable Txn</value>
+                        </argument>
+                      </arguments>
+                      <clauses>
+                        <clause name="hidden" testItemId="416">
+                          <steps>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexSoqlQuery" name="ApexSoqlQuery" testItemId="417" title="SOQL Query: SELECT id,rstkf__arinvtxn_exchrate__c,rstkf__arinvtxn_homecurr__c,rstkf__arinvtxn_maintcurr__c,rstkf__arinvtxn_trandate__c FROM rstkf__arinvtxn__c WHERE rstkf__arinvtxn_soinv__c = '{rstkRows_Invoice.Id}'=&gt;rstkfRows_ReceivableTxn_ForeignCurrency">
+                              <arguments>
+                                <argument id="soqlQuery">
+                                  <value class="compound">
+                                    <parts>
+                                      <value valueClass="string">SELECT id,rstkf__arinvtxn_exchrate__c,rstkf__arinvtxn_homecurr__c,rstkf__arinvtxn_maintcurr__c,rstkf__arinvtxn_trandate__c FROM rstkf__arinvtxn__c WHERE rstkf__arinvtxn_soinv__c = '</value>
+                                      <variable>
+                                        <path element="rstkRows_Invoice"/>
+                                        <path element="Id"/>
+                                      </variable>
+                                      <value valueClass="string">'</value>
+                                    </parts>
+                                  </value>
+                                </argument>
+                                <argument id="apexConnectionName">
+                                  <value class="value" valueClass="string">SFConnection</value>
+                                </argument>
+                                <argument id="resultListName">
+                                  <value class="value" valueClass="string">rstkfRows_ReceivableTxn_ForeignCurrency</value>
+                                </argument>
+                                <argument id="resultScope">
+                                  <value class="value" valueClass="string">Folder</value>
+                                </argument>
+                              </arguments>
+                            </apiCall>
+                            <apiCall apiId="com.provar.plugins.bundled.apis.control.SetValues" name="SetValues" testItemId="418" title="Set Values: rstkfRows_ReceivableTxn_ForeignCurrency">
+                              <arguments>
+                                <argument id="values">
+                                  <value class="valueList" mutable="Mutable">
+                                    <namedValues mutable="Mutable">
+                                      <namedValue name="valuePath">
+                                        <value class="value" valueClass="string">rstkfRows_ReceivableTxn_ForeignCurrency</value>
+                                      </namedValue>
+                                      <namedValue name="value">
+                                        <value class="variable">
+                                          <path element="rstkfRows_ReceivableTxn_ForeignCurrency"/>
+                                        </value>
+                                      </namedValue>
+                                      <namedValue name="valueScope">
+                                        <value class="value" valueClass="string">Test</value>
+                                      </namedValue>
+                                    </namedValues>
+                                  </value>
+                                </argument>
+                              </arguments>
+                            </apiCall>
+                          </steps>
+                        </clause>
+                      </clauses>
+                    </apiCall>
+                    <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="397" title="Retrieve the Foreign Exchange Rate Schedules">
+                      <arguments>
+                        <argument id="description">
+                          <value class="value" valueClass="string">Retrieve the Foreign Exchange Rate Schedules</value>
+                        </argument>
+                      </arguments>
+                      <clauses>
+                        <clause name="hidden" testItemId="398">
+                          <steps>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexSoqlQuery" name="ApexSoqlQuery" testItemId="399" title="SOQL Query: select Id,Name,rstkf__syforexschedno_exchrate__c,rstkf__syforexschedno_exchrate_recip__c from rstkf__syforexschedno__c where rstkf__syforexschedno_frmdate__c &lt;= {rstkfRows_ReceivableTxn_ForeignCurrency.rstkf__arinvtxn_trandate__c} and rstkf__syforexschedno_thrudate__c &gt;= {rstkfRows_ReceivableTxn_ForeignCurrency.rstkf__arinvtxn_trandate__c} and rstkf__syforexschedno_funccurr__c = '{rstkRows_HomeCurrCmpny}' and rstkf__syforexschedno_foreigncurr__c ='{rstkRows_CustomerCurr}'=&gt;rstkfRows_ForeignExchRateSchedule">
+                              <arguments>
+                                <argument id="soqlQuery">
+                                  <value class="compound">
+                                    <parts>
+                                      <value valueClass="string">select Id,Name,rstkf__syforexschedno_exchrate__c,rstkf__syforexschedno_exchrate_recip__c from rstkf__syforexschedno__c where rstkf__syforexschedno_frmdate__c &lt;= </value>
+                                      <variable>
+                                        <path element="rstkfRows_ReceivableTxn_ForeignCurrency"/>
+                                        <path element="rstkf__arinvtxn_trandate__c"/>
+                                      </variable>
+                                      <value valueClass="string"> and rstkf__syforexschedno_thrudate__c &gt;= </value>
+                                      <variable>
+                                        <path element="rstkfRows_ReceivableTxn_ForeignCurrency"/>
+                                        <path element="rstkf__arinvtxn_trandate__c"/>
+                                      </variable>
+                                      <value valueClass="string"> and rstkf__syforexschedno_funccurr__c = '</value>
+                                      <variable>
+                                        <path element="rstkRows_HomeCurrCmpny"/>
+                                      </variable>
+                                      <value valueClass="string">' and rstkf__syforexschedno_foreigncurr__c ='</value>
+                                      <variable>
+                                        <path element="rstkRows_CustomerCurr"/>
+                                      </variable>
+                                      <value valueClass="string">'</value>
+                                    </parts>
+                                  </value>
+                                </argument>
+                                <argument id="apexConnectionName">
+                                  <value class="value" valueClass="string">SFConnection</value>
+                                </argument>
+                                <argument id="resultListName">
+                                  <value class="value" valueClass="string">rstkfRows_ForeignExchRateSchedule</value>
+                                </argument>
+                                <argument id="resultScope">
+                                  <value class="value" valueClass="string">Test</value>
+                                </argument>
+                              </arguments>
+                            </apiCall>
+                            <apiCall apiId="com.provar.plugins.bundled.apis.control.SetValues" name="SetValues" testItemId="402" title="Set Values: rstkfRows_ForeignExchRateSchedule_ExchRate">
+                              <arguments>
+                                <argument id="values">
+                                  <value class="valueList" mutable="Mutable">
+                                    <namedValues mutable="Mutable">
+                                      <namedValue name="valuePath">
+                                        <value class="value" valueClass="string">rstkfRows_ForeignExchRateSchedule_ExchRate</value>
+                                      </namedValue>
+                                      <namedValue name="value">
+                                        <value class="variable">
+                                          <path element="rstkfRows_ForeignExchRateSchedule"/>
+                                          <path element="rstkf__syforexschedno_exchrate__c"/>
+                                        </value>
+                                      </namedValue>
+                                      <namedValue name="valueScope">
+                                        <value class="value" valueClass="string">Test</value>
+                                      </namedValue>
+                                    </namedValues>
+                                  </value>
+                                </argument>
+                              </arguments>
+                            </apiCall>
+                            <apiCall apiId="com.provar.plugins.bundled.apis.control.SetValues" name="SetValues" testItemId="403" title="Set Values: rstkfRows_ForeignExchRateSchedule_ID">
+                              <arguments>
+                                <argument id="values">
+                                  <value class="valueList" mutable="Mutable">
+                                    <namedValues mutable="Mutable">
+                                      <namedValue name="valuePath">
+                                        <value class="value" valueClass="string">rstkfRows_ForeignExchRateSchedule_ID</value>
+                                      </namedValue>
+                                      <namedValue name="value">
+                                        <value class="variable">
+                                          <path element="rstkfRows_ForeignExchRateSchedule"/>
+                                          <path element="Id"/>
+                                        </value>
+                                      </namedValue>
+                                      <namedValue name="valueScope">
+                                        <value class="value" valueClass="string">Folder</value>
+                                      </namedValue>
+                                    </namedValues>
+                                  </value>
+                                </argument>
+                              </arguments>
+                            </apiCall>
+                          </steps>
+                        </clause>
+                      </clauses>
+                    </apiCall>
+                  </steps>
+                </clause>
+                <clause name="else" testItemId="419">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="424" title="Retrieve Rate of Exchange,Foreign Curr, Home Curr from Receivable Txn">
+                      <arguments>
+                        <argument id="description">
+                          <value class="value" valueClass="string">Retrieve Rate of Exchange,Foreign Curr, Home Curr from Receivable Txn</value>
+                        </argument>
+                      </arguments>
+                      <clauses>
+                        <clause name="hidden" testItemId="425">
+                          <steps>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexSoqlQuery" name="ApexSoqlQuery" testItemId="426" title="SOQL Query: SELECT id,rstkf__arinvtxn_exchrate__c,rstkf__arinvtxn_homecurr__c,rstkf__arinvtxn_maintcurr__c,rstkf__arinvtxn_trandate__c FROM rstkf__arinvtxn__c WHERE rstkf__arinvtxn_soinv__c = '{rstkRows_Invoice.Id}'=&gt;rstkfRows_ReceivableTxn_HomeCurrency">
+                              <arguments>
+                                <argument id="soqlQuery">
+                                  <value class="compound">
+                                    <parts>
+                                      <value valueClass="string">SELECT id,rstkf__arinvtxn_exchrate__c,rstkf__arinvtxn_homecurr__c,rstkf__arinvtxn_maintcurr__c,rstkf__arinvtxn_trandate__c FROM rstkf__arinvtxn__c WHERE rstkf__arinvtxn_soinv__c = '</value>
+                                      <variable>
+                                        <path element="rstkRows_Invoice"/>
+                                        <path element="Id"/>
+                                      </variable>
+                                      <value valueClass="string">'</value>
+                                    </parts>
+                                  </value>
+                                </argument>
+                                <argument id="apexConnectionName">
+                                  <value class="value" valueClass="string">SFConnection</value>
+                                </argument>
+                                <argument id="resultListName">
+                                  <value class="value" valueClass="string">rstkfRows_ReceivableTxn_HomeCurrency</value>
+                                </argument>
+                                <argument id="resultScope">
+                                  <value class="value" valueClass="string">Folder</value>
+                                </argument>
+                              </arguments>
+                            </apiCall>
+                            <apiCall apiId="com.provar.plugins.bundled.apis.control.SetValues" name="SetValues" testItemId="427" title="Set Values: rstkfRows_ReceivableTxn_HomeCurrency">
+                              <arguments>
+                                <argument id="values">
+                                  <value class="valueList" mutable="Mutable">
+                                    <namedValues mutable="Mutable">
+                                      <namedValue name="valuePath">
+                                        <value class="value" valueClass="string">rstkfRows_ReceivableTxn_HomeCurrency</value>
+                                      </namedValue>
+                                      <namedValue name="value">
+                                        <value class="variable">
+                                          <path element="rstkfRows_ReceivableTxn_HomeCurrency"/>
+                                        </value>
+                                      </namedValue>
+                                      <namedValue name="valueScope">
+                                        <value class="value" valueClass="string">Test</value>
+                                      </namedValue>
+                                    </namedValues>
+                                  </value>
+                                </argument>
+                              </arguments>
+                            </apiCall>
+                          </steps>
+                        </clause>
+                      </clauses>
+                    </apiCall>
+                  </steps>
+                </clause>
+              </clauses>
+            </apiCall>
+            <apiCall apiId="com.provar.plugins.bundled.apis.If" name="If" testItemId="28" title="If: {rstkRows_HomeCurrCmpny != rstkRows_CustomerCurr}">
+              <arguments>
+                <argument id="condition">
+                  <value class="ne">
+                    <lhs class="variable">
+                      <path element="rstkRows_HomeCurrCmpny"/>
+                    </lhs>
+                    <rhs class="variable">
+                      <path element="rstkRows_CustomerCurr"/>
+                    </rhs>
+                  </value>
+                </argument>
+              </arguments>
+              <clauses>
+                <clause name="then" testItemId="373">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexReadObject" name="ApexReadObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand" testItemId="369" title="Read Object: rstkf__arinvtxn__c = {rstkfRows_ReceivableTxn_ForeignCurrency.id}">
+                      <arguments>
+                        <argument id="objectType">
+                          <value class="value" valueClass="string">rstkf__arinvtxn__c</value>
+                        </argument>
+                        <argument id="resultName">
+                          <value class="value" valueClass="string">rstkfRead</value>
+                        </argument>
+                        <argument id="objectId">
+                          <value class="variable">
+                            <path element="rstkfRows_ReceivableTxn_ForeignCurrency"/>
+                            <path element="id"/>
+                          </value>
+                        </argument>
+                        <argument id="apexConnectionName">
+                          <value class="value" valueClass="string">SFConnection</value>
+                        </argument>
+                        <argument id="rstkf__arinvtxn_sumhomevalue__c">
+                          <value class="value" valueClass="decimal">725.28</value>
+                        </argument>
+                        <argument id="rstkf__arinvtxn_summaintvalue__c">
+                          <value class="value" valueClass="decimal">725.28</value>
+                        </argument>
+                        <argument id="rstkf__arinvtxn_exchrate__c">
+                          <value class="value" valueClass="decimal">1.0</value>
+                        </argument>
+                        <argument id="rstkf__arinvtxn_maintcurr__c">
+                          <value class="value" valueClass="string">a8S5f0000004MBbEAM</value>
+                        </argument>
+                        <argument id="rstkf__arinvtxn_homecurr__c">
+                          <value class="value" valueClass="string">a8S5f0000004MBbEAM</value>
+                        </argument>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Test</value>
+                        </argument>
+                      </arguments>
+                      <resultAssertions>
+                        <resultAssertion ignoreMilliseconds="true" resultName="rstkf__arinvtxn_sumhomevalue__c" title="Check rstkf__arinvtxn_sumhomevalue__c">
+                          <expected class="mult">
+                            <lhs class="variable">
+                              <path element="rstkRows_Invoice"/>
+                              <path element="rstk__soinv_grandtotal__c"/>
+                            </lhs>
+                            <rhs class="variable">
+                              <path element="rstkfRows_ForeignExchRateSchedule_ExchRate"/>
+                            </rhs>
+                          </expected>
+                        </resultAssertion>
+                        <resultAssertion resultName="rstkf__arinvtxn_summaintvalue__c" title="Check rstkf__arinvtxn_summaintvalue__c">
+                          <expected class="variable">
+                            <path element="rstkRows_Invoice"/>
+                            <path element="rstk__soinv_grandtotal__c"/>
+                          </expected>
+                        </resultAssertion>
+                        <resultAssertion resultName="rstkf__arinvtxn_exchrate__c" title="Check rstkf__arinvtxn_exchrate__c">
+                          <expected class="variable">
+                            <path element="rstkfRows_ForeignExchRateSchedule_ExchRate"/>
+                          </expected>
+                        </resultAssertion>
+                        <resultAssertion resultName="rstkf__arinvtxn_maintcurr__c" title="Check rstkf__arinvtxn_maintcurr__c">
+                          <expected class="variable">
+                            <path element="rstkRows_CustomerCurr"/>
+                          </expected>
+                        </resultAssertion>
+                        <resultAssertion resultName="rstkf__arinvtxn_homecurr__c" title="Check rstkf__arinvtxn_homecurr__c">
+                          <expected class="variable">
+                            <path element="rstkRows_HomeCurrCmpny"/>
+                          </expected>
+                        </resultAssertion>
+                        <resultAssertion resultName="rstkf__arinvtxn_syforexschedno__c" title="Check rstkf__arinvtxn_syforexschedno__c">
+                          <expected class="variable">
+                            <path element="rstkfRows_ForeignExchRateSchedule_ID"/>
+                          </expected>
+                        </resultAssertion>
+                      </resultAssertions>
+                      <parameterGeneratorProperties>
+                        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand.ConnectionName">QARSF_Admin</propertyValue>
+                        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand.CustomObjectName">rstkf__arinvtxn__c</propertyValue>
+                      </parameterGeneratorProperties>
+                      <generatedParameters>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=rstkf__arinvtxn__c&amp;field=rstkf__arinvtxn_sumhomevalue__c" name="rstkf__arinvtxn_sumhomevalue__c" title="Current Value - Home Currency">
+                          <summary>The current amount, expressed in Home (aka Functional) Currency</summary>
+                        </apiParam>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=rstkf__arinvtxn__c&amp;field=rstkf__arinvtxn_summaintvalue__c" name="rstkf__arinvtxn_summaintvalue__c" title="Current Value - Transaction Currency">
+                          <summary>The current amount, expressed in Transaction Currency</summary>
+                        </apiParam>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=rstkf__arinvtxn__c&amp;field=rstkf__arinvtxn_exchrate__c" name="rstkf__arinvtxn_exchrate__c" title="Rate of Exchange">
+                          <summary>Applicable exchange rate for between transaction currency and Home currency</summary>
+                        </apiParam>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=rstkf__arinvtxn__c&amp;field=rstkf__arinvtxn_maintcurr__c" name="rstkf__arinvtxn_maintcurr__c" title="Transaction Currency">
+                          <summary>The currency that this transaction is in, based on the Customer's Currency or Home Currency (depending on whether the Customer's currency is to be used as set on the Customer Master)</summary>
+                        </apiParam>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=rstkf__arinvtxn__c&amp;field=rstkf__arinvtxn_homecurr__c" name="rstkf__arinvtxn_homecurr__c" title="Home Currency"/>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=rstkf__arinvtxn__c&amp;field=rstkf__arinvtxn_syforexschedno__c" name="rstkf__arinvtxn_syforexschedno__c" title="Foreign Exchange Rate Schedule"/>
+                      </generatedParameters>
+                    </apiCall>
+                  </steps>
+                </clause>
+                <clause name="else" testItemId="375">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexReadObject" name="ApexReadObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand" testItemId="376" title="Read Object: rstkf__arinvtxn__c = {rstkfRows_ReceivableTxn_HomeCurrency.id}">
+                      <arguments>
+                        <argument id="objectType">
+                          <value class="value" valueClass="string">rstkf__arinvtxn__c</value>
+                        </argument>
+                        <argument id="resultName">
+                          <value class="value" valueClass="string">rstkfRead</value>
+                        </argument>
+                        <argument id="objectId">
+                          <value class="variable">
+                            <path element="rstkfRows_ReceivableTxn_HomeCurrency"/>
+                            <path element="id"/>
+                          </value>
+                        </argument>
+                        <argument id="apexConnectionName">
+                          <value class="value" valueClass="string">SFConnection</value>
+                        </argument>
+                        <argument id="rstkf__arinvtxn_sumhomevalue__c">
+                          <value class="value" valueClass="decimal">725.28</value>
+                        </argument>
+                        <argument id="rstkf__arinvtxn_summaintvalue__c">
+                          <value class="value" valueClass="decimal">725.28</value>
+                        </argument>
+                        <argument id="rstkf__arinvtxn_exchrate__c">
+                          <value class="value" valueClass="decimal">1.0</value>
+                        </argument>
+                        <argument id="rstkf__arinvtxn_maintcurr__c">
+                          <value class="value" valueClass="string">a8S5f0000004MBbEAM</value>
+                        </argument>
+                        <argument id="rstkf__arinvtxn_homecurr__c">
+                          <value class="value" valueClass="string">a8S5f0000004MBbEAM</value>
+                        </argument>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Test</value>
+                        </argument>
+                      </arguments>
+                      <resultAssertions>
+                        <resultAssertion ignoreMilliseconds="true" resultName="rstkf__arinvtxn_sumhomevalue__c" title="Check rstkf__arinvtxn_sumhomevalue__c">
+                          <expected class="variable">
+                            <path element="rstkRows_Invoice"/>
+                            <path element="rstk__soinv_grandtotal__c"/>
+                          </expected>
+                        </resultAssertion>
+                        <resultAssertion resultName="rstkf__arinvtxn_summaintvalue__c" title="Check rstkf__arinvtxn_summaintvalue__c">
+                          <expected class="variable">
+                            <path element="rstkRows_Invoice"/>
+                            <path element="rstk__soinv_grandtotal__c"/>
+                          </expected>
+                        </resultAssertion>
+                        <resultAssertion resultName="rstkf__arinvtxn_exchrate__c" title="Check rstkf__arinvtxn_exchrate__c">
+                          <expected class="value" valueClass="string">1</expected>
+                        </resultAssertion>
+                        <resultAssertion resultName="rstkf__arinvtxn_maintcurr__c" title="Check rstkf__arinvtxn_maintcurr__c">
+                          <expected class="variable">
+                            <path element="rstkRows_HomeCurrCmpny"/>
+                          </expected>
+                        </resultAssertion>
+                        <resultAssertion resultName="rstkf__arinvtxn_homecurr__c" title="Check rstkf__arinvtxn_homecurr__c">
+                          <expected class="variable">
+                            <path element="rstkRows_HomeCurrCmpny"/>
+                          </expected>
+                        </resultAssertion>
+                      </resultAssertions>
+                      <parameterGeneratorProperties>
+                        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand.ConnectionName">QARSF_Admin</propertyValue>
+                        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand.CustomObjectName">rstkf__arinvtxn__c</propertyValue>
+                      </parameterGeneratorProperties>
+                      <generatedParameters>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=rstkf__arinvtxn__c&amp;field=rstkf__arinvtxn_sumhomevalue__c" name="rstkf__arinvtxn_sumhomevalue__c" title="Current Value - Home Currency">
+                          <summary>The current amount, expressed in Home (aka Functional) Currency</summary>
+                        </apiParam>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=rstkf__arinvtxn__c&amp;field=rstkf__arinvtxn_summaintvalue__c" name="rstkf__arinvtxn_summaintvalue__c" title="Current Value - Transaction Currency">
+                          <summary>The current amount, expressed in Transaction Currency</summary>
+                        </apiParam>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=rstkf__arinvtxn__c&amp;field=rstkf__arinvtxn_exchrate__c" name="rstkf__arinvtxn_exchrate__c" title="Rate of Exchange">
+                          <summary>Applicable exchange rate for between transaction currency and Home currency</summary>
+                        </apiParam>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=rstkf__arinvtxn__c&amp;field=rstkf__arinvtxn_maintcurr__c" name="rstkf__arinvtxn_maintcurr__c" title="Transaction Currency">
+                          <summary>The currency that this transaction is in, based on the Customer's Currency or Home Currency (depending on whether the Customer's currency is to be used as set on the Customer Master)</summary>
+                        </apiParam>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=rstkf__arinvtxn__c&amp;field=rstkf__arinvtxn_homecurr__c" name="rstkf__arinvtxn_homecurr__c" title="Home Currency"/>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=rstkf__arinvtxn__c&amp;field=rstkf__arinvtxn_syforexschedno__c" name="rstkf__arinvtxn_syforexschedno__c" title="Foreign Exchange Rate Schedule"/>
+                      </generatedParameters>
+                    </apiCall>
+                  </steps>
+                </clause>
+              </clauses>
+            </apiCall>
+          </steps>
+        </clause>
+      </clauses>
+    </apiCall>
+    <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="428" title="End">
+      <arguments>
+        <argument id="description">
+          <value class="value" valueClass="string">End</value>
+        </argument>
+      </arguments>
+      <clauses>
+        <clause name="hidden" testItemId="429"/>
+      </clauses>
+    </apiCall>
+  </steps>
+  <params>
+    <param linkedToUrl="provar:hasvalue:a25c8079-9837-414c-b3cd-c95122709d95" name="reuseConnectionName" title="Override Connection">
+      <summary>The name of an already opened connect to re-use.</summary>
+      <type>
+        <connectionType>
+          <constraints>
+            <valueConstraint name="variableName">true</valueConstraint>
+            <valueConstraint name="requiredCapabilities">sfSoapConnect</valueConstraint>
+          </constraints>
+        </connectionType>
+      </type>
+    </param>
+    <param name="rstkRows_Invoice" title="rstkRows_Invoice">
+      <summary/>
+      <type>
+        <textType>
+          <constraints>
+            <valueConstraint name="minLength">0</valueConstraint>
+            <valueConstraint name="maxLength">9999</valueConstraint>
+          </constraints>
+        </textType>
+      </type>
+    </param>
+    <param name="SourceData_AR" title="SourceData_AR">
+      <summary/>
+      <type>
+        <textType>
+          <constraints>
+            <valueConstraint name="minLength">0</valueConstraint>
+            <valueConstraint name="maxLength">9999</valueConstraint>
+          </constraints>
+        </textType>
+      </type>
+    </param>
+  </params>
+  <outputParams>
+    <param defaultScope="Folder" name="rstkfRows_ReceivableTxn_HomeCurrency" title="rstkfRows_ReceivableTxn_HomeCurrency">
+      <summary/>
+      <type>
+        <textType>
+          <constraints>
+            <valueConstraint name="minLength">0</valueConstraint>
+            <valueConstraint name="maxLength">9999</valueConstraint>
+          </constraints>
+        </textType>
+      </type>
+      <sourceValue class="variable">
+        <path element="rstkfRows_ReceivableTxn_HomeCurrency"/>
+      </sourceValue>
+    </param>
+    <param defaultScope="Folder" name="rstkfRows_ReceivableTxn_ForeignCurrency" title="rstkfRows_ReceivableTxn_ForeignCurrency">
+      <summary/>
+      <type>
+        <textType>
+          <constraints>
+            <valueConstraint name="minLength">0</valueConstraint>
+            <valueConstraint name="maxLength">9999</valueConstraint>
+          </constraints>
+        </textType>
+      </type>
+      <sourceValue class="variable">
+        <path element="rstkfRows_ReceivableTxn_ForeignCurrency"/>
+      </sourceValue>
+    </param>
+  </outputParams>
+  <args>
+    <argument id="reuseConnectionName">
+      <value class="variable">
+        <path element="reuseConnectionName"/>
+      </value>
+    </argument>
+    <argument id="rstkRows_Invoice">
+      <value class="variable">
+        <path element="rstkRows_Invoice"/>
+      </value>
+    </argument>
+    <argument id="SourceData_AR">
+      <value class="variable">
+        <path element="SourceData_AR"/>
+      </value>
+    </argument>
+  </args>
+  <outputArgs>
+    <outputArgument id="rstkfRows_ForeignExchRateSchedule_ExchRate">
+      <name class="value" valueClass="string">rstkfRows_ForeignExchRateSchedule_ExchRate</name>
+    </outputArgument>
+    <outputArgument id="rstkfRows_ReceivableTxn_HomeCurrency" scope="Folder">
+      <name class="value" valueClass="string">rstkfRows_ReceivableTxn_HomeCurrency</name>
+    </outputArgument>
+    <outputArgument id="rstkfRows_ReceivableTxn_ForeignCurrency" scope="Folder">
+      <name class="value" valueClass="string">rstkfRows_ReceivableTxn_ForeignCurrency</name>
+    </outputArgument>
+  </outputArgs>
+</testCase>

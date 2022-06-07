@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testCase failureBehaviour="Continue" id="149">
+<testCase failureBehaviour="Continue" id="2">
   <summary/>
   <steps>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="151" title="Salesforce Connect: SFConnection (Test)">
@@ -1345,12 +1345,12 @@
                                 </clause>
                               </clauses>
                             </apiCall>
-                            <apiCall apiId="com.provar.plugins.bundled.apis.If" name="If" testItemId="888" title="If: {op_componentExcelDataRow.FixedComponentQtyFlag = true}">
+                            <apiCall apiId="com.provar.plugins.bundled.apis.If" name="If" testItemId="888" title="If: {op_ConsumableCompExcelRow.FixedComponentQtyFlag = true}">
                               <arguments>
                                 <argument id="condition">
                                   <value class="eq">
                                     <lhs class="variable">
-                                      <path element="op_componentExcelDataRow"/>
+                                      <path element="op_ConsumableCompExcelRow"/>
                                       <path element="FixedComponentQtyFlag"/>
                                     </lhs>
                                     <rhs class="value" valueClass="boolean">true</rhs>
@@ -1390,7 +1390,7 @@
                                         <argument id="rstk__woorddmd_qtytype_fixedqty_ui__c">
                                           <value class="variable">
                                             <path element="op_ConsumableCompExcelRow"/>
-                                            <path element="FixedComponentQtyFlags"/>
+                                            <path element="FixedComponentQtyFlag"/>
                                           </value>
                                         </argument>
                                         <argument id="rstk__woorddmd_comments__c">

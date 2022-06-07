@@ -148,7 +148,6 @@ public class rstk__LWocstNew {
 	@FindByLabel(label = "Complete")
 	public WebElement complete;
 
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Close Work Order")
 	public WebElement closeWorkOrder;
@@ -158,12 +157,10 @@ public class rstk__LWocstNew {
 	@FindByLabel(label = "Reverse WO Close")
 	public WebElement reverseWOClose;
 
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Reverse Complete")
 	public WebElement reverseComplete;
 
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Recall")
 	public WebElement recall;
