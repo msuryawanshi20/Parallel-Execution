@@ -216,6 +216,9 @@
         <clause name="substeps" testItemId="13">
           <steps>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="47" title="Set the Product field to {ip_Product}">
+              <tags>
+                <string>disabled</string>
+              </tags>
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:locator?name=product"/>
@@ -277,6 +280,9 @@
               </generatedParameters>
             </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="48" title="Lookup the List field">
+              <tags>
+                <string>disabled</string>
+              </tags>
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:locator?name=list"/>
@@ -305,9 +311,7 @@
               </arguments>
             </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="14" title="Call the selectProduct method">
-              <tags>
-                <string>disabled</string>
-              </tags>
+              <tags/>
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:pageobject:method?operation=selectProduct&amp;pageId=pageobjects.rstk__Soconpp"/>
@@ -378,9 +382,7 @@
               </generatedParameters>
             </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="50" title="Call the setCommitmentQty method">
-              <tags>
-                <string>disabled</string>
-              </tags>
+              <tags/>
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:pageobject:method?operation=setCommitmentQty&amp;pageId=pageobjects.rstk__Soconpp"/>
@@ -420,7 +422,9 @@
               </generatedParameters>
             </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="15" title="Set the Commitment Quantity field to {ip_commitmentQuantity}">
-              <tags/>
+              <tags>
+                <string>disabled</string>
+              </tags>
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:locator?name=commitmentQuantity"/>
