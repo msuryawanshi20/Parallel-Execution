@@ -752,7 +752,7 @@
                           <value class="value" valueClass="string">false</value>
                         </argument>
                         <argument id="beforeWait">
-                          <value class="uiWait" uri="default"/>
+                          <value class="uiWait" uri="ui:wait:pageload?timeout=60"/>
                         </argument>
                         <argument id="afterWait">
                           <value class="uiWait" uri="default"/>
@@ -767,7 +767,7 @@
                           </value>
                         </argument>
                         <argument id="blur">
-                          <value class="value" valueClass="boolean">true</value>
+                          <value class="value" valueClass="boolean">false</value>
                         </argument>
                         <argument id="pressEnter">
                           <value class="value" valueClass="boolean">false</value>
@@ -805,7 +805,9 @@
                         <argument id="interactionDescription">
                           <value class="value" valueClass="string">Set the Operation select to {op_operation}</value>
                         </argument>
-                        <argument id="beforeWait"/>
+                        <argument id="beforeWait">
+                          <value class="uiWait" uri="ui:wait:pageload?timeout=60"/>
+                        </argument>
                         <argument id="afterWait"/>
                         <argument id="autoRetry"/>
                         <argument id="captureBefore">
@@ -1872,13 +1874,13 @@
       <value class="value" valueClass="string">123</value>
     </argument>
     <argument id="ip_workOrderNumber">
-      <value class="value" valueClass="string">PRO-0073</value>
+      <value class="value" valueClass="string">PRO-REG_VWTLU</value>
     </argument>
     <argument id="ip_trasactionDate">
-      <value class="value" valueClass="string">8/11/2021</value>
+      <value class="value" valueClass="string">06/06/2022</value>
     </argument>
     <argument id="op_operation">
-      <value class="value" valueClass="string">20 (Op 20) (Qty Avail:5)</value>
+      <value class="value" valueClass="string">10 (Op 10) (Qty Avail:5)</value>
     </argument>
     <argument id="ip_quantity">
       <value class="value" valueClass="string">5</value>
