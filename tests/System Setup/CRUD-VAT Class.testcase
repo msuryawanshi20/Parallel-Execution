@@ -690,10 +690,10 @@
                           <value class="value" valueClass="string">false</value>
                         </argument>
                         <argument id="beforeWait">
-                          <value class="uiWait" uri="default"/>
+                          <value class="uiWait" uri="ui:wait:pageload?timeout=60"/>
                         </argument>
                         <argument id="afterWait">
-                          <value class="uiWait" uri="default"/>
+                          <value class="uiWait" uri="ui:wait:pageload?timeout=60"/>
                         </argument>
                         <argument id="interactionDescription">
                           <value class="value" valueClass="string">Click the Delete button</value>
@@ -746,8 +746,12 @@
                               <namedValue name="response">
                                 <value class="value" valueClass="string">OK</value>
                               </namedValue>
-                              <namedValue name="beforeWait"/>
-                              <namedValue name="afterWait"/>
+                              <namedValue name="beforeWait">
+                                <value class="uiWait" uri="ui:wait:pageload?timeout=60"/>
+                              </namedValue>
+                              <namedValue name="afterWait">
+                                <value class="uiWait" uri="ui:wait:pageload?timeout=60"/>
+                              </namedValue>
                               <namedValue name="autoRetry"/>
                             </namedValues>
                           </value>

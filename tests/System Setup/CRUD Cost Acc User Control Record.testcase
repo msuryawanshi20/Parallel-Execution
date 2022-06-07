@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testCase failureBehaviour="Continue" id="47">
+<testCase failureBehaviour="Continue" id="26">
   <summary/>
   <steps>
-    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: QARSF_Admin (Test)">
+    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: SFConnection (Test)">
       <arguments>
         <argument id="connectionName">
           <value class="value" valueClass="string">QARSF_Admin</value>
         </argument>
         <argument id="resultName">
-          <value class="value" valueClass="string">QARSF_Admin</value>
+          <value class="value" valueClass="string">SFConnection</value>
         </argument>
         <argument id="resultScope">
           <value class="value" valueClass="string">Test</value>
@@ -24,7 +24,7 @@
         </argument>
         <argument id="reuseConnectionName"/>
         <argument id="alreadyOpenBehaviour">
-          <value class="value" valueClass="string">Fail</value>
+          <value class="value" valueClass="string">Reuse</value>
         </argument>
         <argument id="privateBrowsingMode"/>
         <argument id="enableObjectIdLogging">
@@ -161,7 +161,7 @@
             <caseCall testCaseId="312349cb-5b8d-4cb6-98da-0af72e54902a" testCasePath="tests/System Setup/Callable/Create Cost Acc User Control Record.testcase" testItemId="123">
               <arguments>
                 <argument id="reuseConnectionName">
-                  <value class="value" valueClass="string">QARSF_Admin</value>
+                  <value class="value" valueClass="string">SFConnection</value>
                 </argument>
                 <argument id="ip_UserID">
                   <value class="variable">
@@ -330,7 +330,7 @@
                     <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiWithScreen" name="UiWithScreen" testItemId="11" title="On SF rstk__Csusracctcntl page with pageobject Rstk__ Csusracctcntl">
                       <arguments>
                         <argument id="uiConnectionName">
-                          <value class="value" valueClass="string">QARSF_Admin</value>
+                          <value class="value" valueClass="string">SFConnection</value>
                         </argument>
                         <argument id="target">
                           <value class="uiTarget" uri="sf:ui:target?page=rstk__Csusracctcntl&amp;pageObject=pageobjects.rstk__Csusracctcntl"/>
@@ -557,7 +557,7 @@
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiWithScreen" name="UiWithScreen" testItemId="44" title="On SF rstk__Csusracctcntl page with pageobject Rstk__ Csusracctcntl">
               <arguments>
                 <argument id="uiConnectionName">
-                  <value class="value" valueClass="string">QARSF_Admin</value>
+                  <value class="value" valueClass="string">SFConnection</value>
                 </argument>
                 <argument id="target">
                   <value class="uiTarget" uri="sf:ui:target?page=rstk__Csusracctcntl&amp;pageObject=pageobjects.rstk__Csusracctcntl"/>
@@ -651,19 +651,23 @@
                                 <value class="value" valueClass="string">OK</value>
                               </namedValue>
                               <namedValue name="comparisonType">
-                                <value class="value" valueClass="string">EqualTo</value>
+                                <value class="value" valueClass="string">StartsWith</value>
                               </namedValue>
                               <namedValue name="caseSensitive">
                                 <value class="value" valueClass="boolean">false</value>
                               </namedValue>
                               <namedValue name="isNormalise">
-                                <value class="value" valueClass="boolean">true</value>
+                                <value class="value" valueClass="boolean">false</value>
                               </namedValue>
                               <namedValue name="isRegex">
                                 <value class="value" valueClass="boolean">false</value>
                               </namedValue>
-                              <namedValue name="beforeWait"/>
-                              <namedValue name="afterWait"/>
+                              <namedValue name="beforeWait">
+                                <value class="uiWait" uri="ui:wait:pageload?timeout=60"/>
+                              </namedValue>
+                              <namedValue name="afterWait">
+                                <value class="uiWait" uri="ui:wait:pageload?timeout=60"/>
+                              </namedValue>
                               <namedValue name="autoRetry"/>
                             </namedValues>
                           </value>
