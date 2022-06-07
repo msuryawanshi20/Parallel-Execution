@@ -430,7 +430,7 @@
                   <value class="value" valueClass="string">false</value>
                 </argument>
                 <argument id="beforeWait">
-                  <value class="uiWait" uri="default"/>
+                  <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
                 </argument>
                 <argument id="afterWait">
                   <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
@@ -450,7 +450,9 @@
                     <path element="ip_commitmentQuantity"/>
                   </value>
                 </argument>
-                <argument id="blur"/>
+                <argument id="blur">
+                  <value class="value" valueClass="boolean">true</value>
+                </argument>
               </arguments>
               <generatedParameters>
                 <apiParam group="value" name="value" seq="10000" title="Value">
@@ -491,7 +493,7 @@
                   </value>
                 </argument>
                 <argument id="blur">
-                  <value class="value" valueClass="boolean">false</value>
+                  <value class="value" valueClass="boolean">true</value>
                 </argument>
                 <argument id="pressEnter">
                   <value class="value" valueClass="boolean">false</value>
