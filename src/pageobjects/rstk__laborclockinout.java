@@ -75,7 +75,7 @@ public class rstk__laborclockinout {
 		public WebElement hours;
 
 		@ChoiceListType()
-		@FindBy(xpath = ".//tr/td[7]//select")
+		@FindBy(xpath = ".//tr/td[7]//option")
 		public WebElement workOrder;
 
 		@ChoiceListType()
@@ -116,8 +116,6 @@ public class rstk__laborclockinout {
 
 	}
 
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
-	@PageWait.BackgroundActivity(timeoutSeconds = 60)
 	@FindBy(id = "pg:fm:pb_bookings:j_id224:0:j_id226:j_id227:j_id228:tb")
 	@PageTable(firstRowContainsHeaders = false, row = TimeAndQtyBookingDetailsTable.class)
 	public List<TimeAndQtyBookingDetailsTable> timeAndQtyBookingDetailsTable;

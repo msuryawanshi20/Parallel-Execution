@@ -519,7 +519,7 @@
                 </argument>
               </arguments>
             </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiWithRow" name="UiWithRow" testItemId="75" title="With Time And Qty Booking Details Table rows 1">
+            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiWithRow" name="UiWithRow" testItemId="75" title="With Time And Qty Booking Details Table rows {1}">
               <arguments>
                 <argument id="uiConnectionName">
                   <value class="value" valueClass="string">SFConnection</value>
@@ -528,22 +528,26 @@
                   <value class="uiLocator" uri="sf:ui:locator:row?table=timeAndQtyBookingDetailsTable"/>
                 </argument>
                 <argument id="uiRowLocator">
-                  <value class="value" valueClass="string">1</value>
+                  <value class="value" valueClass="decimal">1</value>
                 </argument>
                 <argument id="locatorDescription">
-                  <value class="value" valueClass="string">With Time And Qty Booking Details Table rows 1</value>
+                  <value class="value" valueClass="string">With Time And Qty Booking Details Table rows {1}</value>
                 </argument>
                 <argument id="failIfNotFound">
                   <value class="value" valueClass="boolean">true</value>
                 </argument>
-                <argument id="debugRowLocator"/>
+                <argument id="debugRowLocator">
+                  <value class="value" valueClass="boolean">true</value>
+                </argument>
                 <argument id="resultName">
                   <value class="value" valueClass="string">Row</value>
                 </argument>
                 <argument id="resultScope">
                   <value class="value" valueClass="string">Local</value>
                 </argument>
-                <argument id="autoRetry"/>
+                <argument id="autoRetry">
+                  <value class="value" valueClass="boolean">true</value>
+                </argument>
               </arguments>
               <clauses>
                 <clause name="substeps" testItemId="76">
