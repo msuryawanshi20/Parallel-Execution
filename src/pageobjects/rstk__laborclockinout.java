@@ -62,47 +62,33 @@ public class rstk__laborclockinout {
 	@PageRow()
 	public static class TimeAndQtyBookingDetailsTable {
 
-		@PageWait.Field(timeoutSeconds = 10)
 		@ChoiceListType()
 		@FindBy(xpath = ".//tr/td[2]/select")
 		public WebElement bookingType;
 
-		@PageWait.Field(timeoutSeconds = 10)
 		@TextType()
 		@FindBy(xpath = ".//tr/td[3]//input")
 		public WebElement transactionDate;
 
-
-		@PageWait.Field(timeoutSeconds = 10)
 		@TextType()
 		@FindBy(xpath = ".//tr/td[6]//input")
 		public WebElement hours;
 
-
-		@PageWait.Field(timeoutSeconds = 10)
 		@ChoiceListType()
 		@FindBy(xpath = ".//tr/td[7]//select")
 		public WebElement workOrder;
 
-
-		@PageWait.Field(timeoutSeconds = 10)
 		@ChoiceListType()
 		@FindBy(xpath = ".//tr/td[8]//select")
 		public WebElement operation;
 
-
-		@PageWait.Field(timeoutSeconds = 10)
 		@BooleanType()
 		@FindBy(xpath = ".//tr/td[9]//input")
 		public WebElement setupLabor;
 
-
-
 		@BooleanType()
 		@FindBy(xpath = ".//tr/td[10]//input")
 		public WebElement complete;
-
-
 
 		@BooleanType()
 		@FindBy(xpath = ".//tr/td[11]//input")
