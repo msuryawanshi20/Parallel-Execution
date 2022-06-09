@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testCase id="138">
+<testCase id="6">
   <summary/>
   <steps>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: SFConnection (Test)">
@@ -961,6 +961,242 @@
                         </argument>
                       </arguments>
                     </apiCall>
+                    <caseCall testCaseId="c22256f6-e6e3-4688-9ede-d7073d7e6842" testCasePath="tests/Work Order -RSTKLUI/Callable/LUI-Issue Components.testcase" testItemId="252">
+                      <arguments>
+                        <argument id="reuseConnectionName">
+                          <value class="value" valueClass="string">SFConnection</value>
+                        </argument>
+                        <argument id="ip_RecordID"/>
+                      </arguments>
+                    </caseCall>
+                  </steps>
+                </clause>
+              </clauses>
+            </apiCall>
+            <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="253" title="Time and Quantity Booking">
+              <arguments>
+                <argument id="description">
+                  <value class="value" valueClass="string">Time and Quantity Booking</value>
+                </argument>
+              </arguments>
+              <parameterValueSources>
+                <parameterValueSource variableName="SourceData" variableScope="Test">
+                  <cacheToken>D:/provar/QA-automation/rsqasampleproj/templates/DEVQAFF/LUI-Work Order complete Flow.xlsx;1654697452966</cacheToken>
+                  <cachedParameters>
+                    <apiParam name="RowNumber"/>
+                    <apiParam name="ItemNumber"/>
+                    <apiParam name="OverrideEmployeeRate"/>
+                    <apiParam name="BookingType"/>
+                    <apiParam name="TransactionDate"/>
+                    <apiParam name="Hours"/>
+                    <apiParam name="WorkOrder"/>
+                    <apiParam name="Operation"/>
+                    <apiParam name="SetupLabor"/>
+                    <apiParam name="Complete"/>
+                    <apiParam name="MoveOnly"/>
+                    <apiParam name="Ship"/>
+                    <apiParam name="Quantity"/>
+                    <apiParam name="LaborPayType"/>
+                    <apiParam name="OPComments"/>
+                    <apiParam name="TxnComments"/>
+                  </cachedParameters>
+                  <sourceValue class="excelTarget" debug="true" namesLocation="FirstRowOfRange" whereComparison="StartsWith" whereName="ItemNumber" whereValue="{OP_WorkOrderRow.ItemNumber}">
+                    <workbookPath class="value" valueClass="string">templates/DEVQAFF/LUI-Work Order complete Flow.xlsx</workbookPath>
+                    <worksheetName class="value" valueClass="string">Time and Qty Booking</worksheetName>
+                    <valuesRange class="value" valueClass="string">A:O</valuesRange>
+                  </sourceValue>
+                </parameterValueSource>
+              </parameterValueSources>
+              <clauses>
+                <clause name="hidden" testItemId="254">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.bundled.apis.control.ForEach" name="ForEach" testItemId="255" title="For Each: {SourceData}=&gt;op_timeAndQtyBookingRow">
+                      <arguments>
+                        <argument id="list">
+                          <value class="variable">
+                            <path element="SourceData"/>
+                          </value>
+                        </argument>
+                        <argument id="fromItem">
+                          <value class="value" valueClass="decimal">1</value>
+                        </argument>
+                        <argument id="valueName">
+                          <value class="value" valueClass="string">op_timeAndQtyBookingRow</value>
+                        </argument>
+                        <argument id="continueOnFailure"/>
+                      </arguments>
+                      <clauses>
+                        <clause name="substeps" testItemId="256">
+                          <steps>
+                            <caseCall testCaseId="9decfaff-4321-4113-89d6-7dfaa13bcb5e" testCasePath="tests/Work Order -RSTKLUI/Callable/LUI-Time and Quantity Booking.testcase" testItemId="257">
+                              <arguments>
+                                <argument id="ip_RecordID"/>
+                                <argument id="ip_ovrrideEmpRate">
+                                  <value class="variable">
+                                    <path element="op_timeAndQtyBookingRow"/>
+                                    <path element="OverrideEmployeeRate"/>
+                                  </value>
+                                </argument>
+                                <argument id="ip_operation">
+                                  <value class="variable">
+                                    <path element="op_timeAndQtyBookingRow"/>
+                                    <path element="Operation"/>
+                                  </value>
+                                </argument>
+                                <argument id="ip_Hours">
+                                  <value class="variable">
+                                    <path element="op_timeAndQtyBookingRow"/>
+                                    <path element="Hours"/>
+                                  </value>
+                                </argument>
+                                <argument id="ip_qtyCompleted">
+                                  <value class="variable">
+                                    <path element="op_timeAndQtyBookingRow"/>
+                                    <path element="Quantity"/>
+                                  </value>
+                                </argument>
+                                <argument id="ip_txnComments">
+                                  <value class="variable">
+                                    <path element="op_timeAndQtyBookingRow"/>
+                                    <path element="TxnComments"/>
+                                  </value>
+                                </argument>
+                                <argument id="reuseConnectionName">
+                                  <value class="value" valueClass="string">SFConnection</value>
+                                </argument>
+                              </arguments>
+                            </caseCall>
+                          </steps>
+                        </clause>
+                      </clauses>
+                    </apiCall>
+                  </steps>
+                </clause>
+              </clauses>
+            </apiCall>
+            <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="258" title="Work Order Receipt">
+              <arguments>
+                <argument id="description">
+                  <value class="value" valueClass="string">Work Order Receipt</value>
+                </argument>
+              </arguments>
+              <parameterValueSources>
+                <parameterValueSource variableName="SourceData" variableScope="Test">
+                  <cacheToken>D:/provar/QA-automation/rsqasampleproj/templates/DEVQAFF/LUI-Work Order complete Flow.xlsx;1654697452966</cacheToken>
+                  <cachedParameters>
+                    <apiParam name="RowNumber"/>
+                    <apiParam name="ItemNumber"/>
+                    <apiParam name="WOReceiptTraveler"/>
+                    <apiParam name="TransactionDate"/>
+                    <apiParam name="Operation"/>
+                    <apiParam name="InventoryLocationID"/>
+                    <apiParam name="InventoryLocationNumber"/>
+                    <apiParam name="QtyToBeAccepted"/>
+                    <apiParam name="LotExpirationDate"/>
+                    <apiParam name="TransactionComments"/>
+                    <apiParam name="LocationComments"/>
+                  </cachedParameters>
+                  <sourceValue class="excelTarget" namesLocation="FirstRowOfRange" whereComparison="StartsWith" whereName="ItemNumber" whereValue="{OP_WorkOrderRow.ItemNumber}">
+                    <workbookPath class="value" valueClass="string">templates/DEVQAFF/LUI-Work Order complete Flow.xlsx</workbookPath>
+                    <worksheetName class="value" valueClass="string">WO receipt</worksheetName>
+                    <valuesRange class="value" valueClass="string">A:J</valuesRange>
+                  </sourceValue>
+                </parameterValueSource>
+              </parameterValueSources>
+              <clauses>
+                <clause name="hidden" testItemId="259">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.bundled.apis.control.ForEach" name="ForEach" testItemId="260" title="For Each: {SourceData}=&gt;op_woReceipt">
+                      <arguments>
+                        <argument id="list">
+                          <value class="variable">
+                            <path element="SourceData"/>
+                          </value>
+                        </argument>
+                        <argument id="fromItem">
+                          <value class="value" valueClass="decimal">1</value>
+                        </argument>
+                        <argument id="valueName">
+                          <value class="value" valueClass="string">op_woReceipt</value>
+                        </argument>
+                        <argument id="continueOnFailure"/>
+                      </arguments>
+                      <clauses>
+                        <clause name="substeps" testItemId="261">
+                          <steps>
+                            <caseCall testCaseId="e53b0b9d-118d-4645-ac80-52c0fcd89dfe" testCasePath="tests/Work Order -RSTKLUI/Callable/LUI-Work Order Receipt.testcase" testItemId="262">
+                              <arguments>
+                                <argument id="reuseConnectionName">
+                                  <value class="value" valueClass="string">SFConnection</value>
+                                </argument>
+                                <argument id="ip_RecordID"/>
+                                <argument id="ip_locID">
+                                  <value class="variable">
+                                    <path element="op_woReceipt"/>
+                                    <path element="InventoryLocationID"/>
+                                  </value>
+                                </argument>
+                                <argument id="ip_locNum">
+                                  <value class="variable">
+                                    <path element="op_woReceipt"/>
+                                    <path element="InventoryLocationNumber"/>
+                                  </value>
+                                </argument>
+                                <argument id="ip_txnQty">
+                                  <value class="variable">
+                                    <path element="op_woReceipt"/>
+                                    <path element="QtyToBeAccepted"/>
+                                  </value>
+                                </argument>
+                                <argument id="ip_txnComments">
+                                  <value class="variable">
+                                    <path element="op_woReceipt"/>
+                                    <path element="TransactionComments"/>
+                                  </value>
+                                </argument>
+                                <argument id="ip_locComments">
+                                  <value class="variable">
+                                    <path element="op_woReceipt"/>
+                                    <path element="LocationComments"/>
+                                  </value>
+                                </argument>
+                              </arguments>
+                              <outputArguments>
+                                <outputArgument id="op_orderStatus">
+                                  <name class="value" valueClass="string">op_orderStatus</name>
+                                </outputArgument>
+                              </outputArguments>
+                            </caseCall>
+                          </steps>
+                        </clause>
+                      </clauses>
+                    </apiCall>
+                  </steps>
+                </clause>
+              </clauses>
+            </apiCall>
+            <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="263" title="Work Order Recepit">
+              <arguments>
+                <argument id="description">
+                  <value class="value" valueClass="string">Work Order Recepit</value>
+                </argument>
+              </arguments>
+              <clauses>
+                <clause name="hidden" testItemId="264">
+                  <steps>
+                    <caseCall testCaseId="657790f6-05bb-4aa5-a4d4-5552c2d8601b" testCasePath="tests/Work Order -RSTKLUI/Callable/LUI-Work Order Close.testcase" testItemId="265">
+                      <arguments>
+                        <argument id="reuseConnectionName">
+                          <value class="value" valueClass="string">SFConnection</value>
+                        </argument>
+                        <argument id="ip_RecordID"/>
+                      </arguments>
+                      <outputArguments>
+                        <outputArgument id="op_orderStatus">
+                          <name class="value" valueClass="string">op_orderStatus</name>
+                        </outputArgument>
+                      </outputArguments>
+                    </caseCall>
                   </steps>
                 </clause>
               </clauses>

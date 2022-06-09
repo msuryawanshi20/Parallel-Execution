@@ -356,9 +356,11 @@
                         <argument id="interactionDescription">
                           <value class="value" valueClass="string">Click the Next</value>
                         </argument>
-                        <argument id="beforeWait"/>
-                        <argument id="afterWait">
+                        <argument id="beforeWait">
                           <value class="uiWait" uri="ui:wait:pageload?timeout=60"/>
+                        </argument>
+                        <argument id="afterWait">
+                          <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
                         </argument>
                         <argument id="autoRetry"/>
                         <argument id="captureBefore">
@@ -420,7 +422,7 @@
                           <value class="valueList" mutable="Mutable"/>
                         </argument>
                         <argument id="beforeWait">
-                          <value class="uiWait" uri="ui:wait:timed?seconds=3"/>
+                          <value class="uiWait" uri="ui:wait:pageload?timeout=60"/>
                         </argument>
                         <argument id="autoRetry"/>
                       </arguments>
@@ -482,10 +484,10 @@
                           <value class="value" valueClass="string">false</value>
                         </argument>
                         <argument id="beforeWait">
-                          <value class="uiWait" uri="default"/>
+                          <value class="uiWait" uri="ui:wait:pageload?timeout=60"/>
                         </argument>
                         <argument id="afterWait">
-                          <value class="uiWait" uri="default"/>
+                          <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
                         </argument>
                         <argument id="interactionDescription">
                           <value class="value" valueClass="string">Click the Finish</value>

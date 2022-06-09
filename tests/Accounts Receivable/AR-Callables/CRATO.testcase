@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testCase visibility="Internal">
+<testCase registryId="14e9de45-32ac-4edd-a322-736f32874d2d" visibility="Internal">
   <summary/>
   <steps>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: SFConnection (Test)">
@@ -2121,6 +2121,101 @@
                 </argument>
                 <argument id="failureMessage"/>
               </arguments>
+            </apiCall>
+          </steps>
+        </clause>
+      </clauses>
+    </apiCall>
+    <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="430" title="Update AR Control">
+      <tags>
+        <string>disabled</string>
+      </tags>
+      <arguments>
+        <argument id="description">
+          <value class="value" valueClass="string">Update AR Control</value>
+        </argument>
+      </arguments>
+      <clauses>
+        <clause name="hidden" testItemId="431">
+          <steps>
+            <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexSoqlQuery" name="ApexSoqlQuery" testItemId="432" title="SOQL Query: SELECT Id,rstkf__arcntl_arbatchopt__c FROM rstkf__arcntl__c WHERE rstkf__arcntl_glcmp__c = '{SourceData_CRATO.CompanyID}'=&gt;rstkfRows_ARControl">
+              <arguments>
+                <argument id="soqlQuery">
+                  <value class="compound">
+                    <parts>
+                      <value valueClass="string">SELECT Id,rstkf__arcntl_arbatchopt__c FROM rstkf__arcntl__c WHERE rstkf__arcntl_glcmp__c = '</value>
+                      <variable>
+                        <path element="SourceData_CRATO"/>
+                        <path element="CompanyID"/>
+                      </variable>
+                      <value valueClass="string">'</value>
+                    </parts>
+                  </value>
+                </argument>
+                <argument id="apexConnectionName">
+                  <value class="value" valueClass="string">SFConnection</value>
+                </argument>
+                <argument id="resultListName">
+                  <value class="value" valueClass="string">rstkfRows_ARControl</value>
+                </argument>
+                <argument id="resultScope">
+                  <value class="value" valueClass="string">Test</value>
+                </argument>
+              </arguments>
+            </apiCall>
+            <apiCall apiId="com.provar.plugins.bundled.apis.If" name="If" testItemId="433" title="If: {rstkfRows_ARControl.rstkf__arcntl_arbatchopt__c = &quot;false&quot;}">
+              <arguments>
+                <argument id="condition">
+                  <value class="eq">
+                    <lhs class="variable">
+                      <path element="rstkfRows_ARControl"/>
+                      <path element="rstkf__arcntl_arbatchopt__c"/>
+                    </lhs>
+                    <rhs class="value" valueClass="string">false</rhs>
+                  </value>
+                </argument>
+              </arguments>
+              <clauses>
+                <clause name="then" testItemId="434">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexUpdateObject" name="ApexUpdateObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.UpdateCustomObjectTestStepCommand" testItemId="435" title="Update Object: rstkf__arcntl__c = {rstkfRows_ARControl.Id}">
+                      <arguments>
+                        <argument id="objectType">
+                          <value class="value" valueClass="string">rstkf__arcntl__c</value>
+                        </argument>
+                        <argument id="objectId">
+                          <value class="variable">
+                            <path element="rstkfRows_ARControl"/>
+                            <path element="Id"/>
+                          </value>
+                        </argument>
+                        <argument id="resultName">
+                          <value class="value" valueClass="string">rstkfUpdated</value>
+                        </argument>
+                        <argument id="apexConnectionName">
+                          <value class="value" valueClass="string">SFConnection</value>
+                        </argument>
+                        <argument id="rstkf__arcntl_arbatchopt__c">
+                          <value class="value" valueClass="boolean">true</value>
+                        </argument>
+                        <argument id="assignmentRuleId"/>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Test</value>
+                        </argument>
+                      </arguments>
+                      <parameterGeneratorProperties>
+                        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.UpdateCustomObjectTestStepCommand.ConnectionName">QARSF_Admin</propertyValue>
+                        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.UpdateCustomObjectTestStepCommand.CustomObjectName">rstkf__arcntl__c</propertyValue>
+                      </parameterGeneratorProperties>
+                      <generatedParameters>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=rstkf__arcntl__c&amp;field=rstkf__arcntl_arbatchopt__c" name="rstkf__arcntl_arbatchopt__c" title="rstkf__arcntl_arbatchopt__c">
+                          <summary>When checked, multiple Receivable Transactions can be contained within a session. When unchecked, each Receivable Transaction is its own session (one-for-one).</summary>
+                        </apiParam>
+                      </generatedParameters>
+                    </apiCall>
+                  </steps>
+                </clause>
+              </clauses>
             </apiCall>
           </steps>
         </clause>

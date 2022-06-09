@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testProject selectedBrowserProviderDeviceName="Full Screen" selectedBrowserProviderName="Desktop" selectedEnvironment="AutomationOrg">
-  <title>/Parallel-Execution/.testproject</title>
+<testProject selectedBrowserProviderDeviceName="Full Screen" selectedBrowserProviderName="Desktop" selectedEnvironment="DEVQAFF_LUI">
+  <title>/rsqasampleproj/.testproject</title>
   <configPath>config</configPath>
   <testsPath>tests</testsPath>
   <testPlansPath>plans</testPlansPath>
@@ -58,7 +58,7 @@
             <connectionUrl envName="AutomationOrg" secureStorageNodeId="13cdf313-dacc-4856-b305-3125005e6f7e" url="sf:environment=PRERELEASE;apiLoginUrl=https://automationtesting2.my.salesforce.com;identityServiceUrl=https://login.salesforce.com/id/00D5f000005vwGkEAI/0055f000008Hn0WAAS;clientId={clientId};clientSecret={clientSecret};authenticationType=OAUTH;callbackUrl={callbackUrl};accessToken={accessToken};refreshToken={refreshToken}"/>
             <connectionUrl envName="QARSF" secureStorageNodeId="aaa10583-3a39-4898-b18d-5372e4466cf6" url="sf:environment=PRERELEASE;apiLoginUrl=https://rstk-qa-rsf.my.salesforce.com;identityServiceUrl=https://login.salesforce.com/id/00D410000011HE0EAM/0054100000707DDAAY;clientId={clientId};clientSecret={clientSecret};authenticationType=OAUTH;callbackUrl={callbackUrl};accessToken={accessToken};refreshToken={refreshToken}"/>
             <connectionUrl envName="LUI-PM" secureStorageNodeId="c18fb513-ae63-4d98-92ac-591ef45d8708" url="sf:user=automation@rootstock.com.lui;password={password};securityToken={securityToken};environment=OTHER"/>
-            <connectionUrl envName="DEVQAFF_LUI" secureStorageNodeId="e80731bf-e4d8-4890-9b7c-90b2d753374d" url="sf:user=msuryawanshi@rootstock.com.devqaff;password={password};securityToken={securityToken};environment=PRERELEASE;lightningMode=true"/>
+            <connectionUrl envName="DEVQAFF_LUI" secureStorageNodeId="e80731bf-e4d8-4890-9b7c-90b2d753374d" url="sf:environment=PRERELEASE;apiLoginUrl=https://rstk-dev-qa-ff.my.salesforce.com;identityServiceUrl=https://login.salesforce.com/id/00Dd0000000fRHIEA2/0056T000008ZV22QAG;clientId={clientId};clientSecret={clientSecret};lightningMode=true;authenticationType=OAUTH;callbackUrl={callbackUrl};accessToken={accessToken};refreshToken={refreshToken}"/>
             <connectionUrl envName="DEVQAFF" secureStorageNodeId="b1f9ece9-3af9-4ca1-82ec-32437d7b6d92" url="sf:user=achoudhary@rootstock.com.dev-qa-ff;password={password};securityToken={securityToken};environment=PRERELEASE"/>
             <connectionUrl envName="PDE5" secureStorageNodeId="03d6ef83-22bf-4b92-a0ea-0ee396e23e2f" url="sf:user=msuryawanshi@rootstock.com.pde5;password={password};securityToken={securityToken};environment=PROD_DEV;nsPrefixOverride=-rstk"/>
           </connectionUrls>

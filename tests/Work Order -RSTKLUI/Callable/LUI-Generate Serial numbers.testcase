@@ -553,8 +553,8 @@
                 </argument>
                 <argument id="fieldAssertions">
                   <value class="valueList" mutable="Mutable">
-                    <uiFieldAssertion resultName="serialAddSuccess">
-                      <fieldLocator uri="ui:pageobject:field?field=serialAddSuccess&amp;pageId=pageobjects.wocst_LUI"/>
+                    <uiFieldAssertion resultName="flowCompletionMessage">
+                      <fieldLocator uri="ui:pageobject:field?field=flowCompletionMessage&amp;pageId=pageobjects.wocst_LUI"/>
                       <attributeAssertions>
                         <uiAttributeAssertion attributeName="value" caseInsensitive="true" comparisonType="Contains" normalize="true">
                           <value class="value" valueClass="string">have been generated </value>
@@ -597,7 +597,7 @@
                   <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
+                  <value class="uiWait" uri="ui:wait:pageload?timeout=60"/>
                 </argument>
                 <argument id="interactionDescription">
                   <value class="value" valueClass="string">Click the Finish</value>

@@ -66,6 +66,9 @@
         <clause name="substeps" testItemId="15">
           <steps>
             <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="430" title="Update AR Control">
+              <tags>
+                <string>disabled</string>
+              </tags>
               <arguments>
                 <argument id="description">
                   <value class="value" valueClass="string">Update AR Control</value>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testCase id="136" registryId="add8c644-99ea-4397-9f83-18f4d91f0faf" visibility="Internal">
+<testCase id="5" registryId="657790f6-05bb-4aa5-a4d4-5552c2d8601b" visibility="Internal">
   <summary/>
   <steps>
-    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="51" title="Salesforce Connect: SFConnection (Test)">
+    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="52" title="Salesforce Connect: SFConnection (Test)">
       <arguments>
         <argument id="connectionName">
           <value class="value" valueClass="string">QARSF_Admin</value>
@@ -16,10 +16,10 @@
         <argument id="uiApplicationName">
           <value class="value" valueClass="string">rstk__Work_Orders</value>
         </argument>
-        <argument id="quickUiLogin">
+        <argument argId="ab7fa9dc-49e6-4db1-96e0-1668d25ac58f" id="quickUiLogin">
           <value class="value" valueClass="boolean">true</value>
         </argument>
-        <argument argId="9c2642ea-7840-4f53-ab74-389f91d048ac" id="closeAllPrimaryTabs">
+        <argument argId="3b2bfab8-fae8-4cc5-b843-b24fc0a372e5" id="closeAllPrimaryTabs">
           <value class="value" valueClass="boolean">true</value>
         </argument>
         <argument argId="815e8712-0b1e-4550-ab50-fa73e3b4d89e" id="reuseConnectionName">
@@ -27,7 +27,7 @@
             <path element="reuseConnectionName"/>
           </value>
         </argument>
-        <argument id="alreadyOpenBehaviour">
+        <argument argId="c5492b57-c8db-4019-93db-9b98f3166095" id="alreadyOpenBehaviour">
           <value class="value" valueClass="string">Reuse</value>
         </argument>
         <argument id="privateBrowsingMode"/>
@@ -49,9 +49,9 @@
         <argument id="webBrowser"/>
       </arguments>
     </apiCall>
-    <apiCall apiId="com.provar.plugins.bundled.apis.If" name="If" testItemId="52" title="If: {ip_RecordID != null}">
+    <apiCall apiId="com.provar.plugins.bundled.apis.If" name="If" testItemId="53" title="If: {ip_RecordID != null}">
       <arguments>
-        <argument id="condition">
+        <argument argId="eddc7d2e-7529-4298-b1f6-6ae3ef7fdd73" id="condition">
           <value class="ne">
             <lhs class="variable">
               <path element="ip_RecordID"/>
@@ -60,14 +60,14 @@
         </argument>
       </arguments>
       <clauses>
-        <clause name="then" testItemId="50">
+        <clause name="then" testItemId="51">
           <steps>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiWithScreen" name="UiWithScreen" testItemId="19" title="On SF Work Order (Regular) View screen">
+            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiWithScreen" name="UiWithScreen" testItemId="20" title="On SF Work Order (Regular) View screen">
               <arguments>
-                <argument id="uiConnectionName">
+                <argument argId="8392446a-70df-40a2-9b1a-5ba76a1057a4" id="uiConnectionName">
                   <value class="value" valueClass="string">SFConnection</value>
                 </argument>
-                <argument id="target">
+                <argument argId="f7d327eb-50a1-4376-95d1-6f352210fe0a" id="target">
                   <value class="uiTarget" uri="sf:ui:target?object=rstk__wocst__c&amp;action=View&amp;recordType=Regular"/>
                 </argument>
                 <argument id="targetDescription">
@@ -79,7 +79,7 @@
                 <argument id="windowSelection">
                   <value class="value" valueClass="string">Default</value>
                 </argument>
-                <argument argId="2dbf40ef-14b7-493f-8524-1a5c4bcab64d" id="windowSize">
+                <argument id="windowSize">
                   <value class="value" valueClass="string">Default</value>
                 </argument>
                 <argument id="closeWindow"/>
@@ -111,7 +111,7 @@
         </clause>
       </clauses>
     </apiCall>
-    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiWithScreen" name="UiWithScreen" testItemId="61" title="On wocst_LUI page">
+    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiWithScreen" name="UiWithScreen" testItemId="57" title="On wocst_LUI page">
       <arguments>
         <argument id="uiConnectionName">
           <value class="value" valueClass="string">SFConnection</value>
@@ -120,7 +120,7 @@
           <value class="uiTarget" uri="ui:pageobject:target?pageId=pageobjects.wocst_LUI"/>
         </argument>
         <argument id="navigate">
-          <value class="value" valueClass="string">Dont</value>
+          <value class="value" valueClass="string">Always</value>
         </argument>
         <argument id="targetDescription">
           <value class="value" valueClass="string">On wocst_LUI page</value>
@@ -141,9 +141,9 @@
         <argument id="uiTargetUrl"/>
       </arguments>
       <clauses>
-        <clause name="substeps" testItemId="62">
+        <clause name="substeps" testItemId="58">
           <steps>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="63" title="Click the Actions">
+            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="59" title="Click the Actions">
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:pageobject:field?field=actions&amp;pageId=pageobjects.wocst_LUI"/>
@@ -180,10 +180,10 @@
                 </apiParam>
               </generatedParameters>
             </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="64" title="Click the Allocate Components">
+            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="60" title="Click the Close">
               <arguments>
                 <argument id="locator">
-                  <value class="uiLocator" uri="ui:pageobject:field?field=allocateComponents&amp;pageId=pageobjects.wocst_LUI"/>
+                  <value class="uiLocator" uri="ui:pageobject:field?field=close&amp;pageId=pageobjects.wocst_LUI"/>
                 </argument>
                 <argument id="interaction">
                   <value class="uiInteraction" uri="ui:interaction?name=action"/>
@@ -201,10 +201,10 @@
                   <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="afterWait">
-                  <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
+                  <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Click the Allocate Components</value>
+                  <value class="value" valueClass="string">Click the Close</value>
                 </argument>
                 <argument id="autoRetry"/>
                 <argument id="ieClickMethod">
@@ -231,7 +231,7 @@
                 </apiParam>
               </generatedParameters>
             </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="65" title="Call the readToastMessageText method">
+            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="61" title="Call the readToastMessageText method">
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:pageobject:method?operation=readToastMessageText&amp;pageId=pageobjects.wocst_LUI"/>
@@ -242,9 +242,7 @@
                 <argument id="interactionDescription">
                   <value class="value" valueClass="string">Call the readToastMessageText method</value>
                 </argument>
-                <argument id="beforeWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
+                <argument id="beforeWait"/>
                 <argument id="afterWait"/>
                 <argument id="autoRetry"/>
                 <argument id="captureBefore">
@@ -278,7 +276,7 @@
                 </apiParam>
               </generatedParameters>
             </apiCall>
-            <apiCall apiId="com.provar.plugins.bundled.apis.AssertValues" name="AssertValues" testItemId="66" title="Assert: {op_ToastMessageText} EqualTo Components have been allocated successfully">
+            <apiCall apiId="com.provar.plugins.bundled.apis.AssertValues" name="AssertValues" testItemId="62" title="Assert: {op_ToastMessageText} EqualTo Work order has been closed successfully">
               <arguments>
                 <argument id="expectedValue">
                   <value class="variable">
@@ -289,7 +287,7 @@
                   <value class="value" valueClass="string">EqualTo</value>
                 </argument>
                 <argument id="actualValue">
-                  <value class="value" valueClass="string">Components have been allocated successfully</value>
+                  <value class="value" valueClass="string">Work order has been closed successfully</value>
                 </argument>
                 <argument id="caseSensitive">
                   <value class="value" valueClass="boolean">false</value>
@@ -310,11 +308,11 @@
                   <value class="value" valueClass="boolean">false</value>
                 </argument>
                 <argument id="failureMessage">
-                  <value class="value" valueClass="string">Issue with Component Extractions</value>
+                  <value class="value" valueClass="string">Issue with work Order Close</value>
                 </argument>
               </arguments>
             </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiAssert" isTitleUpdated="true" name="UiAssert" testItemId="67" title="Verify Order status">
+            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiAssert" isTitleUpdated="true" name="UiAssert" testItemId="63" title="Verify Order status">
               <arguments>
                 <argument id="resultName">
                   <value class="value" valueClass="string">op_orderStatus</value>
@@ -347,7 +345,7 @@
                 <argument id="autoRetry"/>
               </arguments>
             </apiCall>
-            <apiCall apiId="com.provar.plugins.bundled.apis.control.SetValues" isTitleUpdated="true" name="SetValues" testItemId="68" title="Set Order Status">
+            <apiCall apiId="com.provar.plugins.bundled.apis.control.SetValues" isTitleUpdated="true" name="SetValues" testItemId="64" title="Set Order Status">
               <arguments>
                 <argument id="values">
                   <value class="valueList" mutable="Mutable">
@@ -425,7 +423,7 @@
       </value>
     </argument>
     <argument id="ip_RecordID">
-      <value class="value" valueClass="string">a6X6T0000016FahUAE</value>
+      <value class="value" valueClass="string">a6X6T0000016FcsUAE</value>
     </argument>
   </args>
   <outputArgs>

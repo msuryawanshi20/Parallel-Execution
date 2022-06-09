@@ -531,6 +531,12 @@
                 <outputArgument id="rstkfRows_ReceivableTxn" scope="Folder">
                   <name class="value" valueClass="string">rstkfRows_ReceivableTxn</name>
                 </outputArgument>
+                <outputArgument id="rstkfRows_ReceivableTxn_HomeCurrency" scope="Folder">
+                  <name class="value" valueClass="string">rstkfRows_ReceivableTxn_HomeCurrency</name>
+                </outputArgument>
+                <outputArgument id="rstkfRows_ReceivableTxn_ForeignCurrency" scope="Folder">
+                  <name class="value" valueClass="string">rstkfRows_ReceivableTxn_ForeignCurrency</name>
+                </outputArgument>
               </outputArguments>
             </caseCall>
           </steps>
@@ -574,6 +580,16 @@
                 <argument id="SourceData_CRATO">
                   <value class="variable">
                     <path element="SourceData_CRATO"/>
+                  </value>
+                </argument>
+                <argument id="rstkfRows_ReceivableTxn_ForeignCurrency">
+                  <value class="variable">
+                    <path element="rstkfRows_ReceivableTxn_ForeignCurrency"/>
+                  </value>
+                </argument>
+                <argument id="rstkfRows_ReceivableTxn_HomeCurrency">
+                  <value class="variable">
+                    <path element="rstkfRows_ReceivableTxn_HomeCurrency"/>
                   </value>
                 </argument>
               </arguments>

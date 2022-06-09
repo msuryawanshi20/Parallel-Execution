@@ -355,7 +355,9 @@
                 <argument id="interactionDescription">
                   <value class="value" valueClass="string">Call the readToastMessageText method</value>
                 </argument>
-                <argument id="beforeWait"/>
+                <argument id="beforeWait">
+                  <value class="uiWait" uri="ui:wait:pageload?timeout=60"/>
+                </argument>
                 <argument id="afterWait"/>
                 <argument id="autoRetry"/>
                 <argument id="captureBefore">
