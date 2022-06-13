@@ -31,7 +31,7 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 8
-      
+
     - name: Build with Ant
       run: |
         mkdir $GITHUB_WORKSPACE/ProvarHome
@@ -57,24 +57,12 @@ jobs:
       with:
         name: Execution Report for ${{ github.event.inputs.plan }}- ${{ steps.date.outputs.date }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
         path: ${{ github.workspace }}/ANT/Results/*
-        
-    - uses: adrey/slack-file-upload-action@1.0.5
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Upload to slack step
+      uses: adrey/slack-file-upload-action@master
       with:
-        name: Upload Files to slack   
-        path: ${{ github.workspace }}/ANT/Results/*      
-        token: ${{ secrets.SLACK_TOKEN }}
-        channel: provar-gitaction
-        title: Build Passed
-
-    - uses: adrey/slack-file-upload-action@1.0.5
-      if: failure()
-      with:
-        name: Upload Files to slack   
-        path: ${{ github.workspace }}/ANT/Results/*      
-        token: ${{ secrets.SLACK_TOKEN }}
-        channel: provar-gitaction
-        title: Build Failed
-    
-    
-    
+          token: ${{ secrets.SLACK_TOKEN }}
+          path: ${{ github.workspace }}/ANT/Results/*
+          channel: provar-gitaction
     
