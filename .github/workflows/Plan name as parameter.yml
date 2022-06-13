@@ -1,4 +1,4 @@
-name: Using Plan Name
+name: Using Plan Name as text input
 
 on: 
   workflow_dispatch:
