@@ -3,6 +3,7 @@ package pageobjects;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -38,6 +39,14 @@ public class rstk__laborqtybookingreversal {
 		Actions actions = new Actions(driver);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//ul[@class='listbox']/li")));
 		List<WebElement> autoCompleteList = driver.findElements(By.xpath("//ul[@class='listbox']/li"));
+
+		while (autoCompleteList.size() > 5) {
+			ele.sendKeys(Keys.BACK_SPACE);
+			Thread.sleep(3000);
+			autoCompleteList = driver.findElements(By.xpath("//ul[@class='listbox']/li"));
+
+		}
+
 		for (int i = 0; i < autoCompleteList.size(); i++) {
 			actions.moveToElement(autoCompleteList.get(i)).build().perform();
 			if (autoCompleteList.get(i).getText().startsWith(WorkOrder)) {

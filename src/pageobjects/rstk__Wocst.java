@@ -52,12 +52,12 @@ public class rstk__Wocst {
 
 		List<WebElement> autoCompleteList = driver
 				.findElements(By.xpath("//div[@class='ac_results'][1]/ul[@id='IDREF']/li"));
-		if (autoCompleteList.size() > 5) {
+		while (autoCompleteList.size() > 5) {
 			ele.sendKeys(Keys.BACK_SPACE);
-			Thread.sleep(2000);
+			Thread.sleep(3000);
+			autoCompleteList = driver.findElements(By.xpath("//div[@class='ac_results'][1]/ul[@id='IDREF']/li"));
 
 		}
-		autoCompleteList = driver.findElements(By.xpath("//div[@class='ac_results'][1]/ul[@id='IDREF']/li"));
 
 		for (int i = 0; i < autoCompleteList.size(); i++) {
 			Thread.sleep(500);
