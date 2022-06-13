@@ -57,12 +57,9 @@ jobs:
       with:
         name: Execution Report for ${{ github.event.inputs.plan }}- ${{ steps.date.outputs.date }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
         path: ${{ github.workspace }}/ANT/Results/*
-    - name: Checkout
-      uses: actions/checkout@v1
-    - name: Upload to slack step
-      uses: adrey/slack-file-upload-action@master
+    - name: Ganotify
+      uses: miyabin66/ganotify@v0.1.2
       with:
-          token: ${{ secrets.SLACK_TOKEN }}
-          path: ${{ github.workspace }}/ANT/Results/*
-          channel: provar-gitaction
+       type: success
+       job_name: temp
     
