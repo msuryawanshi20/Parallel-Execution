@@ -1,21 +1,13 @@
-name: Plan as parameter
+name: Using Plan Name
 
 on: 
   workflow_dispatch:
     inputs:
+      
       plan:
-        type: choice
-        description: Please select Test Plan For the execution
-        options: 
-        - API-Inventory
-        - API-Work Order
-        - Engg to WO Close
-        - Inventory Transactions
-        - RMA
-        - Recurring Billing
-        - Shop Floor
-        - Work Order
-        - Temp
+        description: 'Enter Plan Name'
+        required: true
+    
       TestEnv:
         type: choice
         description: Please select environment
