@@ -101,6 +101,7 @@ public class rstk__Woreceipt {
 	@FindBy(xpath = "//label[normalize-space(.)='Location Comments']/ancestor::span/ancestor::th/following-sibling::td//textarea")
 	public WebElement locationComments;
 
+	@PageWait.Field(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Perform Work Order Receipt")
 	public WebElement performWorkOrderReceipt;

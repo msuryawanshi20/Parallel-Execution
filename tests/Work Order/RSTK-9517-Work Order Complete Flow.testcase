@@ -311,7 +311,7 @@
                                 <path element="op_excelDataRow"/>
                                 <path element="ItemNumber"/>
                               </variable>
-                              <value valueClass="string">'</value>
+                              <value valueClass="string">%'</value>
                             </parts>
                           </value>
                         </argument>
