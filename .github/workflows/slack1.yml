@@ -56,7 +56,7 @@ jobs:
         pwd 
         zip -r ExecutionReportfor${{ github.event.inputs.plan }}-${{ steps.date.outputs.date }}.zip ${{ github.workspace }}/ANT/Results
        token: ${{ secrets.SLACK_TOKEN }}
-       path: Report.zip
+       path: ExecutionReportfor${{ github.event.inputs.plan }}-${{ steps.date.outputs.date }}.zip
        channel: provar-gitaction
     
     - uses: actions/upload-artifact@v2
