@@ -25,7 +25,7 @@ jobs:
     - name: Build with Ant
       run: |
         
-        echo "Test file " > ${{ github.workspace }}/ANT/Results/test.txt
+        echo "Test file " > test.txt
  
    
     - name: Checkout
@@ -35,6 +35,6 @@ jobs:
       uses: adrey/slack-file-upload-action@master
       with:
           token: ${{ secrets.SLACK_TOKEN }}
-          path: ${{ github.workspace }}/ANT/Results/test.txt
+          path: test.txt
           channel: provar-gitaction
     
