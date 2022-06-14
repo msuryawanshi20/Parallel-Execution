@@ -47,9 +47,10 @@ jobs:
         echo "Selected Plan Name="${{ github.event.inputs.plan }}
         echo "Selected Environment is="${{ github.event.inputs.TestEnv }}
         xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=${{ github.event.inputs.plan }}" runtests      
-        zip Execution_Report_for_${{ github.event.inputs.plan }}-${{ steps.date.outputs.date }}.zip ${{ github.workspace }}/ANT/Results
         pwd
         ls -la
+        zip Execution_Report_for_${{ github.event.inputs.plan }}-${{ steps.date.outputs.date }}.zip ${{ github.workspace }}/ANT/Results/*
+       
         
     - name: Upload Report To Slack
       uses: adrey/slack-file-upload-action@master
