@@ -24,23 +24,17 @@ jobs:
     steps:
     - name: Build with Ant
       run: |
-        mkdir $GITHUB_WORKSPACE/ANT/Results/
-        echo "Test file " > $GITHUB_WORKSPACE/ANT/Results/test.txt
-    - uses: actions/upload-artifact@v2
-      with:
-        name: Execution Report for ${{ github.event.inputs.plan }}- ${{ steps.date.outputs.date }}
-        path: ${{ github.workspace }}/ANT/Results/*
-    - uses: actions/upload-artifact@v2
-      if: failure()
-      with:
-        name: Execution Report for ${{ github.event.inputs.plan }}- ${{ steps.date.outputs.date }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-        path: ${{ github.workspace }}/ANT/Results/*
-    - name: Upload Report To Slack
+        
+        echo "Test file " > ${{ github.workspace }}/ANT/Results/test.txt
+ 
+   
+    - name: Checkout
+      uses: actions/checkout@v1
+    - run: echo "Test file " > test123.txt
+    - name: Upload to slack step
       uses: adrey/slack-file-upload-action@master
-      if: ${{ always() }}
       with:
-       run: zip -r
-       token: ${{ secrets.SLACK_TOKEN }}
-       path: ${{ github.workspace }}/ANT/Results/*
-       channel: provar-gitaction
+          token: ${{ secrets.SLACK_TOKEN }}
+          path: ${{ github.workspace }}/ANT/Results/test.txt
+          channel: provar-gitaction
     
