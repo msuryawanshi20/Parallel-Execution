@@ -35,7 +35,7 @@ jobs:
       run:  |
        echo ${{ github.run_id }}-${{ github.run_number }}
        echo JOB-NAME____${{github.job}}
-
+       echo ${{ github.run_id }}-${{ github.run_name }}
 
     - name: Upload Report To Slack
       uses: adrey/slack-file-upload-action@master
@@ -44,12 +44,3 @@ jobs:
        initial_comment: ${{ github.run_id }}-${{ github.run_number }}
        token: ${{ secrets.SLACK_TOKEN }}
     
-    - uses: actions/upload-artifact@v2
-      with:
-        name: Execution Report for ${{matrix.Plan}}- ${{ steps.date.outputs.date }}
-        path: ${{ github.workspace }}/ANT/Results/*
-    - uses: actions/upload-artifact@v2
-      if: failure()
-      with:
-        name: Execution Report for ${{matrix.Plan}}- ${{ steps.date.outputs.date }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-        path: ${{ github.workspace }}/ANT/Results/*    
