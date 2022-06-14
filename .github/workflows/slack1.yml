@@ -1,4 +1,4 @@
-name: Slack Trial Demo
+name: Slack_Trial_Demo
 
 on: 
   workflow_dispatch:
