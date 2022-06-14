@@ -16,11 +16,15 @@ on:
   
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest    
     env: 
-       PROVAR_HOME: ${{ github.workspace }}/ProvarHome
-    
+     PROVAR_HOME: ${{ github.workspace }}/ProvarHome
+    strategy:
+      fail-fast: false
+      matrix:
+        Plan: ["Test1","Test2","Test3"]
+        
     steps:
     - name: Get current date
       id: date
@@ -32,7 +36,7 @@ jobs:
         distribution: 'adopt'
         java-version: 8
 
-    - name: Build with Ant
+    - name: Execute Test Plan
       run: |
         mkdir $GITHUB_WORKSPACE/ProvarHome
         curl -O https://download.provartesting.com/latest/Provar_ANT_latest.zip
@@ -46,26 +50,25 @@ jobs:
         cd $GITHUB_WORKSPACE/ANT
         echo "Selected Plan Name="${{ github.event.inputs.plan }}
         echo "Selected Environment is="${{ github.event.inputs.TestEnv }}
-        xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=${{ github.event.inputs.plan }}" runtests      
-        pwd
-        ls -la
-        zip -v -r Execution_Report_for_${{ github.event.inputs.plan }}-${{ steps.date.outputs.date }}.zip Results/*
-       
-        
+        xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=$${{matrix.Plan}}" runtests      
+               
+    - name: Create Zip file 
+      run: zip -v -r Execution_Report_for_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.workflow}}-${{ github.run_number }}-${{github.run_attempt}}-${{job.status}}.zip Results/*
+
     - name: Upload Report To Slack
       uses: adrey/slack-file-upload-action@master
       if: ${{ always() }}
       with:
        token: ${{ secrets.SLACK_TOKEN }}
-       path: ${{ github.workspace }}/ANT/Execution_Report_for_${{ github.event.inputs.plan }}-${{ steps.date.outputs.date }}.zip
+       path: ${{ github.workspace }}/ANT/Execution_Report_for_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.workflow}}-${{ github.run_number }}-${{github.run_attempt}}-${{job.status}}.zip
        channel: provar-gitaction
     
     - uses: actions/upload-artifact@v2
       with:
-        name: Execution Report for ${{ github.event.inputs.plan }}- ${{ steps.date.outputs.date }}
+        name: Execution Report for ${{matrix.Plan}}- ${{ steps.date.outputs.date }}_${{github.workflow}}-${{ github.run_number }}-${{github.run_attempt}}-${{job.status}}
         path: ${{ github.workspace }}/ANT/Results/*
     - uses: actions/upload-artifact@v2
       if: failure()
       with:
-        name: Execution Report for ${{ github.event.inputs.plan }}- ${{ steps.date.outputs.date }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+        name: Execution Report for ${{matrix.Plan}}- ${{ steps.date.outputs.date }}_${{github.workflow}}-${{ github.run_number }}-${{github.run_attempt}}-${{job.status}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
         path: ${{ github.workspace }}/ANT/Results/*
