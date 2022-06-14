@@ -56,7 +56,7 @@ jobs:
       if: ${{ always() }}
       with:
        token: ${{ secrets.SLACK_TOKEN }}
-       path: ExecutionReportfor${{ github.event.inputs.plan }}-${{ steps.date.outputs.date }}.zip
+       path: ${{ github.workspace }}/ANT/ExecutionReportfor${{ github.event.inputs.plan }}-${{ steps.date.outputs.date }}.zip
        channel: provar-gitaction
     
     - uses: actions/upload-artifact@v2
