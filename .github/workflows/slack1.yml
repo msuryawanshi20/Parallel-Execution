@@ -61,5 +61,5 @@ jobs:
       uses: adrey/slack-file-upload-action@master
       with:
           token: ${{ secrets.SLACK_TOKEN }}
-          path: ${{ github.workspace }}/ANT/Results/ ${{name}}
+          path: ${{ github.workspace }}/ANT/Results/${{name}}
           channel: provar-gitaction
