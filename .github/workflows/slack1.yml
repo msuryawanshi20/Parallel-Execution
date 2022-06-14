@@ -49,7 +49,7 @@ jobs:
         xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=${{ github.event.inputs.plan }}" runtests      
         pwd
         ls -la
-        zip -v Execution_Report_for_${{ github.event.inputs.plan }}-${{ steps.date.outputs.date }}.zip Results*
+        zip -v -r Execution_Report_for_${{ github.event.inputs.plan }}-${{ steps.date.outputs.date }}.zip **/Results*
        
         
     - name: Upload Report To Slack
