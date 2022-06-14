@@ -52,9 +52,7 @@ jobs:
       uses: adrey/slack-file-upload-action@master
       if: ${{ always() }}
       with:
-       run: |
-        pwd 
-        zip -r ExecutionReportfor${{ github.event.inputs.plan }}-${{ steps.date.outputs.date }}.zip ${{ github.workspace }}/ANT/Results
+       run: zip -r ExecutionReportfor${{ github.event.inputs.plan }}-${{ steps.date.outputs.date }}.zip ${{ github.workspace }}/ANT/Results
        token: ${{ secrets.SLACK_TOKEN }}
        path: ExecutionReportfor${{ github.event.inputs.plan }}-${{ steps.date.outputs.date }}.zip
        channel: provar-gitaction
