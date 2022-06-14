@@ -56,10 +56,8 @@ jobs:
         echo "Selected Environment is="${{ github.event.inputs.TestEnv }}
         echo "Working Directory"
         pwd
-        xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=${{matrix.Plan}}" runtests      
-
-    - name: Create Zip file 
-      run: zip -v -r Execution_Report_for_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.workflow}}-${{ github.run_number }}-${{github.run_attempt}}-${{job.status}}.zip Results/*
+        xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=${{matrix.Plan}}" runtests            
+        zip -v -r Execution_Report_for_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.workflow}}-${{ github.run_number }}-${{github.run_attempt}}-${{job.status}}.zip Results/*
 
     - name: Upload Report To Slack
       uses: adrey/slack-file-upload-action@master
