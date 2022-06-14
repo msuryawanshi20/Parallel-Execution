@@ -32,7 +32,12 @@ jobs:
     - name: BuildName1
       run:  echo ${GITHUB_RUN_ID}-${GITHUB_RUN_NUMBER}
     - name: BuildName2
-      run:  echo ${{ github.run_id }}-${{ github.run_number }}
+      run:  |
+       echo ${{ github.run_id }}-${{ github.run_number }}
+       echo ${github.job.name}
+       echo JOB-NAME____${{github.job.name}}
+       echo JOB-NAME____${{github.job}}
+
 
     - name: Upload Report To Slack
       uses: adrey/slack-file-upload-action@master
