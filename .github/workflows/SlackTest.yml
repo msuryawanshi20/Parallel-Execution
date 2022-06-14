@@ -61,7 +61,8 @@ jobs:
       uses: adrey/slack-file-upload-action@master
       if: ${{ always() }}
       with:
+       run: zip -r Report.zip ${{ github.workspace }}/ANT/Results/
        token: ${{ secrets.SLACK_TOKEN }}
-       path: ${{ github.workspace }}/ANT/Results/*
+       path: Report.zip
        channel: provar-gitaction
     
