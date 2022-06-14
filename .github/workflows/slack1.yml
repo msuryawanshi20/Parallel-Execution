@@ -1,40 +1,16 @@
-name: temp
+on: [push]
 
-on: 
-  workflow_dispatch:
-    inputs:
-      plan:
-        type: choice
-        description: Please select Test Plan For the execution
-        options: 
-        - Temp
-      TestEnv:
-        type: choice
-        description: Please select environment
-        options: 
-        - AutomationOrg 
-  
 jobs:
-  build:
-
+  slack_upload_job:
     runs-on: ubuntu-latest
-    env: 
-       PROVAR_HOME: ${{ github.workspace }}/ProvarHome
-    
+    name: Upload test file
     steps:
-    - name: Build with Ant
-      run: |
-        
-        echo "Test file " > test.txt
- 
-   
-    - name: Checkout
-      uses: actions/checkout@v1
-    - run: echo "Test file " > test123.txt
-    - name: Upload to slack step
-      uses: adrey/slack-file-upload-action@master
-      with:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - run: echo "Test file " > test.txt
+      - name: Upload to slack step
+        uses: adrey/slack-file-upload-action@master
+        with:
           token: ${{ secrets.SLACK_TOKEN }}
           path: test.txt
           channel: provar-gitaction
-    
