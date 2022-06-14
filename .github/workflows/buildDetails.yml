@@ -37,6 +37,12 @@ jobs:
        echo JOB-NAME____${{github.job}}
        echo ${{ github.run_id }}-${{ github.run_name }}
        echo GitActionName-${{github.action}}
+       echo Status-${{github.action_status	}}
+       echo Unkown-${{ github.action	}}
+       echo Status2-${{github.action_status	}}
+       echo Unkown2-${{github.job}}
+       echo RunAttempt-${{github.run_attempt}}
+       echo WorkFlow -${{github.workflow}}
        
     - name: Checkout
       uses: actions/checkout@v1
@@ -45,7 +51,6 @@ jobs:
       uses: adrey/slack-file-upload-action@master
       if: ${{ always() }}
       with:
-       initial_comment: ${{ github.run_id }}-${{ github.run_number }}
        token: ${{ secrets.SLACK_TOKEN }}
        path: test.txt
 
