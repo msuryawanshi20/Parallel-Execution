@@ -46,13 +46,16 @@ jobs:
         wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -        
         sudo echo "deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" >>sudo tee -a /etc/apt/sources.list.d/google-chrome.list
         sudo apt-get -y install google-chrome-stable
+
+   
+    - name: Execute Test Plan-${{matrix.Plan}}
+      run: |
         echo $PROVAR_HOME
         cd $GITHUB_WORKSPACE/ANT
         echo "Selected Plan Name="${{ github.event.inputs.plan }}
         echo "Selected Environment is="${{ github.event.inputs.TestEnv }}
-   
-    - name: Execute Test Plan-${{matrix.Plan}}
-      run: xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=${{matrix.Plan}}" runtests      
+        echo "Working Directory"pwd
+        xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=${{matrix.Plan}}" runtests      
 
     - name: Create Zip file 
       run: zip -v -r Execution_Report_for_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.workflow}}-${{ github.run_number }}-${{github.run_attempt}}-${{job.status}}.zip Results/*
