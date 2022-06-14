@@ -25,7 +25,7 @@ jobs:
     - name: Build with Ant
       run: |
         mkdir $GITHUB_WORKSPACE/ANT/Results/
-      - run: echo "Test file " > $GITHUB_WORKSPACE/ANT/Results/test.txt
+        echo "Test file " > $GITHUB_WORKSPACE/ANT/Results/test.txt
     - uses: actions/upload-artifact@v2
       with:
         name: Execution Report for ${{ github.event.inputs.plan }}- ${{ steps.date.outputs.date }}
