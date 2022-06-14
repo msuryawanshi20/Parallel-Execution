@@ -33,16 +33,18 @@ jobs:
       run:  echo ${GITHUB_RUN_ID}-${GITHUB_RUN_NUMBER}
     - name: BuildName2
       run:  |
-       echo ${{ github.run_id }}-${{ github.run_number }}
+       echo ${{ github.run_id }}-${{github.run_number}}
        echo JOB-NAME____${{github.job}}
-       echo ${{ github.run_id }}-${{ github.run_name }}
+       echo ${{ github.run_id }}-${{ github.run_name}}
        echo GitActionName-${{github.action}}
-       echo Status-${{github.action_status	}}
-       echo Unkown-${{ github.action	}}
-       echo Status2-${{github.action_status	}}
+       echo Status-${{github.action_status}}
+       echo Unkown-${{github.action}}
+       echo Status2-${{github.action_status}}
        echo Unkown2-${{github.job}}
        echo RunAttempt-${{github.run_attempt}}
        echo WorkFlow -${{github.workflow}}
+       
+       echo FLowName_RunNumber_RunAttempt---${{github.workflow}}-${{ github.run_number }}-${{github.run_attempt}}
        
     - name: Checkout
       uses: actions/checkout@v1
