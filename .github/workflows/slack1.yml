@@ -48,6 +48,15 @@ jobs:
         echo "Selected Environment is="${{ github.event.inputs.TestEnv }}
         xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=${{ github.event.inputs.plan }}" runtests      
 
+    - name: Upload Report To Slack
+      uses: adrey/slack-file-upload-action@master
+      if: ${{ always() }}
+      with:
+       run: zip -r ExecutionReportfor${{ github.event.inputs.plan }}-${{ steps.date.outputs.date }}.zip ${{ github.workspace }}/ANT/Results
+       token: ${{ secrets.SLACK_TOKEN }}
+       path: Report.zip
+       channel: provar-gitaction
+    
     - uses: actions/upload-artifact@v2
       with:
         name: Execution Report for ${{ github.event.inputs.plan }}- ${{ steps.date.outputs.date }}
@@ -56,11 +65,4 @@ jobs:
       if: failure()
       with:
         name: Execution Report for ${{ github.event.inputs.plan }}- ${{ steps.date.outputs.date }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-        path: ${{ github.workspace }}/ANT/Results/*    
-    - name: Upload to slack step
-      if: ${{ always() }}
-      uses: adrey/slack-file-upload-action@master
-      with:
-          token: ${{ secrets.SLACK_TOKEN }}
-          path: ${{ github.workspace }}/ANT/Results/*
-          channel: provar-gitaction
+        path: ${{ github.workspace }}/ANT/Results/*
