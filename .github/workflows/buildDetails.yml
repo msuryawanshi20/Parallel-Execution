@@ -36,11 +36,18 @@ jobs:
        echo ${{ github.run_id }}-${{ github.run_number }}
        echo JOB-NAME____${{github.job}}
        echo ${{ github.run_id }}-${{ github.run_name }}
-
+       echo GitActionName-${{github.action}}
+       
+    - name: Checkout
+      uses: actions/checkout@v1
+    - run: echo "Test file " > test.txt
     - name: Upload Report To Slack
       uses: adrey/slack-file-upload-action@master
       if: ${{ always() }}
       with:
        initial_comment: ${{ github.run_id }}-${{ github.run_number }}
        token: ${{ secrets.SLACK_TOKEN }}
+       path: test.txt
+
+       
     
