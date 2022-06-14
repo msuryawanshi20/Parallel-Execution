@@ -65,6 +65,7 @@ jobs:
       run: |
         echo "Working Directory"
         pwd
+        cd $GITHUB_WORKSPACE/ANT
         zip -v -r Execution_Report_for_${{github.workflow}}_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}.zip Results/*
         echo "List of file"
         ls -a
