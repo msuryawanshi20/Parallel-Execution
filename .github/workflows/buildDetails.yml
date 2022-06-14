@@ -34,8 +34,6 @@ jobs:
     - name: BuildName2
       run:  |
        echo ${{ github.run_id }}-${{ github.run_number }}
-       echo ${github.job.name}
-       echo JOB-NAME____${{github.job.name}}
        echo JOB-NAME____${{github.job}}
 
 
