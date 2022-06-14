@@ -29,11 +29,11 @@ jobs:
       run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         
-    - name: Run build
-      run: |
-       echo ${GITHUB_RUN_ID}-${GITHUB_RUN_NUMBER}
-       echo ${{ github.run_id }}-${{ github.run_number }}
-      
+    - name: BuildName1
+      run:  echo ${GITHUB_RUN_ID}-${GITHUB_RUN_NUMBER}
+    - name: BuildName2
+      run:  echo ${{ github.run_id }}-${{ github.run_number }}
+
     - name: Upload Report To Slack
       uses: adrey/slack-file-upload-action@master
       if: ${{ always() }}
