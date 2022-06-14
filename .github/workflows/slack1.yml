@@ -36,7 +36,7 @@ jobs:
         distribution: 'adopt'
         java-version: 8
 
-    - name: Execute Test Plan
+    - name: Setup Environment
       run: |
         mkdir $GITHUB_WORKSPACE/ProvarHome
         curl -O https://download.provartesting.com/latest/Provar_ANT_latest.zip
@@ -50,8 +50,10 @@ jobs:
         cd $GITHUB_WORKSPACE/ANT
         echo "Selected Plan Name="${{ github.event.inputs.plan }}
         echo "Selected Environment is="${{ github.event.inputs.TestEnv }}
-        xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=$${{matrix.Plan}}" runtests      
-               
+   
+    - name: Execute Test Plan-${{matrix.Plan}}
+      run: xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=${{matrix.Plan}}" runtests      
+
     - name: Create Zip file 
       run: zip -v -r Execution_Report_for_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.workflow}}-${{ github.run_number }}-${{github.run_attempt}}-${{job.status}}.zip Results/*
 
