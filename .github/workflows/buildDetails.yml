@@ -31,14 +31,14 @@ jobs:
         
     - name: Run build
       run: |
-       echo ${{ GITHUB_RUN_ID }}-${{ GITHUB_RUN_NUMBER }}
+       echo ${GITHUB_RUN_ID}-${GITHUB_RUN_NUMBER}
        echo ${{ github.run_id }}-${{ github.run_number }}
       
     - name: Upload Report To Slack
       uses: adrey/slack-file-upload-action@master
       if: ${{ always() }}
       with:
-       title: ${{ GITHUB_RUN_ID }}-${{ GITHUB_RUN_NUMBER }}
+       title: ${GITHUB_RUN_ID}-${GITHUB_RUN_NUMBER}
        token: ${{ secrets.SLACK_TOKEN }}
     
     - uses: actions/upload-artifact@v2
