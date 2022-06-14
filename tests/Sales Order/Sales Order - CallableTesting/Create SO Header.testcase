@@ -686,8 +686,171 @@
                 </apiParam>
               </generatedParameters>
             </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiAssert" isTitleUpdated="true" name="UiAssert" testItemId="110" title="UI Assert - Read the Order Number created">
+            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiAssert" isTitleUpdated="true" name="UiAssert" testItemId="118" title="UI Assert - Order Fulfillment visible?">
               <tags/>
+              <arguments>
+                <argument id="resultName">
+                  <value class="value" valueClass="string">OrderFulfillmentVisibility</value>
+                </argument>
+                <argument id="resultScope">
+                  <value class="value" valueClass="string">Folder</value>
+                </argument>
+                <argument id="fieldAssertions">
+                  <value class="valueList" mutable="Mutable">
+                    <uiFieldAssertion resultName="orderFulfillment">
+                      <fieldLocator uri="ui:locator?name=orderFulfillment"/>
+                      <attributeAssertions>
+                        <uiAttributeAssertion attributeName="visible" comparisonType="None">
+                          <value class="value" valueClass="boolean">false</value>
+                        </uiAttributeAssertion>
+                      </attributeAssertions>
+                    </uiFieldAssertion>
+                  </value>
+                </argument>
+                <argument id="captureAfter">
+                  <value class="value" valueClass="string">false</value>
+                </argument>
+                <argument id="columnAssertions">
+                  <value class="valueList" mutable="Mutable"/>
+                </argument>
+                <argument id="pageAssertions">
+                  <value class="valueList" mutable="Mutable"/>
+                </argument>
+                <argument id="beforeWait"/>
+                <argument id="autoRetry"/>
+              </arguments>
+            </apiCall>
+            <apiCall apiId="com.provar.plugins.bundled.apis.control.WaitFor" name="WaitFor" testItemId="116" title="Wait For: {OrderFulfillmentVisibility.fields.orderFulfillment.visible = true}=&gt;{30}">
+              <arguments>
+                <argument id="condition">
+                  <value class="eq">
+                    <lhs class="variable">
+                      <path element="OrderFulfillmentVisibility"/>
+                      <path element="fields"/>
+                      <path element="orderFulfillment"/>
+                      <path element="visible"/>
+                    </lhs>
+                    <rhs class="value" valueClass="boolean">true</rhs>
+                  </value>
+                </argument>
+                <argument id="testAtStart"/>
+                <argument id="maxIterations">
+                  <value class="value" valueClass="decimal">5</value>
+                </argument>
+                <argument id="sleepSecs">
+                  <value class="value" valueClass="decimal">30</value>
+                </argument>
+                <argument id="continueOnFailure"/>
+              </arguments>
+              <clauses>
+                <clause name="substeps" testItemId="117">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiAssert" isTitleUpdated="true" name="UiAssert" testItemId="120" title="UI Assert - Order Fulfillment visible?">
+                      <tags/>
+                      <arguments>
+                        <argument id="resultName">
+                          <value class="value" valueClass="string">OrderNumber</value>
+                        </argument>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Folder</value>
+                        </argument>
+                        <argument id="fieldAssertions">
+                          <value class="valueList" mutable="Mutable">
+                            <uiFieldAssertion resultName="orderFulfillment">
+                              <fieldLocator uri="ui:locator?name=orderFulfillment"/>
+                              <attributeAssertions>
+                                <uiAttributeAssertion attributeName="visible" comparisonType="None">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </uiAttributeAssertion>
+                              </attributeAssertions>
+                            </uiFieldAssertion>
+                          </value>
+                        </argument>
+                        <argument id="captureAfter">
+                          <value class="value" valueClass="string">false</value>
+                        </argument>
+                        <argument id="columnAssertions">
+                          <value class="valueList" mutable="Mutable"/>
+                        </argument>
+                        <argument id="pageAssertions">
+                          <value class="valueList" mutable="Mutable"/>
+                        </argument>
+                        <argument id="beforeWait"/>
+                        <argument id="autoRetry"/>
+                      </arguments>
+                    </apiCall>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiAssert" isTitleUpdated="true" name="UiAssert" testItemId="121" title="UI Assert - Read the Order Number created">
+                      <tags/>
+                      <arguments>
+                        <argument id="resultName">
+                          <value class="value" valueClass="string">OrderNumber</value>
+                        </argument>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Folder</value>
+                        </argument>
+                        <argument id="fieldAssertions">
+                          <value class="valueList" mutable="Mutable">
+                            <uiFieldAssertion resultName="orderNumber">
+                              <fieldLocator uri="ui:locator?name=orderNumber"/>
+                              <attributeAssertions>
+                                <uiAttributeAssertion attributeName="value" comparisonType="None">
+                                  <value class="variable">
+                                    <path element="OrderNumber"/>
+                                  </value>
+                                </uiAttributeAssertion>
+                              </attributeAssertions>
+                            </uiFieldAssertion>
+                          </value>
+                        </argument>
+                        <argument id="captureAfter">
+                          <value class="value" valueClass="string">false</value>
+                        </argument>
+                        <argument id="columnAssertions">
+                          <value class="valueList" mutable="Mutable"/>
+                        </argument>
+                        <argument id="pageAssertions">
+                          <value class="valueList" mutable="Mutable"/>
+                        </argument>
+                        <argument id="beforeWait"/>
+                        <argument id="autoRetry"/>
+                      </arguments>
+                    </apiCall>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexSoqlQuery" name="ApexSoqlQuery" testItemId="122" title="SOQL Query: select Id,rstk__sohdr_order__c from rstk__sohdr__c where rstk__sohdr_order__c='{OrderNumber.fields.orderNumber.value}'=&gt;rstkRows_SOHeader">
+                      <tags/>
+                      <arguments>
+                        <argument id="soqlQuery">
+                          <value class="compound">
+                            <parts>
+                              <value valueClass="string">select Id,rstk__sohdr_order__c from rstk__sohdr__c where rstk__sohdr_order__c='</value>
+                              <variable>
+                                <path element="OrderNumber"/>
+                                <path element="fields"/>
+                                <path element="orderNumber"/>
+                                <path element="value"/>
+                              </variable>
+                              <value valueClass="string">'</value>
+                            </parts>
+                          </value>
+                        </argument>
+                        <argument id="apexConnectionName">
+                          <value class="value" valueClass="string">SFConnection</value>
+                        </argument>
+                        <argument id="resultListName">
+                          <value class="value" valueClass="string">rstkRows_SOHeader</value>
+                        </argument>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Test</value>
+                        </argument>
+                      </arguments>
+                    </apiCall>
+                  </steps>
+                </clause>
+              </clauses>
+            </apiCall>
+            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiAssert" isTitleUpdated="true" name="UiAssert" testItemId="110" title="UI Assert - Read the Order Number created">
+              <tags>
+                <string>disabled</string>
+              </tags>
               <arguments>
                 <argument id="resultName">
                   <value class="value" valueClass="string">OrderNumber</value>
@@ -723,7 +886,9 @@
               </arguments>
             </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexSoqlQuery" name="ApexSoqlQuery" testItemId="109" title="SOQL Query: select Id,rstk__sohdr_order__c from rstk__sohdr__c where rstk__sohdr_order__c='{OrderNumber.fields.orderNumber.value}'=&gt;rstkRows_SOHeader">
-              <tags/>
+              <tags>
+                <string>disabled</string>
+              </tags>
               <arguments>
                 <argument id="soqlQuery">
                   <value class="compound">

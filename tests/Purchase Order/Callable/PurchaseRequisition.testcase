@@ -1359,13 +1359,13 @@
                                   <value class="value" valueClass="string">false</value>
                                 </argument>
                                 <argument id="captureAfter">
-                                  <value class="value" valueClass="string">false</value>
+                                  <value class="value" valueClass="string">full</value>
                                 </argument>
                                 <argument id="beforeWait">
                                   <value class="uiWait" uri="default"/>
                                 </argument>
                                 <argument id="afterWait">
-                                  <value class="uiWait" uri="default"/>
+                                  <value class="uiWait" uri="ui:wait:timed?seconds=20"/>
                                 </argument>
                                 <argument id="interactionDescription">
                                   <value class="value" valueClass="string">Click the Maintain Indirect / Service Requisitions button</value>
@@ -1484,13 +1484,13 @@
                                   <value class="value" valueClass="string">false</value>
                                 </argument>
                                 <argument id="captureAfter">
-                                  <value class="value" valueClass="string">false</value>
+                                  <value class="value" valueClass="string">true</value>
                                 </argument>
                                 <argument id="beforeWait">
                                   <value class="uiWait" uri="default"/>
                                 </argument>
                                 <argument id="afterWait">
-                                  <value class="uiWait" uri="default"/>
+                                  <value class="uiWait" uri="ui:wait:timed?seconds=10"/>
                                 </argument>
                                 <argument id="interactionDescription">
                                   <value class="value" valueClass="string">Click the Add 1 button</value>

@@ -501,11 +501,11 @@
         </clause>
       </clauses>
     </apiCall>
-    <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="156" title="Verify Invoice and Receivable Transaction created">
+    <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="156" title="Verify the Invoice and Receivable Transaction created">
       <tags/>
       <arguments>
         <argument id="description">
-          <value class="value" valueClass="string">Verify Invoice and Receivable Transaction created</value>
+          <value class="value" valueClass="string">Verify the Invoice and Receivable Transaction created</value>
         </argument>
       </arguments>
       <clauses>

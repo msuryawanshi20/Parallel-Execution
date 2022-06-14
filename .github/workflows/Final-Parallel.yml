@@ -51,22 +51,22 @@ jobs:
         echo "Selected Plan Name="${{matrix.Plan}}
         echo "Selected Environment is="${{ github.event.inputs.TestEnv }}
         xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=${{matrix.Plan}}" runtests
-        zip -v -r Execution_Report_for_${{ github.event.inputs.plan }}-${{ steps.date.outputs.date }}.zip Results/*
+        zip -v -r Execution_Report_for_${{matrix.Plan}}-${{ steps.date.outputs.date }}.zip Results/*
         
     - name: Upload Report To Slack
       uses: adrey/slack-file-upload-action@master
       if: ${{ always() }}
       with:
        token: ${{ secrets.SLACK_TOKEN }}
-       path: ${{ github.workspace }}/ANT/Execution_Report_for_${{ github.event.inputs.plan }}-${{ steps.date.outputs.date }}.zip
+       path: ${{ github.workspace }}/ANT/Execution_Report_for_${{matrix.Plan}}-${{ steps.date.outputs.date }}.zip
        channel: provar-gitaction
     
     - uses: actions/upload-artifact@v2
       with:
-        name: Execution Report for ${{ github.event.inputs.plan }}- ${{ steps.date.outputs.date }}
+        name: Execution Report for ${{matrix.Plan}}- ${{ steps.date.outputs.date }}
         path: ${{ github.workspace }}/ANT/Results/*
     - uses: actions/upload-artifact@v2
       if: failure()
       with:
-        name: Execution Report for ${{ github.event.inputs.plan }}- ${{ steps.date.outputs.date }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+        name: Execution Report for ${{matrix.Plan}}- ${{ steps.date.outputs.date }}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
         path: ${{ github.workspace }}/ANT/Results/*    
