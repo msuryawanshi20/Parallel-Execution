@@ -3,7 +3,6 @@ name: FinalTry1
 on: 
   workflow_dispatch:
     inputs:
-       
       plan:
         description: 'Enter Plan Name'
         required: true
@@ -12,7 +11,6 @@ on:
         description: Please select environment
         options: 
         - AutomationOrg 
-  
 jobs:
   build:
     # The type of runner that the job will run on
