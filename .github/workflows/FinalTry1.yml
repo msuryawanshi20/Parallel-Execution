@@ -34,12 +34,12 @@ jobs:
      
     - name: Upload test file
       uses: actions/checkout@v1
-    - run: echo "Execution Started " > test.txt
+    - run: echo "Execution Started for Test Plan ${{github.event.inputs.plan}} at${{ steps.date.outputs.date }}"> ExecutionStarted.txt
     - name: Upload to slack step
       uses: adrey/slack-file-upload-action@master
       with:
           token: ${{ secrets.SLACK_TOKEN }}
-          path: test.txt
+          path: ExecutionStarted.txt
           channel: provar-gitaction
   
     - name: Execute Test Plan
