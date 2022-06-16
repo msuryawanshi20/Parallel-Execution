@@ -61,7 +61,13 @@ jobs:
         zip -v -r Execution_Report_for_${{github.workflow}}_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}.zip Results/*
         echo "-----List of file-----"
         ls -a
-    
+        
+        cd $GITHUB_WORKSPACE/ANT/Results/Artifacts/
+        mv *.pdf PDF_Report.pdf
+        echo "-----List of file After Rename-----"
+        ls -a
+
+   
     - name: Upload JUnit Report To Slack
       uses: adrey/slack-file-upload-action@master
       if: ${{ always() }}
@@ -76,32 +82,21 @@ jobs:
       if: ${{ always() }}
       with:
        token: ${{ secrets.SLACK_TOKEN }}
-       path: ${{ github.workspace }}/ANT/Results/Artifacts/*.pdf
+       path: ${{ github.workspace }}/ANT/Results/Artifacts/PDF_Report.pdf
        channel: provar-gitaction
        title: PDF Report-${{matrix.Plan}}-${{ steps.date.outputs.date }}
 
-    - name: Compress Result Folders(Zip File getting Created)
-      if: ${{ always() }}
-      run: |
-        echo "-----Working Directory-----"
-        pwd
-        cd $GITHUB_WORKSPACE/ANT
-        ls -a
-        #zip -v -r Execution_Report_for_${{github.workflow}}_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}.zip Results/*
-        echo "-----List of file-----"
-        ls -a
-     
     - name: Upload Report Zip file To Slack
       uses: adrey/slack-file-upload-action@master
       if: ${{ always() }}
       with:
        token: ${{ secrets.SLACK_TOKEN }}
-       path: ${{ github.workspace }}/ANT/Execution_Report_for*.zip
+       path: ${{ github.workspace }}/ANT/Execution_Report_for_${{github.workflow}}_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}.zip
        channel: provar-gitaction   
        
     - name: Attached Report Zip file to WorkFlow
       uses: actions/upload-artifact@v2
       if: ${{ always() }}
       with:
-        name: Execution_Report_for_${{github.workflow}}_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}
+        name: Execution_Report_for_${{github.workflow}}_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}
         path: ${{ github.workspace }}/ANT/Results/*
