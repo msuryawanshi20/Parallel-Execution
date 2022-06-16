@@ -87,6 +87,7 @@ jobs:
     - name: compressing Results folder
       if: ${{ always() }}
       run: |
+        cd $GITHUB_WORKSPACE/ANT
         echo "compressing Results folder"
         zip -v -r Execution_Report_for_${{github.workflow}}_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}.zip Results/*
         echo "-----List of file-----"
