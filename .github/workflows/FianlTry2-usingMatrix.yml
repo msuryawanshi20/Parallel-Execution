@@ -57,16 +57,6 @@ jobs:
         echo "Selected Plan Name="${{ github.event.inputs.plan }}
         echo "Selected Environment is="${{ github.event.inputs.TestEnv }}
         xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=${{ matrix.Plan }}" runtests
-        echo "compressing Results folder"
-        zip -v -r Execution_Report_for_${{github.workflow}}_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}.zip Results/*
-        echo "-----List of file-----"
-        ls -a
-        
-        cd $GITHUB_WORKSPACE/ANT/Results/Artifacts/
-        mv *.pdf PDF_Report.pdf
-        echo "-----List of file After Rename-----"
-        ls -a
-
    
     - name: Upload JUnit Report To Slack
       uses: adrey/slack-file-upload-action@master
@@ -77,6 +67,14 @@ jobs:
        channel: provar-gitaction
        title: JUnit Report-${{matrix.Plan}}-${{ steps.date.outputs.date }}
 
+    - name: Rename PDF File
+      if: ${{ always() }}
+      run: |
+        cd $GITHUB_WORKSPACE/ANT/Results/Artifacts/
+        mv *.pdf PDF_Report.pdf
+        echo "-----List of file After Rename-----"
+        ls -a
+        
     - name: Upload PDF Report To Slack
       uses: adrey/slack-file-upload-action@master
       if: ${{ always() }}
@@ -85,6 +83,14 @@ jobs:
        path: ${{ github.workspace }}/ANT/Results/Artifacts/PDF_Report.pdf
        channel: provar-gitaction
        title: PDF Report-${{matrix.Plan}}-${{ steps.date.outputs.date }}
+
+    - name: compressing Results folder
+      if: ${{ always() }}
+      run: |
+        echo "compressing Results folder"
+        zip -v -r Execution_Report_for_${{github.workflow}}_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}.zip Results/*
+        echo "-----List of file-----"
+        ls -a
 
     - name: Upload Report Zip file To Slack
       uses: adrey/slack-file-upload-action@master
