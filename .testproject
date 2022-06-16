@@ -63,6 +63,13 @@
             <connectionUrl envName="PDE5" secureStorageNodeId="03d6ef83-22bf-4b92-a0ea-0ee396e23e2f" url="sf:user=msuryawanshi@rootstock.com.pde5;password={password};securityToken={securityToken};environment=PROD_DEV;nsPrefixOverride=-rstk"/>
           </connectionUrls>
         </connection>
+        <connection id="15e203b2-9ef5-45fb-af9e-6c551184ef32" name="LoginAs">
+          <summary/>
+          <connectionUrls>
+            <connectionUrl url="sf:user=msuryawanshi@rootstock.com.qarsf;environment=PROD_DEV;logonAsConnection=QARSF_Admin;lightningMode=true"/>
+            <connectionUrl envName="AutomationOrg" url="sf:user=msuryawanshi@rootstock.com.automation;environment=PROD_DEV;logonAsConnection=QARSF_Admin"/>
+          </connectionUrls>
+        </connection>
       </connections>
     </connectionClass>
     <connectionClass name="ui">
