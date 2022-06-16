@@ -67,7 +67,8 @@ jobs:
       with:
        token: ${{ secrets.SLACK_TOKEN }}
        path: ${{ github.workspace }}/ANT/Results/JUnit html/junit-noframes.html
-       channel: provar-gitaction  
+       channel: provar-gitaction
+       title: JUnit Report
 
     - name: Upload Report To Slack
       if: ${{ always() }}
