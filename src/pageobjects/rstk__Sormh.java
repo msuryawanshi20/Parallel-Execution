@@ -1,11 +1,16 @@
 package pageobjects;
 
-import java.util.List;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.provar.core.testapi.annotations.*;
+import com.provar.core.testapi.annotations.BooleanType;
+import com.provar.core.testapi.annotations.ButtonType;
+import com.provar.core.testapi.annotations.ChoiceListType;
+import com.provar.core.testapi.annotations.FindByLabel;
+import com.provar.core.testapi.annotations.LinkType;
+import com.provar.core.testapi.annotations.PageWaitAfter;
+import com.provar.core.testapi.annotations.SalesforcePage;
+import com.provar.core.testapi.annotations.TextType;
 
 @SalesforcePage( title="Rstk__ Sormh"                                
                , summary=""

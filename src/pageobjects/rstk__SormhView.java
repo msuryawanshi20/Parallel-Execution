@@ -1,11 +1,14 @@
 package pageobjects;
 
-import java.util.List;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.provar.core.testapi.annotations.*;
+import com.provar.core.testapi.annotations.ButtonType;
+import com.provar.core.testapi.annotations.FindByLabel;
+import com.provar.core.testapi.annotations.LinkType;
+import com.provar.core.testapi.annotations.PageWaitAfter;
+import com.provar.core.testapi.annotations.SalesforcePage;
+import com.provar.core.testapi.annotations.TextType;
 
 @SalesforcePage( title="Rstk__ Sormh View"                                
                , summary=""
@@ -33,6 +36,7 @@ public class rstk__SormhView {
 	@ButtonType()
 	@FindByLabel(label = "Quick Create RMA Details")
 	public WebElement quickCreateRMADetails;
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 120)
 	@LinkType()
 	@FindBy(xpath = "//a[@name='createCreditMemoLink']")
 	public WebElement creditMemo;
