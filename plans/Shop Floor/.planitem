@@ -11,7 +11,7 @@
           <value class="value" valueClass="boolean">true</value>
         </namedValue>
         <namedValue name="artifactName">
-          <value class="value" valueClass="string">shopFloor.png</value>
+          <value class="value" valueClass="string">pieChart.png</value>
         </namedValue>
       </settings>
     </planFeature>
@@ -66,7 +66,7 @@
           <value class="value" valueClass="boolean">false</value>
         </namedValue>
         <namedValue name="artifactName">
-          <value class="value" valueClass="string">shopFloor.pdf</value>
+          <value class="value" valueClass="string">executionReport.pdf</value>
         </namedValue>
       </settings>
     </planFeature>

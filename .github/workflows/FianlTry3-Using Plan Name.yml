@@ -1,4 +1,4 @@
-name: FianlTry2-usingMatrix
+name: FianlTry3-SelectPlanName
 
 on: 
   workflow_dispatch:
@@ -7,15 +7,32 @@ on:
         type: choice
         description: Please select Test Plan For the execution
         options: 
+        - Accounts Receivable
         - API-Inventory
         - API-Work Order
+        - End To End-Happy Path
+        - Execute3Times-API-Work order-1
         - Engg to WO Close
         - Inventory Transactions
+        - PO END to End Execution
+        - POLoader
         - RMA
+        - POSYDATA
+        - Purchase Order
         - Recurring Billing
+        - Requisition
+        - RMA
+        - Sales Orders
         - Shop Floor
+        - SOAPI
+        - SYDATA - Sales Order
+        - System Setup
         - Work Order
-        - Temp    
+        - Temp
+        - Test1
+        - Test2
+        - Test3
+
       
       TestEnv:
         type: choice
@@ -94,9 +111,10 @@ jobs:
        channel: provar-gitaction
        title: PDF Report-${{github.event.inputs.plan}}-${{ steps.date.outputs.date }}
 
-    - name: compressing Results folder
+    - name: Compressing Results folder(Create Zip File)
       if: ${{ always() }}
       run: |
+        cd $GITHUB_WORKSPACE/ANT
         echo "compressing Results folder"
         zip -v -r Execution_Report_for_${{github.workflow}}_${{github.event.inputs.plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}.zip Results/*
         echo "-----List of file-----"
