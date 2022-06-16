@@ -61,7 +61,6 @@ jobs:
         echo "List of file"
         ls -a
     
-    - name: upload TestNG Report To Slack
     - uses: adrey/slack-file-upload-action@master
       if: ${{ always() }}
       with:
@@ -71,7 +70,6 @@ jobs:
 
     - name: Upload Report To Slack
       if: ${{ always() }}
-
       run: |
         echo "Working Directory"
         pwd
