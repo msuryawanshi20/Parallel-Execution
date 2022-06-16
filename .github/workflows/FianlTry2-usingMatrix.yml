@@ -3,10 +3,6 @@ name: FianlTry2-usingMatrix
 on: 
   workflow_dispatch:
     inputs:
-      plan:
-        description: 'Enter Plan Name'
-        required: true
-    
       TestEnv:
         type: choice
         description: Please select environment
@@ -15,7 +11,6 @@ on:
   
 jobs:
   build:
-
     runs-on: ubuntu-latest
     env: 
        PROVAR_HOME: ${{ github.workspace }}/ProvarHome
@@ -37,8 +32,8 @@ jobs:
         java-version: 8
     
      
+    - uses: actions/checkout@v1
     - name: Upload test file
-      uses: actions/checkout@v1
     - run: echo "Execution Started for Test Plan ${{matrix.Plan}} at ${{ steps.date.outputs.date }}"> ExecutionStarted.txt
     - name: Upload to slack step
       uses: adrey/slack-file-upload-action@master
@@ -47,7 +42,7 @@ jobs:
           path: ExecutionStarted.txt
           channel: provar-gitaction
   
-    - name: Execute Test Plan
+    - name: Execute Test Plan-${{matrix.Plan}}
       run: |
         mkdir $GITHUB_WORKSPACE/ProvarHome
         curl -O https://download.provartesting.com/latest/Provar_ANT_latest.zip
@@ -67,8 +62,8 @@ jobs:
         echo "-----List of file-----"
         ls -a
     
+    - uses: adrey/slack-file-upload-action@master
     - name: Upload JUnit Report To Slack
-      uses: adrey/slack-file-upload-action@master
       if: ${{ always() }}
       with:
        token: ${{ secrets.SLACK_TOKEN }}
@@ -77,7 +72,7 @@ jobs:
        title: JUnit Report-${{matrix.Plan}}-${{ steps.date.outputs.date }}
 
     - name: Upload PDF Report To Slack
-      uses: adrey/slack-file-upload-action@master
+    - uses: adrey/slack-file-upload-action@master
       if: ${{ always() }}
       with:
        token: ${{ secrets.SLACK_TOKEN }}
@@ -97,7 +92,7 @@ jobs:
         ls -a
      
     - name: Upload Report Zip file To Slack
-      uses: adrey/slack-file-upload-action@master
+    - uses: adrey/slack-file-upload-action@master
       if: ${{ always() }}
       with:
        token: ${{ secrets.SLACK_TOKEN }}
@@ -105,7 +100,7 @@ jobs:
        channel: provar-gitaction   
        
     - name: Upload Report Zip file To Slack
-      uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v2
       if: ${{ always() }}
       with:
         name: Execution_Report_for_${{github.workflow}}_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}
