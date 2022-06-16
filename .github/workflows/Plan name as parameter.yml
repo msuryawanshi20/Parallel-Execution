@@ -49,6 +49,8 @@ jobs:
         xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=${{ github.event.inputs.plan }}" runtests
 
     - name: Upload Report To Slack
+      if: ${{ always() }}
+
       run: |
         echo "Working Directory"
         pwd
