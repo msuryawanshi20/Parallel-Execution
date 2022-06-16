@@ -3,6 +3,20 @@ name: FianlTry2-usingMatrix
 on: 
   workflow_dispatch:
     inputs:
+      plan:
+        type: choice
+        description: Please select Test Plan For the execution
+        options: 
+        - API-Inventory
+        - API-Work Order
+        - Engg to WO Close
+        - Inventory Transactions
+        - RMA
+        - Recurring Billing
+        - Shop Floor
+        - Work Order
+        - Temp    
+      
       TestEnv:
         type: choice
         description: Please select environment
@@ -14,11 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     env: 
        PROVAR_HOME: ${{ github.workspace }}/ProvarHome
-    strategy:
-      fail-fast: false
-      matrix:
-        Plan: ["Test1","Test2","Test3"]    
-        
+      
     steps:
     - name: Get current date
       id: date
@@ -34,7 +44,7 @@ jobs:
      
     - name: Upload test file
       uses: actions/checkout@v1
-    - run: echo "Execution Started for Test Plan ${{matrix.Plan}} at ${{ steps.date.outputs.date }}"> ExecutionStarted.txt
+    - run: echo "Execution Started for Test Plan ${{github.event.inputs.plan}} at ${{ steps.date.outputs.date }}"> ExecutionStarted.txt
     - name: Upload to slack step
       uses: adrey/slack-file-upload-action@master
       with:
@@ -42,7 +52,7 @@ jobs:
           path: ExecutionStarted.txt
           channel: provar-gitaction
   
-    - name: Execute Test Plan-${{matrix.Plan}}
+    - name: Execute Test Plan-${{github.event.inputs.plan}}
       run: |
         mkdir $GITHUB_WORKSPACE/ProvarHome
         curl -O https://download.provartesting.com/latest/Provar_ANT_latest.zip
@@ -54,9 +64,9 @@ jobs:
         sudo apt-get -y install google-chrome-stable
         echo $PROVAR_HOME
         cd $GITHUB_WORKSPACE/ANT
-        echo "Selected Plan Name="${{ matrix.Plan }}
+        echo "Selected Plan Name="${{ github.event.inputs.plan }}
         echo "Selected Environment is="${{ github.event.inputs.TestEnv }}
-        xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=${{ matrix.Plan }}" runtests
+        xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=${{ github.event.inputs.plan }}" runtests
    
     - name: Upload JUnit Report To Slack
       uses: adrey/slack-file-upload-action@master
@@ -65,7 +75,7 @@ jobs:
        token: ${{ secrets.SLACK_TOKEN }}
        path: ${{ github.workspace }}/ANT/Results/JUnit html/junit-noframes.html
        channel: provar-gitaction
-       title: JUnit Report-${{matrix.Plan}}-${{ steps.date.outputs.date }}
+       title: JUnit Report-${{github.event.inputs.plan}}-${{ steps.date.outputs.date }}
 
     - name: Rename PDF File
       if: ${{ always() }}
@@ -82,28 +92,27 @@ jobs:
        token: ${{ secrets.SLACK_TOKEN }}
        path: ${{ github.workspace }}/ANT/Results/Artifacts/PDF_Report.pdf
        channel: provar-gitaction
-       title: PDF Report-${{matrix.Plan}}-${{ steps.date.outputs.date }}
+       title: PDF Report-${{github.event.inputs.plan}}-${{ steps.date.outputs.date }}
 
     - name: compressing Results folder
       if: ${{ always() }}
       run: |
         echo "compressing Results folder"
-        zip -v -r Execution_Report_for_${{github.workflow}}_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}.zip Results/*
+        zip -v -r Execution_Report_for_${{github.workflow}}_${{github.event.inputs.plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}.zip Results/*
         echo "-----List of file-----"
         ls -a
-
 
     - name: Upload Report Zip file To Slack
       uses: adrey/slack-file-upload-action@master
       if: ${{ always() }}
       with:
        token: ${{ secrets.SLACK_TOKEN }}
-       path: ${{ github.workspace }}/ANT/Execution_Report_for_${{github.workflow}}_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}.zip
+       path: ${{ github.workspace }}/ANT/Execution_Report_for_${{github.workflow}}_${{github.event.inputs.plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}.zip
        channel: provar-gitaction   
        
     - name: Attached Report Zip file to WorkFlow
       uses: actions/upload-artifact@v2
       if: ${{ always() }}
       with:
-        name: Execution_Report_for_${{github.workflow}}_${{matrix.Plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}
+        name: Execution_Report_for_${{github.workflow}}_${{github.event.inputs.plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}
         path: ${{ github.workspace }}/ANT/Results/*
