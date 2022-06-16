@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.ChoiceListType;
 import com.provar.core.testapi.annotations.FindByLabel;
+import com.provar.core.testapi.annotations.PageWait;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
@@ -25,7 +26,6 @@ public class rstk__Soconpp {
 		this.driver = driver;
 	}
 
-	
 	public void selectProduct(String Product) throws InterruptedException {
 		Thread.sleep(1000);
 		WebElement ele = driver.findElement(By.xpath("//input[@name='soconpp_soprod__c_autocomplete']"));
@@ -46,35 +46,34 @@ public class rstk__Soconpp {
 			}
 		}
 	}
-	
-	
+
 	@TextType()
 	@FindBy(xpath = "//input[@name='soconpp_soprod__c_autocomplete']")
 	public WebElement product;
-	
+
 	@TextType()
 	@FindBy(xpath = "//li[@id='li-0']")
 	public WebElement list;
-	
-	public void setCommitmentQty(int Qty) throws InterruptedException
-	{
+
+	public void setCommitmentQty(int Qty) throws InterruptedException {
 		Thread.sleep(1000);
-	
-		WebDriverWait wait=new WebDriverWait(driver, 30);
-		String xpath= "//input[contains(@id,'soconpp_commitqty__c')]";
+
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		String xpath = "//input[contains(@id,'soconpp_commitqty__c')]";
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
-		driver.findElement(By.xpath(xpath)).sendKeys(""+Qty);
+		driver.findElement(By.xpath(xpath)).clear();
+
+		driver.findElement(By.xpath(xpath)).sendKeys("" + Qty);
 		driver.findElement(By.xpath(xpath)).sendKeys(Keys.TAB);
 		Thread.sleep(3000);
-	
+
 	}
-
-
 
 	@TextType()
 	@FindBy(xpath = "//input[contains(@id,'soconpp_commitqty__c')]")
 	public WebElement commitmentQuantity;
 
+	@PageWait.BackgroundActivity(timeoutSeconds = 60)
 	@TextType()
 	@FindBy(xpath = "//label[normalize-space(.)='Unit Price']/ancestor::th/following-sibling::td[1]//input")
 	public WebElement unitPrice;

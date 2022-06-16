@@ -1,4 +1,4 @@
-name: Using Plan Name as text input
+name: Using_Plan_Name_as_text_input
 
 on: 
   workflow_dispatch:
@@ -31,7 +31,18 @@ jobs:
       with:
         distribution: 'adopt'
         java-version: 8
-      
+    
+    - name: Send message to Slack API
+      uses: archive/github-actions-slack@v2.0.0
+      id: notify
+      with:
+        slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_USER_OAUTH_ACCESS_TOKEN }}
+        slack-channel: C03KF4U7TSP
+        slack-text: Hello! Started execution for ${{github.event.inputs.plan}} using ${{github.workflow}}
+    
+    - name: Result from "Send Message"
+      run: echo "The result was ${{ steps.notify.outputs.slack-result }}"   
+    
     - name: Build with Ant
       run: |
         mkdir $GITHUB_WORKSPACE/ProvarHome
@@ -47,6 +58,9 @@ jobs:
         echo "Selected Plan Name="${{ github.event.inputs.plan }}
         echo "Selected Environment is="${{ github.event.inputs.TestEnv }}
         xvfb-run ant -file build.xml "-DTestEnv=${{ github.event.inputs.TestEnv }}" "-DTestPlan=${{ github.event.inputs.plan }}" runtests
+        zip -v -r Execution_Report_for_${{github.workflow}}_${{github.event.inputs.plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}.zip Results/*
+        echo "List of file"
+        ls -a
 
     - name: Upload Report To Slack
       if: ${{ always() }}
@@ -66,10 +80,12 @@ jobs:
        token: ${{ secrets.SLACK_TOKEN }}
        path: ${{ github.workspace }}/ANT/Execution_Report_for_${{github.workflow}}_${{github.event.inputs.plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}.zip
        channel: provar-gitaction   
+       
     - uses: actions/upload-artifact@v2
       with:
         name: Execution_Report_for_${{github.workflow}}_${{github.event.inputs.plan}}-${{ steps.date.outputs.date }}_${{github.run_attempt}}-${{job.status}}
         path: ${{ github.workspace }}/ANT/Results/*
+    
     - uses: actions/upload-artifact@v2
       if: failure()
       with:
