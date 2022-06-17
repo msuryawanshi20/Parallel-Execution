@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testCase failureBehaviour="Inherit" id="782" registryId="367e4aaf-036a-4a3c-bb8f-665544a7f37e" visibility="Internal">
+<testCase failureBehaviour="Inherit" id="35" registryId="367e4aaf-036a-4a3c-bb8f-665544a7f37e" visibility="Internal">
   <summary/>
   <steps>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: SFConnection (Test)">
@@ -216,9 +216,7 @@
         <clause name="substeps" testItemId="13">
           <steps>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="47" title="Set the Product field to {ip_Product}">
-              <tags>
-                <string>disabled</string>
-              </tags>
+              <tags/>
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:locator?name=product"/>
@@ -280,9 +278,7 @@
               </generatedParameters>
             </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="48" title="Lookup the List field">
-              <tags>
-                <string>disabled</string>
-              </tags>
+              <tags/>
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:locator?name=list"/>
@@ -311,7 +307,9 @@
               </arguments>
             </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="14" title="Call the selectProduct method">
-              <tags/>
+              <tags>
+                <string>disabled</string>
+              </tags>
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:pageobject:method?operation=selectProduct&amp;pageId=pageobjects.rstk__Soconpp"/>
@@ -382,7 +380,9 @@
               </generatedParameters>
             </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="50" title="Call the setCommitmentQty method">
-              <tags/>
+              <tags>
+                <string>disabled</string>
+              </tags>
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:pageobject:method?operation=setCommitmentQty&amp;pageId=pageobjects.rstk__Soconpp"/>
@@ -424,9 +424,7 @@
               </generatedParameters>
             </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="15" title="Set the Commitment Quantity field to {ip_commitmentQuantity}">
-              <tags>
-                <string>disabled</string>
-              </tags>
+              <tags/>
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:locator?name=commitmentQuantity"/>
@@ -441,7 +439,7 @@
                   <value class="uiWait" uri="ui:wait:pageload?timeout=60"/>
                 </argument>
                 <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
+                  <value class="uiWait" uri="ui:wait:timed?seconds=5"/>
                 </argument>
                 <argument id="interactionDescription">
                   <value class="value" valueClass="string">Set the Commitment Quantity field to {ip_commitmentQuantity}</value>
@@ -518,7 +516,7 @@
                   <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
                 </argument>
                 <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
+                  <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
                 </argument>
                 <argument id="interactionDescription">
                   <value class="value" valueClass="string">Set the Unit Price field to {ip_unitPrice}</value>
@@ -589,7 +587,7 @@
                           <value class="value" valueClass="string">false</value>
                         </argument>
                         <argument id="beforeWait">
-                          <value class="uiWait" uri="default"/>
+                          <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
                         </argument>
                         <argument id="afterWait">
                           <value class="uiWait" uri="default"/>
@@ -1084,7 +1082,7 @@
   <args>
     <argument id="reuseConnectionName"/>
     <argument id="ip_recordID">
-      <value class="value" valueClass="string">a625f000000qfA6</value>
+      <value class="value" valueClass="string">a625f000000qgOu</value>
     </argument>
     <argument id="ip_Product">
       <value class="value" valueClass="string">Pro-Misc product</value>
