@@ -76,23 +76,22 @@ public class rstk__Stocklocdivsitemove {
 		}
 
 	}
-	
-		
+
 	@TestLogger
 	public Logger testLogger;
 
 	public String selectSerialNumber(Integer NumberOfSerialTobeSelected) throws InterruptedException {
 
 		Thread.sleep(2000);
-		String selectedSerial="";
+		String selectedSerial = "";
 
 		for (int i = 1; i <= NumberOfSerialTobeSelected; i++) {
 
 			WebElement element = driver
 					.findElement(By.xpath("//select[contains(@id,'available_serials__c')]/option[" + i + "]"));
 			testLogger.info("Serial Number:" + element.getText());
-			selectedSerial+="\n"+element.getText();
-			
+			selectedSerial += "\n" + element.getText();
+
 			element.click();
 
 		}
@@ -113,15 +112,15 @@ public class rstk__Stocklocdivsitemove {
 		@ChoiceListType()
 		@FindBy(xpath = ".//input[contains(@id,'locmove_tolocnum__c')]")
 		public WebElement toLocNumTextBox;
-		
+
 		@TextType
 		@FindBy(xpath = ".//td[3]//span//select")
 		public WebElement toLocNumPickList;
-		
+
 		@ChoiceListType()
 		@FindBy(xpath = ".//td[3]//input|.//td[3]//span//span")
 		public WebElement toLocNumText;
-			
+
 		@TextType
 		@FindBy(xpath = ".//td[6]//input|.//td[6]//span")
 		public WebElement quantity;
@@ -133,7 +132,7 @@ public class rstk__Stocklocdivsitemove {
 		@TextType
 		@FindBy(xpath = ".//td[8]//input")
 		public WebElement txnComment;
-		
+
 		@TextType
 		@FindBy(xpath = ".//td[9]//input")
 		public WebElement toLocComment;
@@ -166,50 +165,86 @@ public class rstk__Stocklocdivsitemove {
 	@ButtonType()
 	@FindByLabel(label = "Display Div Move Entries")
 	public WebElement displayDivMoveEntries;
-	
+
 	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Display Site Move Entries")
 	public WebElement displaySiteMoveEntries;
-	
+
 	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Move Selected Items")
 	public WebElement moveSelectedItems;
-	
+
 	@ButtonType()
 	@FindByLabel(label = "Select Serials")
 	public WebElement selectSerials;
-	
+
 	@TextType()
 	@FindBy(xpath = "//*[normalize-space(.)='Serial Count:']//following::input[1]")
 	public WebElement serialCount;
-	
+
 	@ChoiceListType()
 	@FindBy(xpath = "//*[normalize-space(.)='To Loc ID']//following::td[1]//select")
 	public WebElement serial_ToLocID;
-	
+
 	@FindBy(xpath = "//input[contains(@id,'locmove_tolocnum')]|//*[normalize-space(.)='To Loc No']//following::td[1]//select")
 	public WebElement serial_ToLocNoText;
-	
+
 	@ChoiceListType()
 	@FindBy(xpath = "//*[normalize-space(.)='To Loc No']//following::td[1]//select")
 	public WebElement serial_ToLocNoPickList;
-	
-	
+
 	@TextType
-	@FindBy(xpath="//textarea[contains(@id,'locmove_selectedserials__c')]")
+	@FindBy(xpath = "//textarea[contains(@id,'locmove_selectedserials__c')]")
 	public WebElement selectedSerialsTextarea;
 
 	public String readSelectedSerialNumber() throws InterruptedException {
 
 		Thread.sleep(2000);
 		WebElement ele = driver.findElement(By.xpath("//textarea[contains(@id,'locmove_selectedserials__c')]"));
-		testLogger.info("serial Numbers"+ele.getAttribute("value"));
-		
+		testLogger.info("serial Numbers" + ele.getAttribute("value"));
+
 		return ele.getText();
 
 	}
+
+	public String locationId, locationNum;
+
+	public void setLocationDetails(String locId, String locNum) {
+		locationId = locId;
+		locationNum = locNum;
+
+		testLogger.info("LocationID::::" + locationId);
+
+		testLogger.info("LocationNum::::" + locationNum);
+
+	}
+
+	public void setcheckbox() {
+		WebElement selectCheckBox11 = driver.findElement(By.xpath("//*[contains(text(),'" + locationId
+				+ "')]/parent::span/parent::td/following-sibling::td//span[contains(text(),'" + locationNum
+				+ "')]//parent::span/parent::td/parent::tr//td[1]//input"));
+
+		selectCheckBox11.click();
+	}
+
+	public void setQty(String Qty) {
+		WebElement quantity11 = driver.findElement(By.xpath("//*[contains(text(),'" + locationId
+				+ "')]/parent::span/parent::td/following-sibling::td//span[contains(text(),'" + locationNum
+				+ "')]//parent::span/parent::td/parent::tr//td[6]//input"));
+		;
+		quantity11.sendKeys(Qty);
+	}
+
+	public void setTxnComments(String Comments) {
+			testLogger.info("Inside setTxnComment::::" + Comments);
+	String xpath="//*[contains(text(),'" + locationId + "')]/parent::span/parent::td/following-sibling::td//span[contains(text(),'" + locationNum+ "')]//parent::span/parent::td/parent::tr//td[8]//input";
+	testLogger.info("xpath::"+xpath);
+		WebElement txnComment11 = driver.findElement(By.xpath("//*[contains(text(),'" + locationId
+				+ "')]/parent::span/parent::td/following-sibling::td//span[contains(text(),'" + locationNum
+				+ "')]//parent::span/parent::td/parent::tr//td[8]//input"));
+		txnComment11.sendKeys(Comments);
+	}
+
 }
-
-
