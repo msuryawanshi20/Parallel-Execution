@@ -844,7 +844,7 @@
                                                     <value valueClass="string">P-</value>
                                                     <funcCall id="UniqueId">
                                                       <argument id="length">
-                                                        <value class="value" valueClass="decimal">4</value>
+                                                        <value class="value" valueClass="decimal">7</value>
                                                       </argument>
                                                     </funcCall>
                                                   </parts>
@@ -929,7 +929,7 @@
                                                             <value valueClass="string">,P-</value>
                                                             <funcCall id="UniqueId">
                                                               <argument id="length">
-                                                                <value class="value" valueClass="decimal">4</value>
+                                                                <value class="value" valueClass="decimal">7</value>
                                                               </argument>
                                                             </funcCall>
                                                           </parts>
