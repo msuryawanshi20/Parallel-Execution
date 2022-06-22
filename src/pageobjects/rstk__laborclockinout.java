@@ -142,6 +142,7 @@ public class rstk__laborclockinout {
 		WebElement ele = driver.findElement(By.xpath(xpath));
 
 		ele.sendKeys(workOrderNumber);
+		Thread.sleep(3000);
 		Actions actions = new Actions(driver);
 		wait.until(
 				ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='ac_results'][3]/ul[@id='IDREF']/li")));
@@ -153,7 +154,7 @@ public class rstk__laborclockinout {
 
 		while (autoCompleteList.size() > 10) {
 			ele.sendKeys(Keys.BACK_SPACE);
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 			autoCompleteList = driver.findElements(By.xpath("//div[@class='ac_results'][3]/ul[@id='IDREF']/li"));
 
 		}
