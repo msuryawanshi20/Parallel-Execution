@@ -7,27 +7,26 @@ on:
         type: choice
         description: Please select Test Plan For the execution
         options: 
-        - Accounts Receivable
+        - Accounts_Receivable
         - API-Inventory
-        - API-Work Order
-        - End To End-Happy Path
-        - Execute3Times-API-Work order-1
-        - Engg to WO Close
-        - Inventory Transactions
-        - PO END to End Execution
+        - API-Work_Order
+        - End_To_End-Happy_Path
+        - Engg_to_WO_Close
+        - Inventory_Transactions
+        - PO_END_to_End_Execution
         - POLoader
         - RMA
         - POSYDATA
-        - Purchase Order
-        - Recurring Billing
+        - Purchase_Order
+        - Recurring_Billing
         - Requisition
         - RMA
-        - Sales Orders
-        - Shop Floor
+        - Sales_Orders
+        - Shop_Floor
         - SOAPI
-        - SYDATA - Sales Order
-        - System Setup
-        - Work Order
+        - SYDATA-Sales_Order
+        - System_Setup
+        - Work_Order
         - Temp
         - Test1
         - Test2

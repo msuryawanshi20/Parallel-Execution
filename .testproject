@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testProject selectedBrowserProviderDeviceName="Full Screen" selectedBrowserProviderName="Desktop" selectedEnvironment="AutomationOrg">
+<testProject selectedBrowserProviderDeviceName="Full Screen" selectedBrowserProviderName="Desktop" selectedEnvironment="PDE5">
   <title>/Parallel-Execution/.testproject</title>
   <configPath>config</configPath>
   <testsPath>tests</testsPath>
@@ -50,7 +50,7 @@
   <connectionClasses>
     <connectionClass name="sf">
       <connections>
-        <connection id="9d2f70ad-289c-4fc3-8be5-d6959877335e" name="QARSF_Admin_Test">
+        <connection id="9d2f70ad-289c-4fc3-8be5-d6959877335e" name="QARSF_Admin">
           <summary/>
           <connectionUrls>
             <connectionUrl secureStorageNodeId="ef72e2ba-6de7-4486-a8a0-6f805967f325" url="sf:environment=PRERELEASE;apiLoginUrl=https://rstk-qa-rsf.my.salesforce.com;identityServiceUrl=https://login.salesforce.com/id/00D410000011HE0EAM/0051K000008fKKFQA2;clientId={clientId};clientSecret={clientSecret};authenticationType=OAUTH;callbackUrl={callbackUrl};accessToken={accessToken};refreshToken={refreshToken}"/>
@@ -62,7 +62,7 @@
             <connectionUrl envName="PDE5" secureStorageNodeId="03d6ef83-22bf-4b92-a0ea-0ee396e23e2f" url="sf:user=msuryawanshi@rootstock.com.pde5;password={password};securityToken={securityToken};environment=PROD_DEV;nsPrefixOverride=-rstk"/>
           </connectionUrls>
         </connection>
-        <connection id="15e203b2-9ef5-45fb-af9e-6c551184ef32" name="QARSF_Admin">
+        <connection id="15e203b2-9ef5-45fb-af9e-6c551184ef32" name="QARSF_Admin_1">
           <summary/>
           <connectionUrls>
             <connectionUrl url="sf:user=msuryawanshi@rootstock.com.qarsf;environment=PROD_DEV;logonAsConnection=QARSF_Admin_Test;lightningMode=true"/>
