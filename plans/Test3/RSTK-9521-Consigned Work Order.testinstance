@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testPlanInstance testCasePath="tests/SYDATA-Work Order/RSTK-9589-SYDATA-Complete Disassembly WO.testcase">
+<testPlanInstance testCasePath="tests/Work Order/RSTK-9521-Consigned Work Order.testcase">
   <planSettings/>
   <planFeatures/>
 </testPlanInstance>
