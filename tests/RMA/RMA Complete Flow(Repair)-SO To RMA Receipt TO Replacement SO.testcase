@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testCase failureBehaviour="Continue" id="11">
+<testCase failureBehaviour="Continue" id="1">
   <summary/>
   <steps>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: SFConnection (Test)">
@@ -1932,13 +1932,6 @@
                               <clauses>
                                 <clause name="substeps" testItemId="101">
                                   <steps>
-                                    <apiCall apiId="com.provar.plugins.bundled.apis.control.Sleep" name="Sleep" testItemId="846" title="Sleep for {5} seconds">
-                                      <arguments>
-                                        <argument id="sleepSecs">
-                                          <value class="value" valueClass="decimal">5</value>
-                                        </argument>
-                                      </arguments>
-                                    </apiCall>
                                     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexSoqlQuery" name="ApexSoqlQuery" testItemId="102" title="SOQL Query: SELECT Id,rstk__sydata_process__c FROM rstk__sydata__c WHERE rstk__sydata_sohdr__c = '{op_SO_HDR.Id}' AND rstk__sydata_txntype__c='{op_PickPackShip.TransactionType}'=&gt;op_SYDATA">
                                       <arguments>
                                         <argument id="soqlQuery">

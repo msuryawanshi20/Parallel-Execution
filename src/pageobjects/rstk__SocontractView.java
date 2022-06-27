@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.provar.core.testapi.annotations.LinkType;
-import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 
 @SalesforcePage( title="Rstk__ Socontract View"                                
@@ -23,7 +22,6 @@ public class rstk__SocontractView {
 		this.driver = driver;
 	}
 
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@LinkType()
 	@FindBy(xpath = "//*[contains(@value,'New Contract Products for Purchase')]")
 	public WebElement newContractProductsforPurchase;

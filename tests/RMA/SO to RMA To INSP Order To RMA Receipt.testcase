@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testCase failureBehaviour="Continue" id="46">
+<testCase failureBehaviour="Continue" id="2">
   <summary/>
   <steps>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="89" title="Salesforce Connect: SFConnection (Test)">
@@ -3578,6 +3578,13 @@
                                                                                 </clause>
                                                                               </clauses>
                                                                             </apiCall>
+                                                                            <apiCall apiId="com.provar.plugins.bundled.apis.control.Sleep" isTitleUpdated="true" name="Sleep" testItemId="951" title="sleep for 5 seconds before query to inspection order">
+                                                                              <arguments>
+                                                                                <argument id="sleepSecs">
+                                                                                  <value class="value" valueClass="decimal">5</value>
+                                                                                </argument>
+                                                                              </arguments>
+                                                                            </apiCall>
                                                                             <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexSoqlQuery" isTitleUpdated="true" name="ApexSoqlQuery" testItemId="269" title="Get Inspection order details">
                                                                               <arguments>
                                                                                 <argument id="soqlQuery">
@@ -3602,64 +3609,6 @@
                                                                                   <value class="value" valueClass="string">Test</value>
                                                                                 </argument>
                                                                               </arguments>
-                                                                            </apiCall>
-                                                                            <apiCall apiId="com.provar.plugins.bundled.apis.control.DoWhile" name="DoWhile" testItemId="976" title="While: {op_inspOrdDetails.Id = null}">
-                                                                              <arguments>
-                                                                                <argument id="condition">
-                                                                                  <value class="eq">
-                                                                                    <lhs class="variable">
-                                                                                      <path element="op_inspOrdDetails"/>
-                                                                                      <path element="Id"/>
-                                                                                    </lhs>
-                                                                                  </value>
-                                                                                </argument>
-                                                                                <argument id="counterName">
-                                                                                  <value class="value" valueClass="string">LoopCounter</value>
-                                                                                </argument>
-                                                                                <argument id="counterStart">
-                                                                                  <value class="value" valueClass="decimal">1</value>
-                                                                                </argument>
-                                                                                <argument id="counterEnd"/>
-                                                                                <argument id="continueOnFailure"/>
-                                                                              </arguments>
-                                                                              <clauses>
-                                                                                <clause name="substeps" testItemId="977">
-                                                                                  <steps>
-                                                                                    <apiCall apiId="com.provar.plugins.bundled.apis.control.Sleep" isTitleUpdated="true" name="Sleep" testItemId="979" title="sleep for 5 seconds before query to inspection order">
-                                                                                      <arguments>
-                                                                                        <argument id="sleepSecs">
-                                                                                          <value class="value" valueClass="decimal">5</value>
-                                                                                        </argument>
-                                                                                      </arguments>
-                                                                                    </apiCall>
-                                                                                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexSoqlQuery" isTitleUpdated="true" name="ApexSoqlQuery" testItemId="978" title="Get Inspection order details">
-                                                                                      <arguments>
-                                                                                        <argument id="soqlQuery">
-                                                                                          <value class="compound">
-                                                                                            <parts>
-                                                                                              <value valueClass="string">select Id,name,rstk__inspord_sorma__c,rstk__inspord_sorma__r.name,rstk__inspord_qtyreq__c\tfrom rstk__inspord__c where rstk__inspord_sorma__c='</value>
-                                                                                              <variable>
-                                                                                                <path element="op_sormaDetailsRow"/>
-                                                                                                <path element="ID"/>
-                                                                                              </variable>
-                                                                                              <value valueClass="string">' order by createdDate Desc Limit 1</value>
-                                                                                            </parts>
-                                                                                          </value>
-                                                                                        </argument>
-                                                                                        <argument id="apexConnectionName">
-                                                                                          <value class="value" valueClass="string">SFConnection</value>
-                                                                                        </argument>
-                                                                                        <argument id="resultListName">
-                                                                                          <value class="value" valueClass="string">op_inspOrdDetails</value>
-                                                                                        </argument>
-                                                                                        <argument id="resultScope">
-                                                                                          <value class="value" valueClass="string">Test</value>
-                                                                                        </argument>
-                                                                                      </arguments>
-                                                                                    </apiCall>
-                                                                                  </steps>
-                                                                                </clause>
-                                                                              </clauses>
                                                                             </apiCall>
                                                                             <apiCall apiId="com.provar.plugins.bundled.apis.control.ForEach" name="ForEach" testItemId="839" title="For Each: {op_inspectionOrderExcelData}=&gt;op_inspectionOrderExcelRow">
                                                                               <arguments>

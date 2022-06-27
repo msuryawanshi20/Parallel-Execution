@@ -24,12 +24,9 @@ public class rstk__soconpbbatch {
 	@DateType
 	@FindBy(xpath = "//label[normalize-space(.)='Invoice Date']/parent::th/following-sibling::td//input")
 	public WebElement NewinvoiceDate;
-	
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Save")
 	public WebElement save;
-	
 	@TextType()
 	@FindBy(xpath = "//td/div")
 	public WebElement SuccessMessage;

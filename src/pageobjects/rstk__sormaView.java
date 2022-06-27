@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.FindByLabel;
-import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
@@ -21,7 +20,6 @@ public class rstk__sormaView {
 	@FindByLabel(label = "Serial Details")
 	public WebElement serialDetails;
 
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Process Receipt")
 	public WebElement processReceipt;
@@ -39,7 +37,6 @@ public class rstk__sormaView {
 	public WebElement edit;
 	
 	
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Receipt Disposition and Reversal")
 	public WebElement receiptDispositionandReversal;

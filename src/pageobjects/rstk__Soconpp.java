@@ -3,23 +3,24 @@ package pageobjects;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.ChoiceListType;
 import com.provar.core.testapi.annotations.FindByLabel;
-import com.provar.core.testapi.annotations.PageWait;
-import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
-@SalesforcePage(title = "Rstk__ Soconpp", summary = "", page = "Soconpp", namespacePrefix = "rstk", object = "rstk__soconpp__c", connection = "QARSF_Admin")
+@SalesforcePage( title="Rstk__ Soconpp"                                
+               , summary=""
+               , page="Soconpp"
+               , namespacePrefix="rstk"
+               , object="rstk__soconpp__c"
+               , connection="QARSF_Admin"
+     )             
 public class rstk__Soconpp {
 	public WebDriver driver;
 
@@ -29,7 +30,7 @@ public class rstk__Soconpp {
 
 	public void selectProduct(String Product) throws InterruptedException {
 		Thread.sleep(1000);
-		WebElement ele = driver.findElement(By.xpath("//input[@name='soconpp_soprod__c_autocomplete']"));
+		WebElement ele = driver.findElement(By.xpath("//input[contains(@id,'soconpp_soprod__c_autocomplete')]"));
 		ele.sendKeys(Product);
 		Thread.sleep(2000);
 
@@ -42,52 +43,44 @@ public class rstk__Soconpp {
 			actions.moveToElement(autoCompleteList.get(i)).build().perform();
 			if (autoCompleteList.get(i).getText().startsWith(Product)) {
 				actions.moveToElement(autoCompleteList.get(i)).click().build().perform();
-				Thread.sleep(2000);
 				break;
 			}
 		}
 	}
 
+	
+
+
+	
+
+	@ButtonType()
+	@FindByLabel(label = "Save")
+	public WebElement save;
+
 	@TextType()
-	@FindBy(xpath = "//input[@name='soconpp_soprod__c_autocomplete']")
+	@FindBy(xpath = "//input[@id='soconpp_soprod__c_autocomplete']")
 	public WebElement product;
 
 	@TextType()
 	@FindBy(xpath = "//li[@id='li-0']")
-	public WebElement list;
+	public WebElement productList;
 
-	public void setCommitmentQty(int Qty) throws InterruptedException {
-		Thread.sleep(1000);
-
-		WebDriverWait wait = new WebDriverWait(driver, 30);
-		String xpath = "//input[contains(@id,'soconpp_commitqty__c')]";
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
-		driver.findElement(By.xpath(xpath)).clear();
-
-		driver.findElement(By.xpath(xpath)).sendKeys("" + Qty);
-		driver.findElement(By.xpath(xpath)).sendKeys(Keys.TAB);
-		Thread.sleep(3000);
-
-	}
-
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@TextType()
-	@FindBy(xpath = "//input[contains(@id,'soconpp_commitqty__c')]")
+	@FindBy(xpath = "//label[normalize-space(.)='Commitment Quantity']/parent::span/parent::th/following-sibling::td[1]//input")
 	public WebElement commitmentQuantity;
-
-	@PageWait.BackgroundActivity(timeoutSeconds = 60)
+	
+	
 	@TextType()
 	@FindBy(xpath = "//label[normalize-space(.)='Unit Price']/ancestor::th/following-sibling::td[1]//input")
 	public WebElement unitPrice;
 
-	@PageWait.BackgroundActivity(timeoutSeconds = 60)
 	@TextType()
 	@FindBy(xpath = "//label[normalize-space(.)='Discount Pct.']/ancestor::th/following-sibling::td[1]//input")
 	public WebElement discountPct;
 
 	@ChoiceListType()
 	@FindBy(xpath = "//label[normalize-space(.)='Revenue Account']/ancestor::th/following-sibling::td//select")
-	public WebElement soconpp_salesacct__c;
+	public WebElement revenueAccount;
 
 	@TextType()
 	@FindBy(xpath = "//label[normalize-space(.)='Activation Grace Period (Days)']/ancestor::th/following-sibling::td//input")
@@ -95,14 +88,12 @@ public class rstk__Soconpp {
 
 	@ChoiceListType()
 	@FindBy(xpath = "//label[normalize-space(.)='Associated Recurring Charge Product']/ancestor::th/following-sibling::td//select")
-	public WebElement soconpp_rcprod__c;
+	public WebElement associatedRecurringChargeProduct;
 
 	@ChoiceListType()
 	@FindBy(xpath = "//label[normalize-space(.)='Warranty Type']/ancestor::th/following-sibling::td//select")
-	public WebElement soconpp_sowarrtype__c;
-
-	@ButtonType()
-	@FindByLabel(label = "Save")
-	public WebElement save;
+	public WebElement warrantyType;
+	
+	
 
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testCase failureBehaviour="Inherit" id="35" registryId="367e4aaf-036a-4a3c-bb8f-665544a7f37e" visibility="Internal">
+<testCase failureBehaviour="Inherit" id="0" registryId="367e4aaf-036a-4a3c-bb8f-665544a7f37e" visibility="Internal">
   <summary/>
   <steps>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: SFConnection (Test)">
@@ -215,101 +215,7 @@
       <clauses>
         <clause name="substeps" testItemId="13">
           <steps>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="47" title="Set the Product field to {ip_Product}">
-              <tags/>
-              <arguments>
-                <argument id="locator">
-                  <value class="uiLocator" uri="ui:locator?name=product"/>
-                </argument>
-                <argument id="interaction">
-                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
-                </argument>
-                <argument argId="a2d8dd4c-4df0-47a2-a157-a76eaba04fb6" id="value">
-                  <value class="variable">
-                    <path element="ip_Product"/>
-                  </value>
-                </argument>
-                <argument id="blur">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="pressEnter">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="captureBefore">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="captureAfter">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="beforeWait">
-                  <value class="uiWait" uri="ui:wait:pageload?timeout=60"/>
-                </argument>
-                <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Set the Product field to {ip_Product}</value>
-                </argument>
-                <argument id="autoRetry"/>
-              </arguments>
-              <generatedParameters>
-                <apiParam group="value" name="value" seq="10000" title="Value">
-                  <summary>The value to be populated.</summary>
-                  <type>
-                    <textType>
-                      <constraints>
-                        <valueConstraint name="mimeType">text/plain</valueConstraint>
-                      </constraints>
-                    </textType>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
-                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
-                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-              </generatedParameters>
-            </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="48" title="Lookup the List field">
-              <tags/>
-              <arguments>
-                <argument id="locator">
-                  <value class="uiLocator" uri="ui:locator?name=list"/>
-                </argument>
-                <argument id="captureBefore">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="captureAfter">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="beforeWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="afterWait">
-                  <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
-                </argument>
-                <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Lookup the List field</value>
-                </argument>
-                <argument id="autoRetry">
-                  <value class="uiWait" uri="ui:wait:autoRetry:timeout=30"/>
-                </argument>
-                <argument id="interaction">
-                  <value class="uiInteraction" uri="ui:interaction?name=sfLookup"/>
-                </argument>
-              </arguments>
-            </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="14" title="Call the selectProduct method">
-              <tags>
-                <string>disabled</string>
-              </tags>
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:pageobject:method?operation=selectProduct&amp;pageId=pageobjects.rstk__Soconpp"/>
@@ -327,7 +233,7 @@
                   <value class="value" valueClass="string">false</value>
                 </argument>
                 <argument id="beforeWait">
-                  <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
+                  <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="afterWait">
                   <value class="uiWait" uri="default"/>
@@ -347,7 +253,6 @@
                   </value>
                 </argument>
                 <argument id="value"/>
-                <argument id="blur"/>
               </arguments>
               <generatedParameters>
                 <apiParam group="value" name="param_Product" title="Product">
@@ -379,52 +284,7 @@
                 </apiParam>
               </generatedParameters>
             </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="50" title="Call the setCommitmentQty method">
-              <tags>
-                <string>disabled</string>
-              </tags>
-              <arguments>
-                <argument id="locator">
-                  <value class="uiLocator" uri="ui:pageobject:method?operation=setCommitmentQty&amp;pageId=pageobjects.rstk__Soconpp"/>
-                </argument>
-                <argument id="interaction">
-                  <value class="uiInteraction" uri="ui:interaction?name=invoke"/>
-                </argument>
-                <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Call the setCommitmentQty method</value>
-                </argument>
-                <argument id="beforeWait"/>
-                <argument id="afterWait">
-                  <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
-                </argument>
-                <argument id="autoRetry"/>
-                <argument id="captureBefore">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="captureAfter">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="param_Qty">
-                  <value class="variable">
-                    <path element="ip_commitmentQuantity"/>
-                  </value>
-                </argument>
-              </arguments>
-              <generatedParameters>
-                <apiParam group="value" name="param_Qty" title="Qty">
-                  <type>
-                    <numericType nullable="false">
-                      <constraints>
-                        <valueConstraint name="length">9</valueConstraint>
-                        <valueConstraint name="decimalPlaces">0</valueConstraint>
-                      </constraints>
-                    </numericType>
-                  </type>
-                </apiParam>
-              </generatedParameters>
-            </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="15" title="Set the Commitment Quantity field to {ip_commitmentQuantity}">
-              <tags/>
               <arguments>
                 <argument id="locator">
                   <value class="uiLocator" uri="ui:locator?name=commitmentQuantity"/>
@@ -436,29 +296,27 @@
                   <value class="value" valueClass="string">false</value>
                 </argument>
                 <argument id="beforeWait">
-                  <value class="uiWait" uri="ui:wait:pageload?timeout=60"/>
+                  <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="afterWait">
-                  <value class="uiWait" uri="ui:wait:timed?seconds=5"/>
+                  <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
                 </argument>
                 <argument id="interactionDescription">
                   <value class="value" valueClass="string">Set the Commitment Quantity field to {ip_commitmentQuantity}</value>
                 </argument>
-                <argument id="autoRetry">
-                  <value class="uiWait" uri="ui:wait:autoRetry:timeout=30"/>
-                </argument>
+                <argument id="autoRetry"/>
                 <argument id="interaction">
                   <value class="uiInteraction" uri="ui:interaction?name=set"/>
                 </argument>
-                <argument id="pressEnter">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="value">
+                <argument argId="47b2d05c-b3df-40ee-8a0e-932f23033039" id="value">
                   <value class="variable">
                     <path element="ip_commitmentQuantity"/>
                   </value>
                 </argument>
                 <argument id="blur">
+                  <value class="value" valueClass="boolean">true</value>
+                </argument>
+                <argument id="pressEnter">
                   <value class="value" valueClass="boolean">false</value>
                 </argument>
               </arguments>
@@ -501,7 +359,7 @@
                   </value>
                 </argument>
                 <argument id="blur">
-                  <value class="value" valueClass="boolean">true</value>
+                  <value class="value" valueClass="boolean">false</value>
                 </argument>
                 <argument id="pressEnter">
                   <value class="value" valueClass="boolean">false</value>
@@ -516,7 +374,7 @@
                   <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
                 </argument>
                 <argument id="afterWait">
-                  <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
+                  <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="interactionDescription">
                   <value class="value" valueClass="string">Set the Unit Price field to {ip_unitPrice}</value>
@@ -587,7 +445,7 @@
                           <value class="value" valueClass="string">false</value>
                         </argument>
                         <argument id="beforeWait">
-                          <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
+                          <value class="uiWait" uri="default"/>
                         </argument>
                         <argument id="afterWait">
                           <value class="uiWait" uri="default"/>
@@ -639,10 +497,10 @@
               <clauses>
                 <clause name="then" testItemId="29">
                   <steps>
-                    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="18" title="Set the Soconpp_salesacct__c select to {ip_revenueAccount}">
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="18" title="Set the Revenue Account select to {ip_revenueAccount}">
                       <arguments>
                         <argument id="locator">
-                          <value class="uiLocator" uri="ui:locator?name=soconpp_salesacct__c"/>
+                          <value class="uiLocator" uri="ui:locator?name=revenueAccount"/>
                         </argument>
                         <argument id="interaction">
                           <value class="uiInteraction" uri="ui:interaction?name=set"/>
@@ -671,7 +529,7 @@
                           <value class="uiWait" uri="default"/>
                         </argument>
                         <argument id="interactionDescription">
-                          <value class="value" valueClass="string">Set the Soconpp_salesacct__c select to {ip_revenueAccount}</value>
+                          <value class="value" valueClass="string">Set the Revenue Account select to {ip_revenueAccount}</value>
                         </argument>
                         <argument id="autoRetry"/>
                       </arguments>
@@ -792,10 +650,10 @@
               <clauses>
                 <clause name="then" testItemId="35">
                   <steps>
-                    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="20" title="Set the Soconpp_rcprod__c select to {ip_associatedRecurringChargeProduct}">
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="20" title="Set the Associated Recurring Charge Product select to {ip_associatedRecurringChargeProduct}">
                       <arguments>
                         <argument id="locator">
-                          <value class="uiLocator" uri="ui:locator?name=soconpp_rcprod__c"/>
+                          <value class="uiLocator" uri="ui:locator?name=associatedRecurringChargeProduct"/>
                         </argument>
                         <argument id="interaction">
                           <value class="uiInteraction" uri="ui:interaction?name=set"/>
@@ -824,7 +682,7 @@
                           <value class="uiWait" uri="default"/>
                         </argument>
                         <argument id="interactionDescription">
-                          <value class="value" valueClass="string">Set the Soconpp_rcprod__c select to {ip_associatedRecurringChargeProduct}</value>
+                          <value class="value" valueClass="string">Set the Associated Recurring Charge Product select to {ip_associatedRecurringChargeProduct}</value>
                         </argument>
                         <argument id="autoRetry"/>
                       </arguments>
@@ -832,7 +690,11 @@
                         <apiParam group="value" name="value" seq="10000" title="Value">
                           <summary>The value to be populated.</summary>
                           <type>
-                            <choiceType/>
+                            <textType>
+                              <constraints>
+                                <valueConstraint name="mimeType">text/plain</valueConstraint>
+                              </constraints>
+                            </textType>
                           </type>
                         </apiParam>
                         <apiParam group="value" name="blur" seq="10001" title="Tab off field">
@@ -866,10 +728,10 @@
               <clauses>
                 <clause name="then" testItemId="40">
                   <steps>
-                    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="21" title="Set the Soconpp_sowarrtype__c select to {ip_warrantyType}">
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="21" title="Set the Warranty Type select to {ip_warrantyType}">
                       <arguments>
                         <argument id="locator">
-                          <value class="uiLocator" uri="ui:locator?name=soconpp_sowarrtype__c"/>
+                          <value class="uiLocator" uri="ui:locator?name=warrantyType"/>
                         </argument>
                         <argument id="interaction">
                           <value class="uiInteraction" uri="ui:interaction?name=set"/>
@@ -898,7 +760,7 @@
                           <value class="uiWait" uri="default"/>
                         </argument>
                         <argument id="interactionDescription">
-                          <value class="value" valueClass="string">Set the Soconpp_sowarrtype__c select to {ip_warrantyType}</value>
+                          <value class="value" valueClass="string">Set the Warranty Type select to {ip_warrantyType}</value>
                         </argument>
                         <argument id="autoRetry"/>
                       </arguments>
@@ -948,7 +810,7 @@
                   <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="afterWait">
-                  <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
+                  <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="interactionDescription">
                   <value class="value" valueClass="string">Click the Save button</value>
@@ -1082,7 +944,7 @@
   <args>
     <argument id="reuseConnectionName"/>
     <argument id="ip_recordID">
-      <value class="value" valueClass="string">a625f000000qgOu</value>
+      <value class="value" valueClass="string">a625f000000qfA6</value>
     </argument>
     <argument id="ip_Product">
       <value class="value" valueClass="string">Pro-Misc product</value>

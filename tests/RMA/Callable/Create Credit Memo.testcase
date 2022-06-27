@@ -171,7 +171,7 @@
                   <value class="uiWait" uri="default"/>
                 </argument>
                 <argument id="afterWait">
-                  <value class="uiWait" uri="ui:wait:auraBusy?timeout=60"/>
+                  <value class="uiWait" uri="ui:wait:pageload?timeout=60"/>
                 </argument>
                 <argument id="interactionDescription">
                   <value class="value" valueClass="string">Click the Credit Memo button</value>

@@ -6,16 +6,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.provar.core.testapi.annotations.BooleanType;
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.FindByLabel;
 import com.provar.core.testapi.annotations.PageRow;
 import com.provar.core.testapi.annotations.PageTable;
-import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
@@ -67,12 +64,9 @@ public class rstk__Rmaprocesses {
 
 	public void selectSerialNumber(Integer NumberOfSerialTobeSelected) throws InterruptedException {
 
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		Thread.sleep(2000);
 
-		String elementLocator = "//select[contains(@id,'rmarcptdetails')]";
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(elementLocator)));
-
-		Select listbox = new Select(driver.findElement(By.xpath(elementLocator)));
+		Select listbox = new Select(driver.findElement(By.xpath("//select[contains(@id,'rmarcptdetails')]")));
 		listbox.deselectAll();
 
 		for (int i = 1; i <= NumberOfSerialTobeSelected; i++) {
@@ -87,13 +81,9 @@ public class rstk__Rmaprocesses {
 
 	public void selectSerialNumberForReversal(Integer NumberOfSerialTobeSelected) throws InterruptedException {
 
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		Thread.sleep(2000);
 
-		String elementLocator = "//select[contains(@id,'rmarcptdispdetails')]";
-
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(elementLocator)));
-
-		Select listbox = new Select(driver.findElement(By.xpath(elementLocator)));
+		Select listbox = new Select(driver.findElement(By.xpath("//select[contains(@id,'rmarcptdispdetails')]")));
 		listbox.deselectAll();
 
 		for (int i = 1; i <= NumberOfSerialTobeSelected; i++) {
@@ -106,7 +96,6 @@ public class rstk__Rmaprocesses {
 
 	}
 
-	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@ButtonType()
 	@FindByLabel(label = "Process Receipt")
 	public WebElement processReceipt;
