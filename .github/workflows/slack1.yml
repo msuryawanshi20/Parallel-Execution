@@ -39,7 +39,7 @@ jobs:
     - name: Setup Environment
       run: |
         mkdir $GITHUB_WORKSPACE/ProvarHome
-        curl -O https://download.provartesting.com/2.6.2/Provar_ANT_2.6.2.02.zip
+        curl -O Provar_ANT_latest.zip https://download.provartesting.com/2.6.2/Provar_ANT_2.6.2.02.zip
         unzip -o Provar_ANT_latest.zip -d ProvarHome
         rm Provar_ANT_latest.zip
         sudo apt-get update && sudo apt-get upgrade       
