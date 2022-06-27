@@ -39,8 +39,8 @@ jobs:
       run: |
         mkdir $GITHUB_WORKSPACE/ProvarHome
         curl -O Provar_ANT_latest.zip https://download.provartesting.com/latest/Provar_ANT_latest.zip
-        unzip -o Provar_ANT_latest.zip -d ProvarHome
-        rm Provar_ANT_latest.zip
+        unzip -o Provar_ANT* -d ProvarHome
+        rm Provar_ANT_*
         sudo apt-get update && sudo apt-get upgrade       
         wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -        
         sudo echo "deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" >>sudo tee -a /etc/apt/sources.list.d/google-chrome.list
