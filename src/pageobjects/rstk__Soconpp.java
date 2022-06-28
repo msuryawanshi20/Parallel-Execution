@@ -11,6 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import com.provar.core.testapi.annotations.ButtonType;
 import com.provar.core.testapi.annotations.ChoiceListType;
 import com.provar.core.testapi.annotations.FindByLabel;
+import com.provar.core.testapi.annotations.PageWaitAfter;
 import com.provar.core.testapi.annotations.SalesforcePage;
 import com.provar.core.testapi.annotations.TextType;
 
@@ -48,19 +49,16 @@ public class rstk__Soconpp {
 		}
 	}
 
-	
-
-
-	
-
 	@ButtonType()
 	@FindByLabel(label = "Save")
 	public WebElement save;
 
+	@PageWaitAfter.Field(field = "productList", timeoutSeconds = 60)
 	@TextType()
 	@FindBy(xpath = "//input[@id='soconpp_soprod__c_autocomplete']")
 	public WebElement product;
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
 	@TextType()
 	@FindBy(xpath = "//li[@id='li-0']")
 	public WebElement productList;

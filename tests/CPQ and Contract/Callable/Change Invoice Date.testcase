@@ -523,9 +523,23 @@
                             <uiFieldAssertion resultName="invoiceDate">
                               <fieldLocator uri="ui:pageobject:field?field=invoiceDate&amp;pageId=pageobjects.rstk__soconpbbatchView"/>
                               <attributeAssertions>
-                                <uiAttributeAssertion attributeName="value" comparisonType="Contains" normalize="true">
-                                  <value class="variable">
-                                    <path element="op_InvDate"/>
+                                <uiAttributeAssertion attributeName="value" caseInsensitive="true" comparisonType="Contains" normalize="true">
+                                  <value class="funcCall" id="DateFormat">
+                                    <argument id="date">
+                                      <value class="funcCall" id="DateAdd">
+                                        <argument id="date">
+                                          <value class="variable">
+                                            <path element="TODAY"/>
+                                          </value>
+                                        </argument>
+                                        <argument id="amount">
+                                          <value class="value" valueClass="decimal">15</value>
+                                        </argument>
+                                      </value>
+                                    </argument>
+                                    <argument id="outputFormat">
+                                      <value class="value" valueClass="string">M/d/YYYY</value>
+                                    </argument>
                                   </value>
                                 </uiAttributeAssertion>
                               </attributeAssertions>

@@ -35,6 +35,8 @@ public class rstk__Sormamassentry {
 		@FindBy(xpath = ".//td[4]/select")
 		public WebElement reasonForReturn;
 
+		@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
+		@PageWait.BackgroundActivity(timeoutSeconds = 60)
 		@TextType()
 		@FindBy(xpath = "//li[@id='li-0']")
 		public WebElement list;
@@ -62,9 +64,12 @@ public class rstk__Sormamassentry {
 
 	}
 
+	@PageWaitAfter.BackgroundActivity(timeoutSeconds = 60)
+	@PageWait.BackgroundActivity(timeoutSeconds = 60)
 	@FindBy(xpath = "//tbody[contains(@id,'gridTable')]//tr")
 	@PageTable(firstRowContainsHeaders = false, row = RMADetailMaintenanceGrid.class)
 	public List<RMADetailMaintenanceGrid> rMADetailMaintenanceGrid;
+	
 	@ButtonType()
 	@FindByLabel(label = "Save")
 	public WebElement save;

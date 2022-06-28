@@ -419,10 +419,10 @@
               <clauses>
                 <clause name="then" testItemId="29">
                   <steps>
-                    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="18" title="Set the Soconpp_salesacct__c select to {ip_revenueAccount}">
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="18" title="Set the Revenue Account select to {ip_revenueAccount}">
                       <arguments>
                         <argument argId="ba097b47-7b4f-4d06-a4a1-38dddb101968" id="locator">
-                          <value class="uiLocator" uri="ui:locator?name=soconpp_salesacct__c"/>
+                          <value class="uiLocator" uri="ui:locator?name=revenueAccount"/>
                         </argument>
                         <argument argId="d14f468a-ff9a-4904-b83c-588330a93855" id="interaction">
                           <value class="uiInteraction" uri="ui:interaction?name=set"/>
@@ -451,7 +451,7 @@
                           <value class="uiWait" uri="default"/>
                         </argument>
                         <argument id="interactionDescription">
-                          <value class="value" valueClass="string">Set the Soconpp_salesacct__c select to {ip_revenueAccount}</value>
+                          <value class="value" valueClass="string">Set the Revenue Account select to {ip_revenueAccount}</value>
                         </argument>
                         <argument id="autoRetry"/>
                       </arguments>
@@ -572,10 +572,10 @@
               <clauses>
                 <clause name="then" testItemId="68">
                   <steps>
-                    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="20" title="Set the Soconpp_rcprod__c select to {ip_associatedRecurringChargeProduct}">
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="20" title="Set the Associated Recurring Charge Product select to {ip_associatedRecurringChargeProduct}">
                       <arguments>
                         <argument argId="dcdddb86-1ac0-4edd-8cb6-aa8967c4b9e4" id="locator">
-                          <value class="uiLocator" uri="ui:locator?name=soconpp_rcprod__c"/>
+                          <value class="uiLocator" uri="ui:locator?name=associatedRecurringChargeProduct"/>
                         </argument>
                         <argument argId="28db6d66-0997-4e39-be32-ed8a8ce4cce1" id="interaction">
                           <value class="uiInteraction" uri="ui:interaction?name=set"/>
@@ -604,7 +604,7 @@
                           <value class="uiWait" uri="default"/>
                         </argument>
                         <argument id="interactionDescription">
-                          <value class="value" valueClass="string">Set the Soconpp_rcprod__c select to {ip_associatedRecurringChargeProduct}</value>
+                          <value class="value" valueClass="string">Set the Associated Recurring Charge Product select to {ip_associatedRecurringChargeProduct}</value>
                         </argument>
                         <argument id="autoRetry"/>
                       </arguments>
@@ -612,7 +612,11 @@
                         <apiParam group="value" name="value" seq="10000" title="Value">
                           <summary>The value to be populated.</summary>
                           <type>
-                            <choiceType/>
+                            <textType>
+                              <constraints>
+                                <valueConstraint name="mimeType">text/plain</valueConstraint>
+                              </constraints>
+                            </textType>
                           </type>
                         </apiParam>
                         <apiParam group="value" name="blur" seq="10001" title="Tab off field">
@@ -646,10 +650,10 @@
               <clauses>
                 <clause name="then" testItemId="40">
                   <steps>
-                    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="21" title="Set the Soconpp_sowarrtype__c select to {ip_warrantyType}">
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="21" title="Set the Warranty Type select to {ip_warrantyType}">
                       <arguments>
                         <argument argId="54b183db-fdb6-48c4-a66e-013c9d836616" id="locator">
-                          <value class="uiLocator" uri="ui:locator?name=soconpp_sowarrtype__c"/>
+                          <value class="uiLocator" uri="ui:locator?name=warrantyType"/>
                         </argument>
                         <argument argId="18a5997d-d114-49f7-b108-6a1b25ea8d09" id="interaction">
                           <value class="uiInteraction" uri="ui:interaction?name=set"/>
@@ -678,7 +682,7 @@
                           <value class="uiWait" uri="default"/>
                         </argument>
                         <argument id="interactionDescription">
-                          <value class="value" valueClass="string">Set the Soconpp_sowarrtype__c select to {ip_warrantyType}</value>
+                          <value class="value" valueClass="string">Set the Warranty Type select to {ip_warrantyType}</value>
                         </argument>
                         <argument id="autoRetry"/>
                       </arguments>
