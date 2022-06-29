@@ -3,6 +3,7 @@ package pageobjects;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -55,6 +56,14 @@ public class rstk__quickcreatesorma {
 		Thread.sleep(500);
 		List<WebElement> autoCompleteList = driver
 				.findElements(By.xpath("//div[@class='ac_results'][1]/ul[@id='IDREF']/li"));
+				
+		while (autoCompleteList.size() > 100) {
+			ele.sendKeys(Keys.BACK_SPACE);
+			Thread.sleep(3000);
+			autoCompleteList = driver.findElements(By.xpath("//div[@class='ac_results'][1]/ul[@id='IDREF']/li"));
+
+		}
+				
 		for (int i = 0; i < autoCompleteList.size(); i++) {
 			Thread.sleep(1000);
 			actions.moveToElement(autoCompleteList.get(i)).build().perform();

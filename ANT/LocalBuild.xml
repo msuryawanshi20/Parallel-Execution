@@ -1,12 +1,14 @@
 <project default="runtests">
-	<property name="version" value="2.240.2.0"/>
 	<property environment="env"/>
 	<property name="provar.home" value="C:/Program Files/Provar/"/>
 	<property name="testproject.home" value=".."/>
 	<property name="testproject.results" value="../ANT/Results"/>
 
+	<property name="testcycle.path" value="../TestCycle"/>
+	
 	<taskdef name="Provar-Compile" classname="com.provar.testrunner.ant.CompileTask" classpath="${provar.home}/ant/ant-provar.jar"/>
 	<taskdef name="Run-Test-Case" classname="com.provar.testrunner.ant.RunnerTask" classpath="${provar.home}/ant/ant-provar.jar;${provar.home}/ant/ant-provar-bundled.jar;${provar.home}/ant/ant-provar-sf.jar"/>
+	<taskdef name="Test-Cycle-Report" classname="com.provar.testrunner.ant.TestCycleReportTask" classpath="${provar.home}/ant/ant-provar.jar;${provar.home}/ant/ant-provar-bundled.jar;${provar.home}/ant/ant-provar-sf.jar"/>
 
 
 	<target name="runtests">
@@ -29,6 +31,8 @@
 							pluginOutputlevel="WARNING"
 							stopTestRunOnError="false"
 							invokeTestRunMonitor="true"
+        					testCyclePath="${testcycle.path}"
+	    					testCycleRunType="FAILURES_AND_SKIPPED"
 							>
 
 			<fileset id="testplan" dir="../plans/${TestPlan}">
